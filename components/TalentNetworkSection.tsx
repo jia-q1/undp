@@ -413,6 +413,47 @@ export function TalentNetworkSection() {
             </div>
           </div>
         </motion.div>
+
+        {/* UNDP Deployments dashboard */}
+        <motion.div
+          className="mt-12 bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 className="text-xl font-bold text-navy mb-1">UNDP Deployments Dashboard</h3>
+              <p className="text-mid text-sm">Tracking of deployments across rosters, regions, and modalities.</p>
+            </div>
+            <a
+              href="https://app.powerbi.com/groups/me/reports/3c0f4d43-6da9-4d4c-ae07-0f0082f829ac/996cba5518c8a148d1c8?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&experience=power-bi&bookmarkGuid=74cfb88d-5351-4c52-86b4-72293cdb812c"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold bg-gold text-navy hover:bg-coral hover:text-white transition-colors whitespace-nowrap"
+            >
+              <span>Open Dashboard</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+          <a
+            href="https://app.powerbi.com/groups/me/reports/3c0f4d43-6da9-4d4c-ae07-0f0082f829ac/996cba5518c8a148d1c8?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&experience=power-bi&bookmarkGuid=74cfb88d-5351-4c52-86b4-72293cdb812c"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/deployments.png"
+              alt="UNDP Deployments Dashboard preview"
+              className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
+            />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
