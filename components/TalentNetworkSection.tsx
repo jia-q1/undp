@@ -204,22 +204,6 @@ export function TalentNetworkSection() {
             </div>
           ))}
         </div>
-
-        {/* Key insight */}
-        <motion.div
-          className="mt-12 p-8 bg-gradient-to-r from-purple/10 to-blue/10 rounded-xl border border-purple/20 print:hidden"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-xl font-bold text-navy mb-2">🎯 Integrated Approach</h3>
-          <p className="text-mid">
-            This ecosystem of four deployment modalities provides UNDP with unparalleled flexibility. For any
-            crisis, country offices can select from external specialists (ExpRes), trained staff (SURGE),
-            partner organizations (SBP), or rapid hires (Direct), depending on urgency and expertise requirements.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

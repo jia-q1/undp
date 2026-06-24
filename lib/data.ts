@@ -9,6 +9,8 @@ export const reportData = {
       { value: 150, label: "Country offices supported", animated: true, suffix: "+" },
       { value: 98.2, label: "Via special measures", animated: true, prefix: "$", suffix: "M" },
       { value: 15000, label: "Vetted experts", animated: true, suffix: "+" },
+      { value: 1315, label: "Personnel reached", animated: true, sub: "ERH socialization sessions" },
+      { value: 140, label: "Trained in 2025", animated: true, sub: "Crisis readiness training" },
     ],
   },
 
@@ -28,14 +30,16 @@ export const reportData = {
       countriesSupported: 143,
       officesSupported: 150,
       crisisResponses: 12,
-      globalSouthPercentage: 64,
-      femaleDeploymentsPercentage: 39,
       deploymentValue: "~$65M",
       responseTime: "2–5 days",
-      costRecoveryTotal: "$800K",
-      costRecoveryExpRes: "$575K",
-      costRecoveryCustom: "$225K",
     },
+    // Real headline figures from the leadership presentation
+    financialHighlights: [
+      { value: "$2.6B", label: "Delivered in Crisis & Fragility Contexts", sub: "2025" },
+      { value: "16", label: "Countries Under Formal Crisis Declaration", sub: "2025" },
+      { value: "$1.1B", label: "Combined Delivery Across Declared Crises", sub: "16 countries" },
+      { value: "8/10", label: "Of UNDP's Largest Offices", sub: "Sit in crisis settings" },
+    ],
     topProfiles: [
       { name: "M&E", rank: 1 },
       { name: "Communications", rank: 2 },
@@ -85,8 +89,78 @@ export const reportData = {
     sbpCountries: ["Ukraine", "Gaza", "Sudan", "Myanmar", "DRC", "Sri Lanka", "Georgia", "Venezuela"],
   },
 
+  // Direct Funding Support (renamed from "Crisis Financing"). Top-line figures
+  // are from the leadership presentation and reflect total UNDP programmatic
+  // delivery in crisis/fragility contexts — a much broader figure than TRAC 3
+  // + SURGE specifically, which are two distinct funding *instruments* within
+  // that wider picture (they don't sum to the topline figures above).
+  // TRAC 3 and SURGE figures below are computed directly from the source
+  // files (TRAC3_3xyears.xlsx, SURGE-4years.xlsx), aggregated 2023–2026.
+  directFundingSupport: {
+    title: "Direct Funding Support",
+    subtitle: "TRAC 3 and SURGE financing across the Crisis Bureau",
+    description: "TRAC 3 is the Crisis Bureau's core funding mechanism — recovery and response expense provided to country offices across the whole of the Crisis Bureau. SURGE/C3RT figures are the sub-team's own allocation specifically for immediate crisis response and early recovery, a distinct funding line from the wider TRAC 3 totals.",
+    topline: [
+      { value: "$2.6B", label: "Delivered in Crisis & Fragility Contexts", sub: "2025" },
+      { value: "$1.1B", label: "Combined Delivery Across Declared Crises", sub: "16 countries" },
+      { value: "16", label: "Countries Under Formal Crisis Declaration", sub: "2025" },
+    ],
+    trac3: {
+      title: "TRAC 3 — whole of Crisis Bureau",
+      description: "Recovery and response expense provided to country offices, 2023–2026.",
+      total: "$32.9M",
+      recoveryTotal: "$26.3M",
+      responseTotal: "$6.6M",
+      countriesReached: 105,
+      byYear: [
+        { year: "2023", recovery: 6485667, response: 3267498 },
+        { year: "2024", recovery: 7583061, response: 2703829 },
+        { year: "2025", recovery: 8619907, response: 346252 },
+        { year: "2026", recovery: 3590000, response: 330000 },
+      ],
+      byBureau: [
+        { bureau: "RBAS", value: 10821427 },
+        { bureau: "RBAP", value: 7626054 },
+        { bureau: "RBA", value: 5811015 },
+        { bureau: "RBLAC", value: 5151793 },
+        { bureau: "RBEC", value: 3517154 },
+      ],
+      topCountries: [
+        { country: "Sudan", value: 2710547 },
+        { country: "Syria", value: 2279738 },
+        { country: "Myanmar", value: 2212452 },
+        { country: "PAPP", value: 1915548 },
+        { country: "DRC", value: 1760323 },
+        { country: "Panama (Regional Center)", value: 1627287 },
+        { country: "Lebanon", value: 1612607 },
+        { country: "Somalia", value: 1242167 },
+      ],
+    },
+    surge: {
+      title: "SURGE — C3RT sub-team",
+      description: "Money disbursed purely by the C3RT sub-team for immediate crisis response and early recovery, 2023–2026.",
+      total: "$12.2M",
+      byYear: [
+        { year: "2023", value: 4720198 },
+        { year: "2024", value: 4066570 },
+        { year: "2025", value: 3051198 },
+        { year: "2026", value: 395071 },
+      ],
+      // The source file's country-level signal is embedded in internal project/task
+      // codes (47 of them, e.g. "RBASGAZA2023"), not a clean country field — those
+      // aren't decoded here to avoid mislabeling a country in a leadership-facing
+      // report. Flagged in the UI; can add once a code-to-country mapping is confirmed.
+      countryBreakdownAvailable: false,
+    },
+  },
+
   crisisResponse: {
     title: "Crisis Response",
+    crisisTracker: {
+      description: "An enhanced Crisis Tracker Dashboard provides real-time updates on crisis situations, support progress, funding allocations, and SURGE deployments. An Excel-based tracker feeds reliable monthly data into the dashboard.",
+      features: ["Real-time crisis situation updates", "Funding allocation tracking", "SURGE deployment visibility", "Monthly Excel data feed"],
+      link: "https://app.powerbi.com/links/Ga6TqORI7o?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&pbi_source=linkShare",
+    },
     crises: [
       {
         id: "papp",
@@ -221,110 +295,6 @@ export const reportData = {
     ],
   },
 
-  talentMarketplace: {
-    title: "Talent Marketplace",
-    subtitle: "Internal detail assignments without an external vacancy",
-    description: "Country offices and business units source internal expertise for short-term detail assignments via SmartMatch and proactive applications — reducing time-to-deploy for critical roles and directly supporting crisis contexts without opening competitive processes.",
-    stats: {
-      totalRequests: 124,
-      deployed: 76,
-      completionRate: 61,
-      pending: 48,
-      smartMatchMatches: "1,000+",
-      proactiveApplications: "3,600+",
-      countriesWithRequests: 42,
-    },
-    practiceAreas: [
-      { name: "Management & Ops", count: 67 },
-      { name: "Nature, Climate", count: 15 },
-      { name: "Inclusive Growth", count: 10 },
-      { name: "Crisis Response", count: 9 },
-      { name: "Communications", count: 8 },
-      { name: "External Relations", count: 5 },
-      { name: "Governance", count: 5 },
-      { name: "Conflict Prevention", count: 4 },
-      { name: "Rule of Law", count: 2 },
-      { name: "Health", count: 1 },
-    ],
-    bureaus: [
-      { name: "RBA", count: 27 },
-      { name: "RBAP", count: 27 },
-      { name: "RBAS", count: 18 },
-      { name: "BPPS", count: 12 },
-      { name: "RBLAC", count: 11 },
-      { name: "UNCDF", count: 9 },
-      { name: "BMS", count: 6 },
-      { name: "CB", count: 5 },
-      { name: "ExO", count: 3 },
-      { name: "RBEC", count: 3 },
-      { name: "BERA", count: 3 },
-      { name: "EO", count: 1 },
-      { name: "UNV", count: 1 },
-    ],
-    monthly: [
-      { month: "Jan", count: 5 },
-      { month: "Feb", count: 4 },
-      { month: "Mar", count: 3 },
-      { month: "Apr", count: 6 },
-      { month: "May", count: 9 },
-      { month: "Jun", count: 12 },
-      { month: "Jul", count: 19 },
-      { month: "Aug", count: 21 },
-      { month: "Sep", count: 15 },
-      { month: "Oct", count: 7 },
-      { month: "Nov", count: 9 },
-      { month: "Dec", count: 14 },
-    ],
-    crisisContextsSupported: ["PAPP", "Myanmar", "Afghanistan", "Mozambique", "South Sudan"],
-    topLocations: [
-      { name: "USA", count: 29 },
-      { name: "PNG", count: 6 },
-      { name: "Panama", count: 5 },
-      { name: "Fiji", count: 5 },
-      { name: "Myanmar", count: 4 },
-      { name: "Chad", count: 4 },
-      { name: "PAPP", count: 4 },
-      { name: "Mozambique", count: 4 },
-    ],
-  },
-
-  rosterInfrastructure: {
-    title: "Roster Infrastructure",
-    description: "The ExpRes and SURGE rosters together form the backbone of UNDP's crisis deployment capacity. In 2025 both underwent significant expansion and modernization, supported by upgrades to the EVA.ai platform.",
-    expres: {
-      total: "15,000+",
-      profiles: "44+",
-      subProfiles: "300+",
-      added2025: 4645,
-      globalCallAdded: 2500,
-      adHocAdded: 2145,
-      globalSouthPct: 64,
-      femalePct: 39,
-      costRecoveryTotal: "$800K",
-      costRecoveryExpRes: "$575K",
-      costRecoveryCustom: "$225K",
-      dueDiligence: ["UN Sanctions list screening", "AML/CFT screening", "Clear Check (sexual misconduct)"],
-      evaUpgrades: "New automations replaced semi-automated process triggers, legacy record clean-up corrected outdated deployment statuses, and a dedicated contract-upload form improved data reliability across 15,000+ expert records.",
-      globalCallApplicants: "10,658",
-      globalCallProfiles: 30,
-      genderSplit: { male: 52, female: 48 },
-    },
-    surge: {
-      total: 370,
-      added2025: 53,
-      masterRosterSince: 2007,
-      profilesRevised: 8,
-      subProfilesUpdated: 28,
-      newProfiles: ["Risk Management", "Energy in Crisis", "Health in Crisis"],
-      portalUpgrades: [
-        "New \"Become a SURGE Advisor\" guidance",
-        "SURGE Backpack: pre/during/post-deployment support",
-        "SURGE Campus activated for community of practice",
-        "Self-paced course launching Q1 2026",
-      ],
-    },
-  },
-
   specialMeasures: {
     title: "Special Measures",
     totalValue: "$98.2M",
@@ -332,6 +302,7 @@ export const reportData = {
     officesActivated: 12,
     microHactsWaived: 57,
     regionLeader: { name: "RBAS", value: "$55M", cases: 415 },
+    dashboardLink: "https://app.powerbi.com/links/PEfQYyrptI?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&pbi_source=linkShare&bookmarkGuid=0cff72dd-0d4f-4658-b0aa-b84282237e54",
     pillars: [
       {
         name: "NGO/CSO Engagement",
@@ -454,53 +425,25 @@ export const reportData = {
       { name: "Bangladesh", status: "ongoing", note: "In progress" },
     ],
     aarDescription: "A new, lighter After-Action Review methodology was developed and applied across multiple country contexts, enabling faster turnaround.",
+    aarDashboardLink: "https://app.powerbi.com/links/MiDy0Sdi8k?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&pbi_source=linkShare&bookmarkGuid=fb2355dc-5f0b-4eb1-8166-3c64b259d41c",
     sopUpdates: [
       "Crisis Response & Recovery SOPs revised — UNBOA recommendations incorporated",
       "French and Spanish translations completed — pending publication via SURGE Portal",
       "Lessons learned documented from Crisis Supplementary Protocols application",
       "Concept note on Crisis Readiness Protocols for Country Offices developed",
     ],
-    crisisTracker: {
-      description: "An enhanced Crisis Tracker Dashboard was launched to provide real-time updates on crisis situations, support progress, funding allocations, and SURGE deployments. An Excel-based tracker feeds reliable monthly data into the dashboard.",
-      features: ["Real-time crisis situation updates", "Funding allocation tracking", "SURGE deployment visibility", "Monthly Excel data feed"],
-    },
-    continuum: [
-      { label: "Capacity mapping", sub: "Who do we have?", icon: "🗺️" },
-      { label: "Readiness training", sub: "Are they prepared?", icon: "🎓" },
-      { label: "Crisis monitoring", sub: "What's happening?", icon: "📡" },
-      { label: "SURGE deployment", sub: "Respond fast", icon: "⚡" },
-      { label: "After-Action Review", sub: "What did we learn?", icon: "📋" },
-    ],
   },
 
-  workforceIntelligence: {
-    title: "Workforce Intelligence",
-    tools: [
-      {
-        name: "Workforce Intelligence Center",
-        organization: "UNDP Joint Initiative",
-        description: "Real-time workforce visibility across 9,800+ mapped staff.",
-        modules: [
-          { name: "Capacity Mapping", icon: "🗺️", desc: "Current staff skills and competency levels by bureau" },
-          { name: "Gap Analysis", icon: "📊", desc: "Demand vs supply by country and knowledge domain" },
-          { name: "Deployment Insights", icon: "📤", desc: "Historical deployment activity and modalities" },
-          { name: "Country Breakdown", icon: "📍", desc: "Localized intelligence by country office" },
-        ],
-        link: "https://demand-gap-dashboard.vercel.app/control-center",
-      },
-      {
-        name: "Crisis Demand Profile",
-        organization: "Crisis Bureau",
-        description: "Score crisis workforce demand across 4 evidence dimensions.",
-        modules: [
-          { name: "Embeddedness", weight: "35%", desc: "Integration into CPD strategic framework" },
-          { name: "Indicator Intensity", weight: "30%", desc: "Monitoring commitments specificity" },
-          { name: "Budget Proximity", weight: "20%", desc: "Link to dedicated funding" },
-          { name: "EIU Context", weight: "15%", desc: "External risk analysis" },
-        ],
-        link: "https://crisis-demand-profile.vercel.app/dashboard/dashboard_clean.html",
-      },
-    ],
+  // Renamed from "Workforce Intelligence" — slimmed to a single dashboard
+  // link rather than an explanation of the underlying scoring methodology.
+  crisisSignals: {
+    title: "Crisis Signals",
+    tool: {
+      name: "Crisis Demand Profile Dashboard",
+      organization: "Crisis Bureau",
+      description: "Scores crisis workforce demand across 4 evidence dimensions — embeddedness, indicator intensity, budget proximity, and EIU context — to guide ExpRes requests, SURGE profiling, and recruitment.",
+      link: "https://crisis-demand-profile.vercel.app/dashboard/dashboard_clean.html",
+    },
   },
 
   futureOutlook: {

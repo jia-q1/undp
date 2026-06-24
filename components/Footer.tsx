@@ -24,13 +24,8 @@ export function Footer() {
             <h4 className="font-bold mb-4">Key Resources</h4>
             <ul className="space-y-2 text-sm text-sky/80">
               <li>
-                <a href="https://demand-gap-dashboard.vercel.app/control-center" className="hover:text-sky transition-colors">
-                  Workforce Intelligence Center
-                </a>
-              </li>
-              <li>
                 <a href="https://crisis-demand-profile.vercel.app/dashboard/dashboard_clean.html" className="hover:text-sky transition-colors">
-                  Crisis Demand Profile
+                  Crisis Signals Dashboard
                 </a>
               </li>
               <li>
@@ -55,6 +50,10 @@ export function Footer() {
               <div className="flex justify-between">
                 <span className="text-sky/80">Via special measures:</span>
                 <span className="font-bold">$98.2M</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sky/80">Crisis & fragility delivery:</span>
+                <span className="font-bold">$2.6B</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sky/80">Countries served:</span>

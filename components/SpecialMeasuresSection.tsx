@@ -8,7 +8,7 @@ export function SpecialMeasuresSection() {
   const [activePillar, setActivePillar] = useState<number | null>(null);
   const [activeCO, setActiveCO] = useState<number | null>(null);
   const pillars = reportData.specialMeasures.pillars;
-  const { coDelivery, officesActivated, microHactsWaived, regionLeader, q4Activations, reviveProject, extensionsRequested } =
+  const { coDelivery, officesActivated, microHactsWaived, regionLeader, q4Activations, reviveProject, extensionsRequested, dashboardLink } =
     reportData.specialMeasures;
 
   const pillarColors = [
@@ -22,7 +22,7 @@ export function SpecialMeasuresSection() {
 
   return (
     <section
-      data-chapter="6"
+      data-chapter="4"
       className="relative py-24 px-6 bg-gradient-to-b from-paper to-ice"
     >
       <div className="max-w-6xl mx-auto">
@@ -252,20 +252,29 @@ export function SpecialMeasuresSection() {
           <strong className="text-navy">Extensions requested:</strong> {extensionsRequested.join(", ")}
         </motion.div>
 
-        {/* Key insight */}
+        {/* Special Measures dashboard */}
         <motion.div
-          className="mt-12 p-8 bg-gradient-to-r from-gold/10 to-coral/10 rounded-xl border border-gold/20 print:hidden"
+          className="mt-12 bg-white rounded-xl shadow-lg border border-rule p-8 flex flex-col md:flex-row items-center justify-between gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-navy mb-2">💡 Business Impact</h3>
-          <p className="text-mid">
-            The pre-approved special measures framework removed bureaucratic friction at critical moments. By waiving
-            standard processes in crisis contexts, UNDP eliminated 30–45 days of wait time per transaction, allowing
-            resources to flow faster where they matter most.
-          </p>
+          <div>
+            <h3 className="text-xl font-bold text-navy mb-1">📊 Special Measures Dashboard</h3>
+            <p className="text-mid text-sm">Full case-level detail and live tracking across all six pillars.</p>
+          </div>
+          <a
+            href={dashboardLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold bg-gold text-navy hover:bg-coral hover:text-white transition-colors whitespace-nowrap"
+          >
+            <span>Open Dashboard</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>

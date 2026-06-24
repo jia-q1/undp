@@ -4,12 +4,10 @@ import { useEffect } from "react";
 import { useScrollStore } from "@/lib/store";
 import { Header } from "@/components/Header";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { HeroSection } from "@/components/HeroSection";
 import { GlobalImpactSection } from "@/components/GlobalImpactSection";
+import { DirectFundingSupportSection } from "@/components/DirectFundingSupportSection";
 import { CrisisResponseSection } from "@/components/CrisisResponseSection";
 import { TalentNetworkSection } from "@/components/TalentNetworkSection";
-import { TalentMarketplaceSection } from "@/components/TalentMarketplaceSection";
-import { RosterInfrastructureSection } from "@/components/RosterInfrastructureSection";
 import { SpecialMeasuresSection } from "@/components/SpecialMeasuresSection";
 import { ReadinessTrainingSection } from "@/components/ReadinessTrainingSection";
 import { WorkforceIntelligenceSection } from "@/components/WorkforceIntelligenceSection";
@@ -34,12 +32,10 @@ export default function Home() {
     <main className="bg-white">
       <ScrollProgress />
       <Header />
-      <HeroSection />
       <GlobalImpactSection />
+      <DirectFundingSupportSection />
       <CrisisResponseSection />
       <TalentNetworkSection />
-      <TalentMarketplaceSection />
-      <RosterInfrastructureSection />
       <SpecialMeasuresSection />
       <ReadinessTrainingSection />
       <WorkforceIntelligenceSection />

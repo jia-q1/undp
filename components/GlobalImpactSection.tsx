@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { CounterMetric } from "./CounterMetric";
 import { reportData } from "@/lib/data";
 
 export function GlobalImpactSection() {
+  const hero = reportData.hero;
   const regions = reportData.globalImpact.regions;
   const topProfiles = reportData.globalImpact.topProfiles;
   const modalities = reportData.globalImpact.deploymentsByModality;
   const sbpPartners = reportData.globalImpact.sbpPartners;
+  const financialHighlights = reportData.globalImpact.financialHighlights;
   const [activeModality, setActiveModality] = useState(0);
 
   const containerVariants = {
@@ -34,10 +37,78 @@ export function GlobalImpactSection() {
 
   return (
     <section
-      data-chapter="1"
-      className="relative py-24 px-6 bg-gradient-to-b from-navy/50 to-paper"
+      data-chapter="0"
+      className="relative overflow-hidden bg-gradient-to-b from-navy via-blue to-paper"
     >
-      <div className="max-w-6xl mx-auto">
+      {/* Animated background elements (hero decoration) */}
+      <motion.div
+        className="absolute top-10 right-10 w-72 h-72 bg-teal/20 rounded-full blur-3xl print:hidden"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute top-40 left-10 w-96 h-96 bg-sky/10 rounded-full blur-3xl print:hidden"
+        animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+
+      {/* Hero block */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20 pb-16 text-center print:pt-6 print:pb-6">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-6"
+        >
+          <span className="inline-block px-4 py-2 rounded-full bg-sky/20 text-sky text-sm font-semibold">
+            {hero.eyebrow}
+          </span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
+        >
+          {hero.headline}
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-xl text-sky/90 max-w-2xl mx-auto mb-12 leading-relaxed"
+        >
+          {hero.subheadline}
+        </motion.p>
+
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {hero.metrics.map((metric, idx) => (
+            <CounterMetric
+              key={metric.label}
+              value={metric.value}
+              label={metric.label}
+              prefix={metric.prefix}
+              suffix={metric.suffix}
+              sub={metric.sub}
+              delay={idx * 0.1}
+            />
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Global Impact content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pb-24 print:pb-6">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
@@ -49,8 +120,8 @@ export function GlobalImpactSection() {
           <span className="inline-block px-4 py-2 rounded-full bg-white text-navy text-sm font-semibold mb-4 shadow-sm">
             Global Reach
           </span>
-          <h2 className="text-5xl font-bold text-navy mb-4">Impact Across All Regions</h2>
-          <p className="text-lg text-mid max-w-2xl mx-auto">
+          <h2 className="text-5xl font-bold text-white mb-4">Impact Across All Regions</h2>
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
             {reportData.globalImpact.stats.countriesSupported} countries supported across all regions with{" "}
             {reportData.globalImpact.stats.totalDeployments} deployments worth{" "}
             {reportData.globalImpact.stats.deploymentValue} in support
@@ -59,7 +130,7 @@ export function GlobalImpactSection() {
 
         {/* Stats Grid */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -69,8 +140,6 @@ export function GlobalImpactSection() {
             { label: "Total Deployments", value: "2,585" },
             { label: "Requests Received", value: "3,300+" },
             { label: "Response Time", value: "2–5 days" },
-            { label: "Global South", value: "64%" },
-            { label: "Cost Recovery", value: "$800K" },
           ].map((stat, index) => (
             <motion.div
               key={index}
@@ -81,6 +150,32 @@ export function GlobalImpactSection() {
               <div className="text-sm text-mid mt-2">{stat.label}</div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Financial & scale highlights */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-sm font-bold text-white/80 uppercase tracking-wide mb-4">
+            Crisis Financing at a Glance
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {financialHighlights.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-navy rounded-xl p-6 border border-navy/20 relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gold" />
+                <div className="text-3xl font-bold text-teal">{stat.value}</div>
+                <div className="text-sm text-white/90 mt-2 leading-snug">{stat.label}</div>
+                <div className="text-xs text-white/50 mt-1">{stat.sub}</div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Regions */}
@@ -114,9 +209,9 @@ export function GlobalImpactSection() {
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="text-3xl font-bold text-navy mb-2">{region.deployments}</div>
-                <div className="text-sm font-semibold text-mid">{region.name}</div>
-                <div className="text-xs text-mid mt-3 leading-snug">
+                <div className="text-3xl font-bold text-white mb-2">{region.deployments}</div>
+                <div className="text-sm font-semibold text-white/90">{region.name}</div>
+                <div className="text-xs text-white/70 mt-3 leading-snug">
                   <div>{region.description}</div>
                 </div>
               </div>

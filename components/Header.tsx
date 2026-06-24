@@ -4,15 +4,13 @@ import { motion } from "framer-motion";
 
 export function Header() {
   const chapters = [
-    "Hero",
     "Global Impact",
+    "Direct Funding Support",
     "Crisis Response",
     "Talent Network",
-    "Talent Marketplace",
-    "Roster Infrastructure",
     "Special Measures",
     "Readiness",
-    "Workforce Tools",
+    "Crisis Signals",
     "Outlook",
   ];
 

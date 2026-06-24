@@ -8,6 +8,7 @@ export function CrisisResponseSection() {
   const [selectedCrisis, setSelectedCrisis] = useState<string | null>("papp");
   const crises = reportData.crisisResponse.crises;
   const selected = crises.find((c) => c.id === selectedCrisis);
+  const tracker = reportData.crisisResponse.crisisTracker;
 
   const getLevelColor = (level: string) => {
     if (level === "L3") return "#E05A2B";
@@ -152,7 +153,8 @@ export function CrisisResponseSection() {
                   transition={{ delay: 0.3 }}
                 >
                   <p className="text-sm text-slate leading-relaxed">
-                    The {selected.name} crisis response demonstrates UNDP&apos;s capacity to deploy specialized expertise
+                    The {selected.name}{" "}
+                    crisis response demonstrates UNDP&apos;s capacity to deploy specialized expertise
                     rapidly across multiple domains. Each expert was identified, vetted, and shared with the country
                     office within 2–5 days of the request.
                   </p>
@@ -184,6 +186,43 @@ export function CrisisResponseSection() {
             </div>
           ))}
         </div>
+
+        {/* Crisis Tracker dashboard */}
+        <motion.div
+          className="mt-12 bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-xl font-bold text-navy mb-2">📡 Crisis Tracker</h3>
+              <p className="text-mid leading-relaxed mb-4">{tracker.description}</p>
+              <div className="grid grid-cols-2 gap-2">
+                {tracker.features.map((feature) => (
+                  <div key={feature} className="flex gap-2 p-2.5 bg-ice rounded-lg text-xs text-slate">
+                    <span className="text-sky flex-shrink-0">✓</span>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <a
+                href={tracker.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold bg-navy text-white hover:bg-blue transition-colors"
+              >
+                <span>Open Crisis Tracker Dashboard</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

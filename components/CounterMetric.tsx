@@ -9,9 +9,10 @@ interface CounterMetricProps {
   prefix?: string;
   suffix?: string;
   delay?: number;
+  sub?: string;
 }
 
-export function CounterMetric({ value, label, prefix = "", suffix = "", delay = 0 }: CounterMetricProps) {
+export function CounterMetric({ value, label, prefix = "", suffix = "", delay = 0, sub }: CounterMetricProps) {
   const isDecimal = value % 1 !== 0;
   const [displayValue, setDisplayValue] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -71,6 +72,7 @@ export function CounterMetric({ value, label, prefix = "", suffix = "", delay = 
         {suffix}
       </div>
       <div className="text-sm text-sky mt-2">{label}</div>
+      {sub && <div className="text-xs text-white/70 mt-1">{sub}</div>}
     </motion.div>
   );
 }
