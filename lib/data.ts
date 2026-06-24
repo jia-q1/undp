@@ -91,7 +91,7 @@ export const reportData = {
   directFundingSupport: {
     title: "Crisis Delivery",
     subtitle: "TRAC 3 and SURGE financing across the Crisis Bureau",
-    description: "Crisis Bureau leverages TRAC 3 to support response and recovery. SURGE/C3RT figures are the sub-team's own allocation specifically for immediate crisis response and early recovery, a distinct funding line from the wider TRAC 3 totals.",
+    description: "Crisis Bureau leverages TRAC 3 to support response and recovery.",
     toplineIntro: "More than half of UNDP's work happens in crisis settings",
     topline: [
       { value: "$2.6B", label: "Delivered in crisis and fragility contexts", sub: "in 2025" },
