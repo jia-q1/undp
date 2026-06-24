@@ -61,21 +61,21 @@ export function Header() {
         </div>
 
         {/* Chapter navigation */}
-        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 md:justify-center">
+        <div className="flex gap-2.5 overflow-x-auto pb-2 md:pb-0 md:justify-center">
           {chapters.map((chapter, index) => (
             <motion.button
               key={index}
               onClick={() => handleChapterJump(index)}
-              className="px-3 py-1 text-xs font-medium rounded-full whitespace-nowrap transition-all"
+              className="px-5 py-2.5 text-sm font-semibold rounded-full whitespace-nowrap transition-all border"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
               style={{
-                background: index === activeChapter ? "rgba(0, 157, 219, 0.2)" : "rgba(255, 255, 255, 0.08)",
-                color: index === activeChapter ? "#009EDB" : "rgba(255, 255, 255, 0.7)",
-                borderColor: index === activeChapter ? "#009EDB" : "transparent",
+                background: index === activeChapter ? "rgba(0, 157, 219, 0.25)" : "rgba(255, 255, 255, 0.12)",
+                color: index === activeChapter ? "#009EDB" : "rgba(255, 255, 255, 0.9)",
+                borderColor: index === activeChapter ? "#009EDB" : "rgba(255, 255, 255, 0.25)",
               }}
             >
               {chapter}
