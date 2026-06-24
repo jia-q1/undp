@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { reportData } from "@/lib/data";
-
-const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 export function CrisisResponseSection() {
   const [selectedCrisis, setSelectedCrisis] = useState<string | null>("papp");
@@ -45,80 +42,27 @@ export function CrisisResponseSection() {
           </p>
         </motion.div>
 
-        {/* Map */}
+        {/* Competencies */}
         <motion.div
-          className="bg-white rounded-xl shadow-lg border border-rule p-4 md:p-6 mb-8 print:hidden"
+          className="bg-white rounded-xl shadow-lg border border-rule p-4 md:p-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <ComposableMap projectionConfig={{ scale: 145, center: [15, 5] }} style={{ width: "100%", height: "auto" }}>
-            <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map((geo) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    fill="#E8F4FA"
-                    stroke="#D0DFE8"
-                    strokeWidth={0.5}
-                    style={{
-                      default: { outline: "none" },
-                      hover: { outline: "none", fill: "#D0DFE8" },
-                      pressed: { outline: "none" },
-                    }}
-                  />
-                ))
-              }
-            </Geographies>
-            {crises.map((crisis) => (
-              <Marker
-                key={crisis.id}
-                coordinates={crisis.coordinates}
-                onClick={() => setSelectedCrisis(crisis.id)}
-              >
-                {selectedCrisis === crisis.id && (
-                  <circle
-                    r={12}
-                    fill="none"
-                    stroke="#003F6B"
-                    strokeWidth={2}
-                  />
-                )}
-                <circle
-                  r={selectedCrisis === crisis.id ? 8 : 5}
-                  fill={getLevelColor(crisis.level)}
-                  stroke="#fff"
-                  strokeWidth={1.5}
-                  style={{ cursor: "pointer" }}
-                />
-                {selectedCrisis === crisis.id && (
-                  <text
-                    textAnchor="middle"
-                    y={-12}
-                    style={{ fontFamily: "system-ui", fontSize: 11, fontWeight: 700, fill: "#003F6B" }}
-                  >
-                    {crisis.name}
-                  </text>
-                )}
-              </Marker>
-            ))}
-          </ComposableMap>
-          <div className="flex flex-wrap gap-4 justify-center mt-2 text-xs text-mid">
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#E05A2B" }} /> L3
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#F0A500" }} /> L2
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#1D9E75" }} /> L1
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#4A6174" }} /> No declaration
-            </span>
-          </div>
+          <a
+            href="https://app.powerbi.com/groups/me/reports/e1e0bc55-7879-4164-b053-751389435d1e/45e5afa9543a37a29cb0?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&experience=power-bi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/competencies.png"
+              alt="Crisis response competencies"
+              className="w-full h-auto rounded-lg hover:shadow-lg transition-shadow"
+            />
+          </a>
         </motion.div>
 
         {/* Timeline */}

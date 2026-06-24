@@ -204,6 +204,11 @@ export function SpecialMeasuresSection() {
           <h3 className="text-sm font-bold text-mid uppercase tracking-wide mb-5">
             Delivery by country office — click a row for detail
           </h3>
+          <div className="grid grid-cols-[1fr_80px_100px] items-center gap-3 px-4 pb-2 mb-1 border-b border-rule">
+            <span className="text-xs font-bold text-mid uppercase tracking-wide">Country office</span>
+            <span className="text-xs font-bold text-mid uppercase tracking-wide text-right">Number of cases</span>
+            <span className="text-xs font-bold text-mid uppercase tracking-wide text-right">Value of cases</span>
+          </div>
           <div className="space-y-1">
             {coDelivery.map((row, idx) => {
               const isActive = activeCO === idx;
