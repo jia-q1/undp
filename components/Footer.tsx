@@ -48,8 +48,8 @@ export function Footer() {
                 <span className="font-bold">~$65M</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-sky/80">Via special measures:</span>
-                <span className="font-bold">$98.2M</span>
+                <span className="text-sky/80">Accelerated crisis recovery delivery:</span>
+                <span className="font-bold">$100M</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sky/80">Crisis & fragility delivery:</span>

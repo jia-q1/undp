@@ -213,6 +213,15 @@ export function ReadinessTrainingSection() {
             </a>
           </div>
 
+          <a href={aarDashboardLink} target="_blank" rel="noopener noreferrer" className="block mb-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/AARs_Dashboard.png"
+              alt="AAR Dashboard preview"
+              className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
+            />
+          </a>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h4 className="text-sm font-bold text-navy mb-3 uppercase tracking-wide">After-Action Reviews</h4>

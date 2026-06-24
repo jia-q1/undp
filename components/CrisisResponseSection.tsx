@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { reportData } from "@/lib/data";
+
+const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 export function CrisisResponseSection() {
   const [selectedCrisis, setSelectedCrisis] = useState<string | null>("papp");
@@ -42,6 +45,82 @@ export function CrisisResponseSection() {
           </p>
         </motion.div>
 
+        {/* Map */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-4 md:p-6 mb-8 print:hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <ComposableMap projectionConfig={{ scale: 145, center: [15, 5] }} style={{ width: "100%", height: "auto" }}>
+            <Geographies geography={geoUrl}>
+              {({ geographies }) =>
+                geographies.map((geo) => (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    fill="#E8F4FA"
+                    stroke="#D0DFE8"
+                    strokeWidth={0.5}
+                    style={{
+                      default: { outline: "none" },
+                      hover: { outline: "none", fill: "#D0DFE8" },
+                      pressed: { outline: "none" },
+                    }}
+                  />
+                ))
+              }
+            </Geographies>
+            {crises.map((crisis) => (
+              <Marker
+                key={crisis.id}
+                coordinates={crisis.coordinates}
+                onClick={() => setSelectedCrisis(crisis.id)}
+              >
+                {selectedCrisis === crisis.id && (
+                  <circle
+                    r={12}
+                    fill="none"
+                    stroke="#003F6B"
+                    strokeWidth={2}
+                  />
+                )}
+                <circle
+                  r={selectedCrisis === crisis.id ? 8 : 5}
+                  fill={getLevelColor(crisis.level)}
+                  stroke="#fff"
+                  strokeWidth={1.5}
+                  style={{ cursor: "pointer" }}
+                />
+                {selectedCrisis === crisis.id && (
+                  <text
+                    textAnchor="middle"
+                    y={-12}
+                    style={{ fontFamily: "system-ui", fontSize: 11, fontWeight: 700, fill: "#003F6B" }}
+                  >
+                    {crisis.name}
+                  </text>
+                )}
+              </Marker>
+            ))}
+          </ComposableMap>
+          <div className="flex flex-wrap gap-4 justify-center mt-2 text-xs text-mid">
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#E05A2B" }} /> L3
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#F0A500" }} /> L2
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#1D9E75" }} /> L1
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#4A6174" }} /> No declaration
+            </span>
+          </div>
+        </motion.div>
+
         {/* Timeline */}
         <div className="flex gap-2 mb-12 overflow-x-auto pb-4 md:overflow-visible md:justify-center flex-wrap print:hidden">
           {crises.map((crisis, index) => (
@@ -50,7 +129,7 @@ export function CrisisResponseSection() {
               onClick={() => setSelectedCrisis(crisis.id)}
               className={`relative px-6 py-4 rounded-xl transition-all whitespace-nowrap ${
                 selectedCrisis === crisis.id
-                  ? "text-white shadow-lg"
+                  ? "text-white shadow-lg ring-2 ring-navy ring-offset-2 ring-offset-paper"
                   : "bg-white border border-rule text-slate hover:border-sky"
               }`}
               style={{
@@ -144,21 +223,6 @@ export function CrisisResponseSection() {
                     </div>
                   </div>
                 </div>
-
-                {/* Key insight */}
-                <motion.div
-                  className="mt-8 p-6 bg-sky/5 rounded-lg border border-sky/20"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <p className="text-sm text-slate leading-relaxed">
-                    The {selected.name}{" "}
-                    crisis response demonstrates UNDP&apos;s capacity to deploy specialized expertise
-                    rapidly across multiple domains. Each expert was identified, vetted, and shared with the country
-                    office within 2–5 days of the request.
-                  </p>
-                </motion.div>
               </div>
             </motion.div>
           )}
@@ -222,6 +286,15 @@ export function CrisisResponseSection() {
               </a>
             </div>
           </div>
+
+          <a href={tracker.link} target="_blank" rel="noopener noreferrer" className="block mt-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/crisis_tracker_dashboard.png"
+              alt="Crisis Tracker Dashboard preview"
+              className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
+            />
+          </a>
         </motion.div>
       </div>
     </section>

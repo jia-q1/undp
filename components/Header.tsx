@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useScrollStore } from "@/lib/store";
 
 export function Header() {
+  const activeChapter = useScrollStore((state) => state.activeChapter);
   const chapters = [
     "Global Impact",
-    "Direct Funding Support",
+    "Crisis Delivery",
     "Crisis Response",
     "Talent Network",
     "Special Measures",
@@ -49,20 +51,6 @@ export function Header() {
             <p className="text-sm text-sky">Country Office Support 2025</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="hidden lg:flex items-center gap-8">
-              <div className="text-right">
-                <div className="text-lg font-bold text-teal">2,585</div>
-                <div className="text-xs text-white/50">Deployments</div>
-              </div>
-              <div className="text-right">
-                <div className="text-lg font-bold text-teal">150+</div>
-                <div className="text-xs text-white/50">COs Supported</div>
-              </div>
-              <div className="text-right">
-                <div className="text-lg font-bold text-teal">$98.2M</div>
-                <div className="text-xs text-white/50">Via Special Measures</div>
-              </div>
-            </div>
             <button
               onClick={handlePrint}
               className="px-3 py-2 text-xs font-semibold rounded-lg border border-white/20 text-white/80 hover:bg-white/10 hover:text-white transition-colors whitespace-nowrap"
@@ -85,9 +73,9 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
               style={{
-                background: index === 0 ? "rgba(0, 157, 219, 0.2)" : "rgba(255, 255, 255, 0.08)",
-                color: index === 0 ? "#009EDB" : "rgba(255, 255, 255, 0.7)",
-                borderColor: index === 0 ? "#009EDB" : "transparent",
+                background: index === activeChapter ? "rgba(0, 157, 219, 0.2)" : "rgba(255, 255, 255, 0.08)",
+                color: index === activeChapter ? "#009EDB" : "rgba(255, 255, 255, 0.7)",
+                borderColor: index === activeChapter ? "#009EDB" : "transparent",
               }}
             >
               {chapter}
