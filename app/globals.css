@@ -3,6 +3,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Crisis Bureau Colors */
+  --navy: #003F6B;
+  --blue: #00689D;
+  --sky: #009EDB;
+  --teal: #00B5C8;
+  --gold: #F0A500;
+  --coral: #E05A2B;
+  --green: #1D9E75;
+  --purple: #7F77DD;
+  --ice: #E8F4FA;
+  --paper: #F5F8FB;
+  --rule: #D0DFE8;
+  --mid: #4A6174;
+  --slate: #1C2B3A;
 }
 
 @theme inline {
@@ -10,6 +24,20 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Extended colors */
+  --color-navy: var(--navy);
+  --color-blue: var(--blue);
+  --color-sky: var(--sky);
+  --color-teal: var(--teal);
+  --color-gold: var(--gold);
+  --color-coral: var(--coral);
+  --color-green: var(--green);
+  --color-purple: var(--purple);
+  --color-ice: var(--ice);
+  --color-paper: var(--paper);
+  --color-rule: var(--rule);
+  --color-mid: var(--mid);
+  --color-slate: var(--slate);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +51,237 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    font-size: 12px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  /* Reveal any scroll-triggered (framer-motion) content that never
+     animated into view because the page was printed without scrolling.
+     Also reset any leftover enter-animation transform (e.g. translateX/Y
+     slide-ins) so content isn't left visibly offset — safe broadly here
+     since the one place transform is used for persistent positioning
+     (the talent-network orbit diagram) is itself print:hidden. */
+  [style*="opacity"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  header {
+    position: static !important;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a[target="_blank"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7em;
+    font-weight: normal;
+  }
+
+  /* --- Compact layout: this site's spacing/type scale is tuned for a
+     full-bleed scrolling screen, not paper, so the report runs to 20-30
+     pages unless every section's padding/headings/lists are tightened.
+     Target the exact Tailwind utility tokens (not substrings, so e.g.
+     p-8 won't also catch p-80) and override with !important so it wins
+     over both the unprefixed and any responsive (md:) variant. */
+  [class~="min-h-screen"] {
+    min-height: 0 !important;
+  }
+
+  /* Headings */
+  [class~="text-5xl"] {
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+  }
+  [class~="text-4xl"] {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+  }
+  [class~="text-3xl"] {
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+  }
+  [class~="text-2xl"] {
+    font-size: 0.9rem !important;
+    line-height: 1.2 !important;
+  }
+  [class~="text-xl"] {
+    font-size: 0.82rem !important;
+    line-height: 1.2 !important;
+  }
+  [class~="text-lg"] {
+    font-size: 0.78rem !important;
+    line-height: 1.2 !important;
+  }
+  [class~="text-sm"],
+  [class~="text-xs"] {
+    line-height: 1.25 !important;
+  }
+  [class~="leading-relaxed"],
+  [class~="leading-snug"] {
+    line-height: 1.25 !important;
+  }
+
+  /* Section / container padding */
+  [class~="py-24"],
+  [class~="py-16"] {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+  [class~="py-12"] {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+  [class~="px-6"],
+  [class~="px-8"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  [class~="pt-20"],
+  [class~="pt-8"] {
+    padding-top: 0.25rem !important;
+  }
+  [class~="pb-4"],
+  [class~="pb-2"] {
+    padding-bottom: 0.15rem !important;
+  }
+
+  /* Card padding */
+  [class~="p-8"] {
+    padding: 0.4rem !important;
+  }
+  [class~="p-6"] {
+    padding: 0.3rem !important;
+  }
+  [class~="p-5"] {
+    padding: 0.28rem !important;
+  }
+  [class~="p-4"] {
+    padding: 0.22rem !important;
+  }
+  [class~="p-3"],
+  [class~="p-2.5"] {
+    padding: 0.18rem !important;
+  }
+  [class~="p-2"] {
+    padding: 0.12rem !important;
+  }
+  [class~="px-4"],
+  [class~="px-3"] {
+    padding-left: 0.2rem !important;
+    padding-right: 0.2rem !important;
+  }
+  [class~="px-2"] {
+    padding-left: 0.15rem !important;
+    padding-right: 0.15rem !important;
+  }
+  [class~="py-4"],
+  [class~="py-3"],
+  [class~="py-2.5"],
+  [class~="py-2"],
+  [class~="py-1.5"],
+  [class~="py-1"],
+  [class~="py-6"] {
+    padding-top: 0.12rem !important;
+    padding-bottom: 0.12rem !important;
+  }
+
+  /* Margins */
+  [class~="mb-20"],
+  [class~="mt-20"],
+  [class~="mb-16"] {
+    margin-bottom: 0.35rem !important;
+    margin-top: 0.2rem !important;
+  }
+  [class~="mb-12"],
+  [class~="mt-12"],
+  [class~="mb-8"],
+  [class~="mt-8"] {
+    margin-bottom: 0.25rem !important;
+    margin-top: 0.25rem !important;
+  }
+  [class~="mb-6"],
+  [class~="mt-16"],
+  [class~="mt-6"] {
+    margin-bottom: 0.2rem !important;
+    margin-top: 0.2rem !important;
+  }
+  [class~="mb-5"],
+  [class~="mb-4"],
+  [class~="mt-3"] {
+    margin-bottom: 0.15rem !important;
+    margin-top: 0.15rem !important;
+  }
+  [class~="mb-3"],
+  [class~="mb-2"],
+  [class~="mt-2"],
+  [class~="mt-0.5"] {
+    margin-bottom: 0.1rem !important;
+    margin-top: 0.1rem !important;
+  }
+  [class~="mb-1"],
+  [class~="mt-1"] {
+    margin-bottom: 0.05rem !important;
+    margin-top: 0.05rem !important;
+  }
+
+  /* Flex/grid gaps */
+  [class~="gap-8"] {
+    gap: 0.3rem !important;
+  }
+  [class~="gap-6"],
+  [class~="gap-4"] {
+    gap: 0.25rem !important;
+  }
+  [class~="gap-3"],
+  [class~="gap-2.5"],
+  [class~="gap-2"],
+  [class~="gap-1.5"],
+  [class~="gap-1"] {
+    gap: 0.15rem !important;
+  }
+
+  /* space-y-N (stacked-children margin-top) — replicate Tailwind's
+     structural child selector so the override actually matches */
+  [class~="space-y-8"] > :not([hidden]) ~ :not([hidden]),
+  [class~="space-y-7"] > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.3rem !important;
+  }
+  [class~="space-y-4"] > :not([hidden]) ~ :not([hidden]),
+  [class~="space-y-3"] > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.2rem !important;
+  }
+  [class~="space-y-2.5"] > :not([hidden]) ~ :not([hidden]),
+  [class~="space-y-2"] > :not([hidden]) ~ :not([hidden]),
+  [class~="space-y-1"] > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.12rem !important;
+  }
+
+  [class~="shadow-lg"],
+  [class~="shadow-sm"] {
+    box-shadow: none !important;
+  }
+
+  /* Avoid splitting a single stat/data card across a page break, but
+     don't force a whole 800px section to jump pages over a few stray px */
+  [class~="rounded-xl"],
+  [class~="rounded-lg"] {
+    break-inside: avoid-page;
+  }
 }
