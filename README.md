@@ -1,8 +1,8 @@
 # Crisis Bureau 2025 — Interactive Report
 
-An interactive, scroll-driven report on the Crisis Bureau's 2025 Country Office Support — deployments, crisis response, talent network & marketplace, roster infrastructure, special measures, readiness & training, workforce intelligence tools, and future outlook.
+An interactive, scroll-driven report on the Crisis Bureau's 2025 Country Office Support, including deployments, crisis response, talent network & marketplace, roster infrastructure, special measures, readiness & training, workforce intelligence tools, and future outlook.
 
-Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion. Content was drafted from Tim's original Crisis Bureau report/dashboard and is still being reviewed for accuracy.
+Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion. 
 
 ## Getting Started
 
