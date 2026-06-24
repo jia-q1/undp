@@ -183,23 +183,13 @@ export function CrisisResponseSection() {
                   <div>
                     <h3 className="text-xl font-bold text-navy mb-4">Deployment Overview</h3>
                     <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-sky/20 rounded-lg flex items-center justify-center text-sky font-bold">
-                          👥
-                        </div>
-                        <div>
-                          <div className="text-sm text-mid">Total Experts Deployed</div>
-                          <div className="text-2xl font-bold text-navy">{selected.experts}</div>
-                        </div>
+                      <div className="border-l-2 border-sky pl-3">
+                        <div className="text-sm text-mid">Total Experts Deployed</div>
+                        <div className="text-2xl font-bold text-navy">{selected.experts}</div>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-teal/20 rounded-lg flex items-center justify-center text-teal font-bold">
-                          ⚡
-                        </div>
-                        <div>
-                          <div className="text-sm text-mid">Crisis Level</div>
-                          <div className="text-2xl font-bold text-navy">{selected.level}</div>
-                        </div>
+                      <div className="border-l-2 border-teal pl-3">
+                        <div className="text-sm text-mid">Crisis Level</div>
+                        <div className="text-2xl font-bold text-navy">{selected.level}</div>
                       </div>
                     </div>
                   </div>
@@ -216,7 +206,7 @@ export function CrisisResponseSection() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
                         >
-                          <div className="text-sky mt-1">✓</div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 flex-shrink-0" />
                           <div className="text-sm text-slate">{role}</div>
                         </motion.div>
                       ))}
@@ -261,12 +251,12 @@ export function CrisisResponseSection() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-xl font-bold text-navy mb-2">📡 Crisis Tracker</h3>
+              <h3 className="text-xl font-bold text-navy mb-2">Crisis Tracker</h3>
               <p className="text-mid leading-relaxed mb-4">{tracker.description}</p>
               <div className="grid grid-cols-2 gap-2">
                 {tracker.features.map((feature) => (
                   <div key={feature} className="flex gap-2 p-2.5 bg-ice rounded-lg text-xs text-slate">
-                    <span className="text-sky flex-shrink-0">✓</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky mt-1 flex-shrink-0" />
                     <span>{feature}</span>
                   </div>
                 ))}

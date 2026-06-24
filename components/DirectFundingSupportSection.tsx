@@ -65,7 +65,7 @@ export function DirectFundingSupportSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-navy mb-1">💰 {trac3.title}</h3>
+          <h3 className="text-xl font-bold text-navy mb-1">{trac3.title}</h3>
           <p className="text-mid text-sm leading-relaxed mb-6">{trac3.description}</p>
 
           <div className="grid grid-cols-3 gap-4 mb-8">
@@ -166,7 +166,7 @@ export function DirectFundingSupportSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-navy mb-1">⚡ {surge.title}</h3>
+          <h3 className="text-xl font-bold text-navy mb-1">{surge.title}</h3>
           <p className="text-mid text-sm leading-relaxed mb-6">{surge.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">

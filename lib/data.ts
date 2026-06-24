@@ -4,10 +4,11 @@ export const reportData = {
     eyebrow: "2025 Crisis Bureau Launch",
     headline: "When crisis hits, UNDP moves first.",
     metrics: [
+      { value: 2585, label: "Total Deployments Facilitated", animated: true, sub: "Including crisis response" },
       { value: 150, label: "Country offices supported", animated: true, suffix: "+" },
       { value: 100, label: "Accelerated Crisis Recovery Delivery", animated: true, prefix: "$", suffix: "M" },
       { value: 15000, label: "Vetted experts", animated: true, suffix: "+" },
-      { value: 1315, label: "Personnel reached", animated: true, sub: "ERH socialization sessions" },
+      { value: 1315, label: "Personnel reached", animated: true },
       { value: 140, label: "Trained in 2025", animated: true, sub: "Crisis readiness training" },
     ],
   },

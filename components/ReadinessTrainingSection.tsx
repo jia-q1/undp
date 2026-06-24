@@ -50,12 +50,9 @@ export function ReadinessTrainingSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-start gap-3 mb-4">
-              <div className="text-3xl">📡</div>
-              <div>
-                <h3 className="text-2xl font-bold text-navy">Early Recovery Hub</h3>
-                <p className="text-sm text-sky">Central digital platform</p>
-              </div>
+            <div className="mb-4">
+              <h3 className="text-2xl font-bold text-navy">Early Recovery Hub</h3>
+              <p className="text-sm text-sky">Central digital platform</p>
             </div>
 
             <p className="text-mid mb-6 leading-relaxed">
@@ -73,7 +70,7 @@ export function ReadinessTrainingSection() {
                   transition={{ delay: idx * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-sky flex-shrink-0 mt-1">✓</div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 flex-shrink-0" />
                   <div className="text-sm text-slate">{feature}</div>
                 </motion.div>
               ))}
@@ -197,7 +194,7 @@ export function ReadinessTrainingSection() {
         >
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
             <div>
-              <h3 className="text-2xl font-bold text-navy mb-2">📋 Institutional Learning</h3>
+              <h3 className="text-2xl font-bold text-navy mb-2">Institutional Learning</h3>
               <p className="text-mid text-sm leading-relaxed max-w-2xl">{aarDescription}</p>
             </div>
             <a
@@ -235,7 +232,10 @@ export function ReadinessTrainingSection() {
                       color: aar.status === "done" ? "#085041" : "#7A4F00",
                     }}
                   >
-                    <span>{aar.status === "done" ? "✅" : "🕒"}</span>
+                    <span
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: aar.status === "done" ? "#1D9E75" : "#F0A500" }}
+                    />
                     <span className="font-medium">{aar.name} AAR — {aar.status === "done" ? "Completed" : "Ongoing"}</span>
                   </div>
                 ))}
@@ -246,7 +246,7 @@ export function ReadinessTrainingSection() {
               <div className="space-y-2">
                 {sopUpdates.map((sop) => (
                   <div key={sop} className="flex gap-2 text-sm text-slate">
-                    <span className="text-sky flex-shrink-0">✓</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 flex-shrink-0" />
                     <span>{sop}</span>
                   </div>
                 ))}

@@ -85,7 +85,6 @@ export function TalentNetworkSection() {
             variants={nodeVariants}
             whileHover={{ scale: 1.1 }}
           >
-            <div className="text-2xl mb-2">🌐</div>
             <div className="font-bold text-center text-sm">Crisis Bureau</div>
           </motion.div>
 
@@ -122,7 +121,6 @@ export function TalentNetworkSection() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="text-2xl mb-1">{ecosystem.icon}</div>
                   <div className="text-xs font-bold text-center leading-tight">
                     {ecosystem.count}
                   </div>
@@ -166,16 +164,13 @@ export function TalentNetworkSection() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="text-5xl">{ecosystems[activeEcosystem].icon}</div>
-                  <div>
-                    <h3 className="text-3xl font-bold text-navy">
-                      {ecosystems[activeEcosystem].name}
-                    </h3>
-                    <p className="text-lg font-semibold text-sky">
-                      {ecosystems[activeEcosystem].count}
-                    </p>
-                  </div>
+                <div className="mb-6">
+                  <h3 className="text-3xl font-bold text-navy">
+                    {ecosystems[activeEcosystem].name}
+                  </h3>
+                  <p className="text-lg font-semibold text-sky">
+                    {ecosystems[activeEcosystem].count}
+                  </p>
                 </div>
                 <p className="text-mid leading-relaxed">
                   {ecosystems[activeEcosystem].description}
@@ -193,7 +188,7 @@ export function TalentNetworkSection() {
                   {ecosystems[activeEcosystem].description.split(".").map((feature, idx) => (
                     feature.trim() && (
                       <li key={idx} className="flex gap-2">
-                        <span className="text-sky flex-shrink-0">✓</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 flex-shrink-0" />
                         <span>{feature.trim()}</span>
                       </li>
                     )
@@ -208,12 +203,9 @@ export function TalentNetworkSection() {
         <div className="hidden print:grid print:grid-cols-2 print:gap-4">
           {ecosystems.map((ecosystem, idx) => (
             <div key={idx} className="border border-rule rounded-lg p-4 break-inside-avoid">
-              <div className="flex items-start gap-3 mb-2">
-                <div className="text-2xl">{ecosystem.icon}</div>
-                <div>
-                  <div className="font-bold text-navy">{ecosystem.name}</div>
-                  <div className="text-sm text-sky font-semibold">{ecosystem.count}</div>
-                </div>
+              <div className="mb-2">
+                <div className="font-bold text-navy">{ecosystem.name}</div>
+                <div className="text-sm text-sky font-semibold">{ecosystem.count}</div>
               </div>
               <p className="text-sm text-mid leading-relaxed">{ecosystem.description}</p>
             </div>
@@ -229,7 +221,6 @@ export function TalentNetworkSection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <span>⚡</span>
             <span>Leveraging crisis tools to accelerate overall UNDP delivery — not crisis-context-only</span>
           </motion.div>
 

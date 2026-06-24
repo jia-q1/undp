@@ -171,7 +171,7 @@ export function SpecialMeasuresSection() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3 }}
                               >
-                                <div className="text-sm text-mid mb-2">⏱️ Time Saved</div>
+                                <div className="text-sm text-mid mb-2">Time Saved</div>
                                 <div className="text-2xl font-bold text-navy">30–45 days</div>
                                 <div className="text-xs text-mid mt-1">per assessment waived</div>
                               </motion.div>
@@ -262,7 +262,7 @@ export function SpecialMeasuresSection() {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
             <div>
-              <h3 className="text-xl font-bold text-navy mb-1">📊 Special Measures Dashboard</h3>
+              <h3 className="text-xl font-bold text-navy mb-1">Special Measures Dashboard</h3>
               <p className="text-mid text-sm">Full case-level detail and live tracking across all six pillars.</p>
             </div>
             <a

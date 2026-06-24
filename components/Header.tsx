@@ -55,7 +55,7 @@ export function Header() {
               onClick={handlePrint}
               className="px-3 py-2 text-xs font-semibold rounded-lg border border-white/20 text-white/80 hover:bg-white/10 hover:text-white transition-colors whitespace-nowrap"
             >
-              🖨️ Print Report
+              Print Report
             </button>
           </div>
         </div>

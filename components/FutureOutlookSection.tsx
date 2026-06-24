@@ -129,13 +129,6 @@ export function FutureOutlookSection() {
                       borderColor: color.border,
                     }}
                   >
-                    <motion.div
-                      className="text-2xl mb-2 text-center"
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 3, delay: index * 0.2, repeat: Infinity }}
-                    >
-                      {["🌍", "🚀", "🛡️", "📊"][index]}
-                    </motion.div>
                     <h3 className="font-bold text-navy text-center text-sm leading-tight">
                       {initiative}
                     </h3>
@@ -158,22 +151,18 @@ export function FutureOutlookSection() {
             {
               title: "Expand Global Talent Pools",
               desc: "Recruit and train 2,000+ new ExpRes experts in underrepresented regions and specializations",
-              icon: "🌐",
             },
             {
               title: "Improve Crisis Forecasting",
               desc: "Integrate climate and conflict data to predict crises 6–12 months in advance",
-              icon: "📈",
             },
             {
               title: "Strengthen Regional Readiness",
               desc: "Establish crisis readiness hubs in Africa, Asia-Pacific, and the Middle East",
-              icon: "🏢",
             },
             {
               title: "Scale Workforce Intelligence",
               desc: "Expand the Workforce Intelligence Center to cover all 9,000+ UNDP staff globally",
-              icon: "🔍",
             },
           ].map((item, index) => (
             <motion.div
@@ -182,12 +171,9 @@ export function FutureOutlookSection() {
               className="bg-white rounded-xl p-8 border border-rule shadow-lg hover:shadow-xl transition-shadow"
               whileHover={{ translateY: -4 }}
             >
-              <div className="flex items-start gap-4">
-                <div className="text-4xl flex-shrink-0">{item.icon}</div>
-                <div className="flex-grow">
-                  <h3 className="text-lg font-bold text-navy mb-2">{item.title}</h3>
-                  <p className="text-mid leading-relaxed">{item.desc}</p>
-                </div>
+              <div>
+                <h3 className="text-lg font-bold text-navy mb-2">{item.title}</h3>
+                <p className="text-mid leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>
           ))}
