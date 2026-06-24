@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Crisis Bureau 2025 — Interactive Report
+
+An interactive, scroll-driven report on the Crisis Bureau's 2025 Country Office Support — deployments, crisis response, talent network & marketplace, roster infrastructure, special measures, readiness & training, workforce intelligence tools, and future outlook.
+
+Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion. Content was drafted from Tim's original Crisis Bureau report/dashboard and is still being reviewed for accuracy.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `lib/data.ts` — single source of truth for all report content (stats, copy, region/crisis/cohort data, etc.). Most content edits only need to happen here.
+- `components/` — one component per report chapter (e.g. `GlobalImpactSection.tsx`, `CrisisResponseSection.tsx`), plus shared UI (`Header`, `Footer`, `ScrollProgress`, `CounterMetric`).
+- `app/page.tsx` — assembles the chapters in order; `app/globals.css` holds global styles, including the print stylesheet.
 
-## Learn More
+## Printing / exporting
 
-To learn more about Next.js, take a look at the following resources:
+The header has a **🖨️ Print Report** button. It auto-scrolls through the page first (so scroll-triggered content renders) before opening the browser's print dialog, and uses a dedicated print stylesheet to produce a compact, accurate PDF/printout — use your browser's "Save as PDF" option in the print dialog to export.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on [Vercel](https://vercel.com), connected to this repo's `main` branch — every push to `main` auto-deploys.

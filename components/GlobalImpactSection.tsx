@@ -118,9 +118,6 @@ export function GlobalImpactSection() {
                 <div className="text-sm font-semibold text-mid">{region.name}</div>
                 <div className="text-xs text-mid mt-3 leading-snug">
                   <div>{region.description}</div>
-                  <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    See case studies →
-                  </div>
                 </div>
               </div>
 
