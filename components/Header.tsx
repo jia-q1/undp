@@ -8,6 +8,7 @@ export function Header() {
   const chapters = [
     "Global Impact",
     "Crisis Funding",
+    "Crisis Programming",
     "Crisis Response",
     "Assessments",
     "Talent Network",

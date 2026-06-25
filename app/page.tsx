@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { GlobalImpactSection } from "@/components/GlobalImpactSection";
 import { DirectFundingSupportSection } from "@/components/DirectFundingSupportSection";
+import { CrisisProgrammingSection } from "@/components/CrisisProgrammingSection";
 import { CrisisResponseSection } from "@/components/CrisisResponseSection";
 import { AssessmentsSection } from "@/components/AssessmentsSection";
 import { TalentNetworkSection } from "@/components/TalentNetworkSection";
@@ -51,6 +52,7 @@ export default function Home() {
       <Header />
       <GlobalImpactSection />
       <DirectFundingSupportSection />
+      <CrisisProgrammingSection />
       <CrisisResponseSection />
       <AssessmentsSection />
       <TalentNetworkSection />

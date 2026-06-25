@@ -29,7 +29,7 @@ export function FutureOutlookSection() {
 
   return (
     <section
-      data-chapter="8"
+      data-chapter="9"
       className="relative py-24 px-6 bg-gradient-to-b from-ice to-navy/20 overflow-hidden"
     >
       {/* Background elements */}

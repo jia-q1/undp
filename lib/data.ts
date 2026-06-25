@@ -170,6 +170,117 @@ export const reportData = {
     },
   },
 
+  // Source: leadership presentation slides on UNDP's crisis programming pillars
+  // (Early Recovery, Stabilization, Forced Displacement, Disaster Resilience,
+  // Peacebuilding & Conflict Prevention, Rule of Law/Security/Human Rights,
+  // Local Governance, and the cross-cutting Gender Equality lens).
+  crisisProgramming: {
+    title: "Crisis Programming",
+    intro: "UNDP's programmatic pillars for crisis and fragile contexts, spanning early recovery through to long-term institution-building.",
+    pillars: [
+      {
+        id: "early-recovery",
+        name: "Early Recovery",
+        scope: "17 early recovery initiatives ongoing in 2025",
+        stats: [
+          { value: "210K tonnes", label: "Solid waste collected in Gaza, benefiting 624K people" },
+          { value: "10M", label: "People provided with electricity in Ukraine through energy infrastructure repairs" },
+          { value: "25M", label: "People in Afghanistan supported with essential services, small businesses, and livelihoods" },
+        ],
+      },
+      {
+        id: "stabilization",
+        name: "Stabilization",
+        scope: "12 countries",
+        stats: [
+          { value: "6M", label: "Returns since 2015" },
+          { value: "16.8M", label: "People benefited from improved security, infrastructure rehabilitation, service delivery, and income support" },
+          { value: "1.5M", label: "People in the Lake Chad Basin benefited from improved safety and security" },
+        ],
+        partners: ["Germany (Stabilization Response Mechanism)", "Japan", "UK", "Netherlands", "Sweden"],
+      },
+      {
+        id: "forced-displacement",
+        name: "Forced Displacement",
+        scope: "59 countries",
+        stats: [
+          { value: "19.2M", label: "Forcibly displaced people reached since 2022" },
+          { value: "$810M", label: "In programming since 2020" },
+        ],
+        partners: ["IOM", "DCO", "OCHA", "UNHCR", "Denmark", "Germany", "Japan", "Netherlands", "Norway", "Republic of Korea", "Switzerland", "UK"],
+      },
+      {
+        id: "disaster-resilience",
+        name: "Disaster Resilience",
+        scope: "",
+        stats: [
+          { value: "$250M", label: "Somalia's 2023 flood recovery needs built into National Plan 2025–2029" },
+          { value: "$72M", label: "Mozambique Recovery Facility supports housing, infrastructure, livelihoods, and women's empowerment" },
+        ],
+      },
+      {
+        id: "peacebuilding",
+        name: "Peacebuilding & Conflict Prevention",
+        scope: "",
+        stats: [
+          { value: "33%", label: "Largest implementer of the UN Peacebuilding Fund, delivering 33% of its portfolio in 2024" },
+          { value: "58", label: "Peace and Development Advisors placed in RC offices via the joint UNDP-DPPA Programme on Building National Capacities for Conflict Prevention" },
+        ],
+        examples: [
+          { country: "Ethiopia", note: "100,000 people took part in reconciliation talks" },
+          { country: "Mauritania", note: "UNDP is helping design a national prevention strategy" },
+          { country: "DR Congo", note: "Support to the UN mission transition to protect development gains and sustain peace" },
+          { country: "Colombia", note: "AI-powered social listening to engage youth on peace" },
+        ],
+        note: "Supported UN Mission transitions in DRC, Liberia, Haiti, and Mali.",
+      },
+      {
+        id: "rule-of-law",
+        name: "Rule of Law, Security & Human Rights",
+        scope: "110 countries",
+        stats: [
+          { value: "58.8M", label: "People accessed justice services; 32M women" },
+          { value: "$100M+", label: "Invested annually in people-centered law enforcement" },
+          { value: "4,000+", label: "Businesses trained globally on human rights" },
+          { value: "170,000+", label: "Women accessed justice via the Gender Justice Platform" },
+        ],
+        countryHighlights: [
+          { country: "Georgia", note: "350,000 people accessing environmental justice" },
+          { country: "State of Palestine", note: "Digital court management system enabled remote proceedings for 160K users" },
+        ],
+        partners: ["EU", "Germany", "Iceland", "Japan", "Liechtenstein", "Netherlands", "Norway", "Republic of Korea", "Sweden", "Switzerland", "UK"],
+      },
+      {
+        id: "local-governance",
+        name: "Local Governance",
+        scope: "115 countries, including 56 in fragile contexts",
+        stats: [
+          { value: "10M", label: "Burkina Faso — working with local government to improve services for over 10 million people" },
+          { value: "2.9M", label: "Lebanon — working with municipalities to deliver services and livelihoods to 2.9 million people in refugee-hosting areas" },
+          { value: "3.9M", label: "Iraq — working with local government to provide nearly 3.9 million returnees with services and jobs" },
+        ],
+        partners: ["Programme Countries", "European Union", "Germany", "Japan", "Switzerland", "Sweden"],
+      },
+    ],
+    // Cross-cutting lens, not a programmatic pillar — kept separate from the
+    // `pillars` array since it has a different shape (context stats describing
+    // why this matters, plus impact-at-scale stats, rather than one stat set).
+    genderEquality: {
+      name: "Gender Equality in Crisis Contexts",
+      contextStats: [
+        { value: "35%", label: "More likely that peace lasts 15+ years when women are involved" },
+        { value: "75%", label: "Of displaced people are women and children" },
+        { value: "70%", label: "Of women in crisis settings face gender-based violence" },
+      ],
+      impactStats: [
+        { value: "111M", label: "Women supported to participate in political processes in 23 fragile countries" },
+        { value: "1.3M", label: "Women with improved livelihoods in 42 fragile countries" },
+        { value: "43K", label: "People (84% women) accessed justice via the Gender Justice Platform in 30 countries" },
+      ],
+      note: "France doubled its investment in 6 countries: Ukraine, Moldova, Mongolia, Chad, Burundi, and Palestine.",
+    },
+  },
+
   crisisResponse: {
     title: "Crisis Response",
     crisisTracker: {

@@ -19,7 +19,7 @@ export function ReadinessTrainingSection() {
 
   return (
     <section
-      data-chapter="6"
+      data-chapter="7"
       className="relative py-24 px-6 bg-gradient-to-b from-ice to-paper"
     >
       <div className="max-w-6xl mx-auto">

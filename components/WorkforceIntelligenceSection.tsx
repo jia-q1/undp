@@ -8,7 +8,7 @@ export function WorkforceIntelligenceSection() {
 
   return (
     <section
-      data-chapter="7"
+      data-chapter="8"
       className="relative py-24 px-6 bg-gradient-to-b from-paper to-ice"
     >
       <div className="max-w-6xl mx-auto">
