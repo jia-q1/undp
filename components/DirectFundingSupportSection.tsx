@@ -184,10 +184,7 @@ export function DirectFundingSupportSection() {
             </div>
           </div>
 
-          <p className="text-sm text-mid leading-relaxed mb-3">{leverage.comparisonNote}</p>
-          <p className="text-sm text-mid italic leading-relaxed mb-6">{leverage.skewNote}</p>
-
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto mt-6">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-rule">

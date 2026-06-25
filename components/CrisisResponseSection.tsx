@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { reportData } from "@/lib/data";
+
+// Country ids with a dedicated dossier page at /countries/<id>
+const COUNTRY_PAGES = new Set(["papp"]);
 
 export function CrisisResponseSection() {
   const [selectedCrisis, setSelectedCrisis] = useState<string | null>("papp");
@@ -118,6 +122,14 @@ export function CrisisResponseSection() {
                     {getLevelLabel(selected.level)}
                   </div>
                 </div>
+                {COUNTRY_PAGES.has(selected.id) && (
+                  <Link
+                    href={`/countries/${selected.id}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/90 hover:text-white mt-4"
+                  >
+                    View full {selected.name} country page →
+                  </Link>
+                )}
               </div>
 
               {/* Content */}

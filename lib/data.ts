@@ -579,6 +579,18 @@ export const reportData = {
     ],
   },
 
+  // Country-level dossier pages. Each entry compiles the facts already
+  // present elsewhere in this file (crisisResponse, directFundingSupport,
+  // specialMeasures, etc.) into one overview, rather than duplicating the
+  // underlying numbers — the country page components look those up by id/name.
+  countryProfiles: {
+    papp: {
+      name: "PAPP",
+      fullName: "Programme of Assistance to the Palestinian People",
+      overview: "UNDP's largest crisis response of 2025, activated following the ceasefire. Deployment spanned recovery advisory, stabilization, peacebuilding, and debris management, backed by Special Measures procurement and HR fast-tracking, and TRAC 3 financing.",
+    },
+  },
+
   colors: {
     navy: "#003F6B",
     blue: "#00689D",
