@@ -278,16 +278,82 @@ export const reportData = {
         name: "RAPIDA",
         fullName: "",
         description: "Rapid early recovery assessment and analysis.",
+        statsByYear: [
+          {
+            year: "2025",
+            total: 13,
+            countries: [
+              { name: "Afghanistan", count: 1 },
+              { name: "Albania", count: 1 },
+              { name: "Cabo Verde", count: 1 },
+              { name: "Colombia", count: 1 },
+              { name: "Cuba", count: 1 },
+              { name: "Iran", count: 1 },
+              { name: "Jamaica", count: 1 },
+              { name: "Myanmar (Burma)", count: 2 },
+              { name: "Pakistan", count: 1 },
+              { name: "Sri Lanka", count: 1 },
+              { name: "Sudan", count: 1 },
+              { name: "Thailand", count: 1 },
+            ],
+          },
+          {
+            year: "2026",
+            total: 6,
+            countries: [
+              { name: "Dominican Republic", count: 1 },
+              { name: "Kosovo", count: 1 },
+              { name: "Madagascar", count: 1 },
+              { name: "Mozambique", count: 1 },
+              { name: "Solomon Islands", count: 1 },
+              { name: "Sri Lanka", count: 1 },
+            ],
+          },
+        ],
       },
       {
         name: "HBDA",
         fullName: "Household and Building Damage Assessment",
         description: "Granular evaluation of household and infrastructure damage.",
+        statsByYear: [
+          {
+            year: "2025",
+            total: 4,
+            countries: [
+              { name: "Madagascar", count: 1 },
+              { name: "Mozambique", count: 1 },
+              { name: "Palestinian Territories", count: 1 },
+              { name: "Vanuatu", count: 1 },
+            ],
+          },
+        ],
       },
       {
         name: "SEIA",
         fullName: "Digital Socio-Economic Impact Assessment",
         description: "Comprehensive analysis of the socio-economic effects of crises on households and MSMEs.",
+        statsByYear: [
+          {
+            year: "2025",
+            total: 3,
+            countries: [
+              { name: "Haiti", count: 1 },
+              { name: "Lebanon", count: 1 },
+              { name: "Syria", count: 1 },
+            ],
+          },
+          {
+            year: "2026",
+            total: 1,
+            countries: [{ name: "Lebanon", count: 1 }],
+          },
+        ],
+      },
+      {
+        name: "PDNA",
+        fullName: "Post-Disaster Needs Assessment",
+        description: "",
+        statsByYear: [],
       },
     ],
     outro: "Designed and implemented in collaboration with Country Offices, governments, and partners, these assessments ensure that recovery efforts are targeted, inclusive, and grounded in local realities.",

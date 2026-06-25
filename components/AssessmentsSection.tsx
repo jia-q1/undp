@@ -1,10 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { reportData } from "@/lib/data";
 
 export function AssessmentsSection() {
   const data = reportData.assessments;
+  const [openTool, setOpenTool] = useState<string | null>(null);
+  const toggleTool = (name: string) => setOpenTool((prev) => (prev === name ? null : name));
 
   return (
     <section
@@ -29,25 +32,114 @@ export function AssessmentsSection() {
 
         {/* Tools */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-start"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {data.tools.map((tool, idx) => (
-            <div
-              key={tool.name}
-              className="bg-white rounded-xl shadow-lg border border-rule p-6 border-l-4"
-              style={{ borderLeftColor: ["#1D9E75", "#009EDB", "#F0A500"][idx] }}
-            >
-              <h3 className="text-xl font-bold text-navy mb-1">{tool.name}</h3>
-              {tool.fullName && (
-                <p className="text-xs text-mid font-semibold mb-3">{tool.fullName}</p>
-              )}
-              <p className="text-sm text-mid leading-relaxed">{tool.description}</p>
-            </div>
-          ))}
+          {data.tools.map((tool, idx) => {
+            const hasStats = tool.statsByYear.length > 0;
+            return (
+              <div
+                key={tool.name}
+                className="bg-white rounded-xl shadow-lg border border-rule p-6 border-l-4"
+                style={{ borderLeftColor: ["#1D9E75", "#009EDB", "#F0A500", "#7F77DD"][idx] }}
+              >
+                <h3 className="text-xl font-bold text-navy mb-1">{tool.name}</h3>
+                {tool.fullName && (
+                  <p className="text-xs text-mid font-semibold mb-3">{tool.fullName}</p>
+                )}
+                {tool.description && (
+                  <p className="text-sm text-mid leading-relaxed mb-4">{tool.description}</p>
+                )}
+
+                {!hasStats && (
+                  <div className="text-xs text-mid italic border border-dashed border-rule rounded-lg px-3 py-2">
+                    Data pending
+                  </div>
+                )}
+
+                {hasStats && (
+                  <>
+                    <div className="print:hidden border border-rule rounded-lg overflow-hidden">
+                      <button
+                        onClick={() => toggleTool(tool.name)}
+                        className="w-full flex items-center justify-between gap-2 px-3 py-2 text-left bg-ice/60 hover:bg-ice transition-colors"
+                      >
+                        <span className="text-xs font-bold text-navy uppercase tracking-wide">
+                          {tool.statsByYear.reduce((sum, y) => sum + y.total, 0)} assessments since 2025
+                        </span>
+                        <motion.span
+                          animate={{ rotate: openTool === tool.name ? 180 : 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="text-mid flex-shrink-0"
+                        >
+                          ▾
+                        </motion.span>
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {openTool === tool.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-3 py-3 space-y-3">
+                              {tool.statsByYear.map((yearStat) => (
+                                <div key={yearStat.year}>
+                                  <div className="text-xs font-bold text-navy uppercase tracking-wide mb-1.5">
+                                    {yearStat.year} — {yearStat.total} assessment{yearStat.total !== 1 ? "s" : ""} ·{" "}
+                                    {yearStat.countries.length} countr{yearStat.countries.length !== 1 ? "ies" : "y"}
+                                  </div>
+                                  <div className="flex flex-wrap gap-1.5">
+                                    {yearStat.countries.map((c) => (
+                                      <span
+                                        key={c.name}
+                                        className="text-xs px-2 py-1 rounded-md bg-white border border-rule text-blue font-medium"
+                                      >
+                                        {c.name}
+                                        {c.count > 1 ? ` (${c.count})` : ""}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Print-only: full listing (screen shows the collapsible dropdown above) */}
+                    <div className="hidden print:block space-y-2">
+                      {tool.statsByYear.map((yearStat) => (
+                        <div key={yearStat.year}>
+                          <div className="text-xs font-bold text-navy uppercase tracking-wide mb-1">
+                            {yearStat.year} — {yearStat.total} assessment{yearStat.total !== 1 ? "s" : ""} ·{" "}
+                            {yearStat.countries.length} countr{yearStat.countries.length !== 1 ? "ies" : "y"}
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {yearStat.countries.map((c) => (
+                              <span
+                                key={c.name}
+                                className="text-xs px-2 py-1 rounded-md bg-ice border border-rule text-blue font-medium"
+                              >
+                                {c.name}
+                                {c.count > 1 ? ` (${c.count})` : ""}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
         </motion.div>
 
         <motion.p
