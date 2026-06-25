@@ -165,7 +165,7 @@ export const reportData = {
         coordinates: [35.3, 31.95] as [number, number],
         level: "L3",
         experts: 17,
-        roles: ["Recovery Advisors", "Communications", "Stabilization", "Peacebuilding", "Cluster Coordination", "Operations Access & Logistics", "Livelihoods & Economic Recovery", "RDNA Coordinators", "Debris Management"],
+        roles: ["Recovery Advisors", "Communications Advisor", "Stabilization Advisor", "Peacebuilding Specialist", "Cluster Coordinator", "Operations Access & Logistics Advisors", "Livelihood and Economic Recovery Advisors", "RDNA Coordinators", "Debris Management Advisors"],
         description: "17 advisors/experts deployed following the ceasefire, the highest-volume crisis response of 2025",
       },
       {
@@ -174,7 +174,7 @@ export const reportData = {
         coordinates: [36.28, 33.51] as [number, number],
         level: "L3",
         experts: 1,
-        roles: ["Recovery Advisor"],
+        roles: ["Durable Solutions Advisor"],
         description: "1 advisor deployed to support ongoing response and recovery planning",
       },
       {
@@ -183,7 +183,7 @@ export const reportData = {
         coordinates: [95.96, 21.92] as [number, number],
         level: "L3",
         experts: 5,
-        roles: ["Mine Action", "Technical Assessments", "Crisis Communications", "Structural/Housing Engineering"],
+        roles: ["Early Recovery Cluster Coordinators", "Debris Management", "Structural/Housing Engineering"],
         description: "5 advisors/experts deployed for earthquake and conflict response",
       },
       {
@@ -201,7 +201,7 @@ export const reportData = {
         coordinates: [35.5, 33.89] as [number, number],
         level: "L3",
         experts: 4,
-        roles: ["Durable Solutions Advisor"],
+        roles: ["Mine Action Experts", "Technical Assessment Specialist", "Crisis Communications"],
         description: "4 advisors deployed to support ongoing response and recovery planning",
       },
       {
@@ -228,7 +228,7 @@ export const reportData = {
         coordinates: [-76.79, 17.97] as [number, number],
         level: "L1",
         experts: 5,
-        roles: ["Information Management", "Recovery Planning & Coordination", "Early Recovery Advisor", "PDNA/DALA Specialist", "SURGE Team Leader"],
+        roles: ["Information Management & Recovery Planning Support Officer", "Recovery Planning & Coordination Expert", "Early Recovery Advisor", "PDNA/DALA Coordination Specialist", "High-Level SURGE Coordination Team Leader"],
         description: "5 advisors deployed after the October hurricane",
       },
       {
@@ -237,7 +237,7 @@ export const reportData = {
         coordinates: [79.85, 6.93] as [number, number],
         level: "L1",
         experts: 1,
-        roles: ["Early Recovery Cluster Coordinator"],
+        roles: ["Early Recovery Advisor"],
         description: "1 advisor deployed to support Early Recovery coordination following the March cyclone",
       },
       {
