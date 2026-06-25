@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { reportData } from "@/lib/data";
 
@@ -10,9 +11,10 @@ function formatUsd(value: number | string) {
 
 export function DirectFundingSupportSection() {
   const data = reportData.directFundingSupport;
-  const { trac3, surge, leverage } = data;
+  const { trac3, surge, leverage, resourceMobilization2025 } = data;
   const maxBureau = Math.max(...trac3.byBureau.map((b) => b.value));
   const maxCountry = Math.max(...trac3.topCountries.map((c) => c.value));
+  const [expandedTeam, setExpandedTeam] = useState<string | null>(null);
 
   return (
     <section
@@ -257,6 +259,103 @@ export function DirectFundingSupportSection() {
                 </div>
               ))}
             </div>
+          </div>
+        </motion.div>
+
+        {/* Resource Mobilization 2025 */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8 mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">Resource Mobilization (2025)</h3>
+          <p className="text-mid text-sm leading-relaxed mb-6">
+            Funds mobilized by Crisis Bureau teams from donors in 2025. Click a team to see its donor breakdown.
+          </p>
+
+          <div className="bg-ice rounded-lg p-4 text-center max-w-[200px] mb-8">
+            <div className="text-2xl font-bold text-navy">{formatUsd(resourceMobilization2025.total)}</div>
+            <div className="text-xs text-mid mt-1">Total mobilized, 2025</div>
+          </div>
+
+          <div className="space-y-2 print:hidden">
+            {resourceMobilization2025.byTeam.map((team) => {
+              const isOpen = expandedTeam === team.team;
+              return (
+                <div key={team.team} className="border border-rule rounded-lg overflow-hidden">
+                  <button
+                    onClick={() => setExpandedTeam(isOpen ? null : team.team)}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-left bg-ice/60 hover:bg-ice transition-colors"
+                  >
+                    <div className="text-sm font-semibold text-navy flex-1">{team.team}</div>
+                    <div className="text-sm font-bold text-navy w-16 text-right flex-shrink-0">{formatUsd(team.total)}</div>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-mid flex-shrink-0"
+                    >
+                      ▾
+                    </motion.span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 py-3">
+                          <table className="w-full text-sm">
+                            <thead>
+                              <tr className="border-b border-rule">
+                                <th className="text-left font-bold text-mid uppercase text-xs tracking-wide py-1.5 pr-4">Donor</th>
+                                <th className="text-left font-bold text-mid uppercase text-xs tracking-wide py-1.5 pr-4">Entity</th>
+                                <th className="text-right font-bold text-mid uppercase text-xs tracking-wide py-1.5">Contribution</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {team.donors.map((d, idx) => (
+                                <tr key={idx} className="border-b border-rule last:border-0">
+                                  <td className="py-1.5 pr-4 text-slate">{d.donor}</td>
+                                  <td className="py-1.5 pr-4 text-mid">{d.entity}</td>
+                                  <td className="py-1.5 text-right text-navy font-semibold">
+                                    {d.amount < 0 ? "-" : ""}${Math.abs(d.amount).toLocaleString()}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Print-only: full listing (screen shows collapsible dropdowns above) */}
+          <div className="hidden print:block space-y-4">
+            {resourceMobilization2025.byTeam.map((team) => (
+              <div key={team.team} className="break-inside-avoid">
+                <div className="flex items-center justify-between text-sm font-bold text-navy border-b border-rule pb-1 mb-1.5">
+                  <span>{team.team}</span>
+                  <span>{formatUsd(team.total)}</span>
+                </div>
+                {team.donors.map((d, idx) => (
+                  <div key={idx} className="flex items-center justify-between text-xs text-mid py-0.5">
+                    <span>{d.donor} — {d.entity}</span>
+                    <span className="text-navy font-semibold">
+                      {d.amount < 0 ? "-" : ""}${Math.abs(d.amount).toLocaleString()}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

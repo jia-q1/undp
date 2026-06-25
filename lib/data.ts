@@ -168,6 +168,118 @@ export const reportData = {
       ],
       breakdownTotal: { trac3: 26944586, mobilized: 1206367839, ratio: 45 },
     },
+    // Resources mobilized by Crisis Bureau teams in 2025, by donor.
+    // Donor-line amounts sum exactly to each team's total below.
+    resourceMobilization2025: {
+      total: 105308301,
+      byTeam: [
+        {
+          team: "CB Conflict Prev & Peacebuilding",
+          total: 16210244,
+          donors: [
+            { donor: "European Union", entity: "European Commission", amount: 2728245 },
+            { donor: "Government of Canada", entity: "Dept of Forgn Afrs Trade & Dev", amount: 0 },
+            { donor: "Government of Ireland", entity: "Government of Ireland", amount: 231750 },
+            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 721415 },
+            { donor: "Government of Switzerland", entity: "Swiss Agy for Development & Cooperation", amount: 1735000 },
+            { donor: "Government of the Netherlands", entity: "Government of Netherlands", amount: 5730659 },
+            { donor: "Government of the United Kingdom", entity: "Foreign, Commonwealth & Dev. Off.", amount: 2313514 },
+            { donor: "Multi Partner Trust Funds", entity: "MPTF-JP Climate Security Mechn", amount: 1313117 },
+            { donor: "United Nations Agencies", entity: "UNDCO", amount: 799000 },
+            { donor: "United Nations Agencies", entity: "United Nations Resident Coordinator Offi", amount: 93500 },
+            { donor: "Other / unspecified", entity: "—", amount: 544044 },
+          ],
+        },
+        {
+          team: "CB Country Support Mgt Team",
+          total: 675521,
+          donors: [
+            { donor: "International NGO", entity: "HELP.NGO", amount: 154645 },
+            { donor: "Other / unspecified", entity: "—", amount: 520876 },
+          ],
+        },
+        {
+          team: "CB Crisis Readiness, Response and Recovery Team",
+          total: 66318907,
+          donors: [
+            { donor: "Government of Germany", entity: "Government of Germany", amount: 2213778 },
+            { donor: "Government of the Republic of Korea", entity: "Government of Republic of Korea", amount: 64000000 },
+            { donor: "International Private Sector", entity: "Digital Good", amount: 57240 },
+            { donor: "United Nations Agencies", entity: "International Organization for Migration", amount: 47889 },
+          ],
+        },
+        {
+          team: "CB Disaster RD & Recovery",
+          total: 3678065,
+          donors: [
+            { donor: "European Union", entity: "European Commission", amount: 3410924 },
+            { donor: "Other / unspecified", entity: "—", amount: 267141 },
+          ],
+        },
+        {
+          team: "CB Governance, Rule of Law and Peacebuilding Hub",
+          total: 5812765,
+          donors: [
+            { donor: "Government of Germany", entity: "Government of Germany", amount: 2347418 },
+            { donor: "International Foundations", entity: "Bloomberg Family Fdn Inc", amount: 3465347 },
+            { donor: "United Nations Agencies", entity: "UN Office for Project Services", amount: 0 },
+          ],
+        },
+        {
+          team: "CB Policy, Knowledge & Partnerships",
+          total: 2974177,
+          donors: [
+            { donor: "European Union", entity: "European Comm. Humanit. Aid Off", amount: 227015 },
+            { donor: "Government of Germany", entity: "Fed Ministry for Economic Coop and Dev", amount: 1144295 },
+            { donor: "Government of the United Kingdom", entity: "Foreign, Commonwealth & Dev. Off.", amount: 0 },
+            { donor: "International Private Sector", entity: "Digital Good", amount: 564356 },
+            { donor: "Multi Partner Trust Funds", entity: "MPTF-Complex Risk Analytics Fd", amount: 188300 },
+            { donor: "United Nations Agencies", entity: "UNDCO", amount: 100000 },
+            { donor: "Other / unspecified", entity: "—", amount: 750211 },
+          ],
+        },
+        {
+          team: "CB ROL, Security & Human Rights",
+          total: 6836675,
+          donors: [
+            { donor: "Government of Germany", entity: "Government of Germany", amount: 357471 },
+            { donor: "Government of Iceland", entity: "Iceland - Min. Foreign Affairs", amount: 68000 },
+            { donor: "Government of Japan", entity: "Government of Japan", amount: 593581 },
+            { donor: "Government of Norway", entity: "Nor - Ministry of Foreign Affairs", amount: 111198 },
+            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 300175 },
+            { donor: "Government of Sweden", entity: "Swedish Int'l Development Cooperation", amount: 194905 },
+            { donor: "Government of Switzerland", entity: "Swiss Agy for Development & Cooperation", amount: 12136 },
+            { donor: "Government of the Netherlands", entity: "Government of Netherlands", amount: 3413338 },
+            { donor: "Government of the Republic of Korea", entity: "Korean National Policy Agency", amount: 392838 },
+            { donor: "Government of the United Kingdom", entity: "Foreign, Commonwealth & Dev. Off.", amount: -267967 },
+            { donor: "Government of the United Kingdom", entity: "Government of United Kingdom", amount: 3196 },
+            { donor: "International Foundations", entity: "Bloomberg Family Fdn Inc", amount: 0 },
+            { donor: "Multi Partner Trust Funds", entity: "MPTF-Conflict Sexual Violence", amount: 130335 },
+            { donor: "Multi Partner Trust Funds", entity: "Peacebuilding Fund", amount: 493331 },
+            { donor: "Other / unspecified", entity: "—", amount: 1034138 },
+          ],
+        },
+        {
+          team: "CB Recovery Solutions & H Mobility",
+          total: 2651947,
+          donors: [
+            { donor: "Government of Japan", entity: "Government of Japan", amount: 722772 },
+            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 187980 },
+            { donor: "Multi Partner Trust Funds", entity: "MPTF - Leaving No One Behind - The Internal Displacement Solutions Fund", amount: 677695 },
+            { donor: "United Nations Agencies", entity: "International Organization for Migration", amount: 200000 },
+            { donor: "United Nations Agencies", entity: "UN High Commissioner for Refugees", amount: 200000 },
+            { donor: "Other / unspecified", entity: "—", amount: 663500 },
+          ],
+        },
+        {
+          team: "Crisis Bureau - New York",
+          total: 150000,
+          donors: [
+            { donor: "Multi Partner Trust Funds", entity: "MPTF-Complex Risk Analytics Fd", amount: 150000 },
+          ],
+        },
+      ],
+    },
   },
 
   // Source: leadership presentation slides on UNDP's crisis programming pillars
