@@ -19,7 +19,7 @@ export function ReadinessTrainingSection() {
 
   return (
     <section
-      data-chapter="5"
+      data-chapter="6"
       className="relative py-24 px-6 bg-gradient-to-b from-ice to-paper"
     >
       <div className="max-w-6xl mx-auto">
@@ -36,7 +36,7 @@ export function ReadinessTrainingSection() {
           </span>
           <h2 className="text-5xl font-bold text-navy mb-4">Readiness & Training</h2>
           <p className="text-lg text-mid max-w-2xl mx-auto">
-            Building the network&apos;s capacity to prepare, respond, and recover — across {erh.officesReached} country offices
+            Building the network&apos;s capacity to prepare, respond, and recover across {erh.officesReached} country offices
           </p>
         </motion.div>
 

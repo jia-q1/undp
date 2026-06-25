@@ -59,7 +59,7 @@ export const reportData = {
         id: "sbp",
         name: "Stand-by Partners",
         deployments2025: 38,
-        description: "UNDP co-chairs the SBP Network Steering Committee (2024–2026). 38 deployments with an estimated in-kind value of ~$4.8M, from partners including MCF, ZIF, NRC, FBA, Swiss/SDC, RedR, and DSS — covering Ukraine, Gaza, Sudan, Myanmar, DRC, Georgia, Sri Lanka, and Venezuela.",
+        description: "UNDP co-chairs the SBP Network Steering Committee (2024–2026). 38 deployments with an estimated in-kind value of ~$4.8M, from partners including MCF, ZIF, NRC, FBA, Swiss/SDC, RedR, and DSS, covering Ukraine, Gaza, Sudan, Myanmar, DRC, Georgia, Sri Lanka, and Venezuela.",
       },
       {
         id: "ta",
@@ -166,7 +166,7 @@ export const reportData = {
         level: "L3",
         experts: 17,
         roles: ["Recovery Advisors", "Communications", "Stabilization", "Peacebuilding", "Cluster Coordination", "Operations Access & Logistics", "Livelihoods & Economic Recovery", "RDNA Coordinators", "Debris Management"],
-        description: "17 advisors/experts deployed following the ceasefire — the highest-volume crisis response of 2025",
+        description: "17 advisors/experts deployed following the ceasefire, the highest-volume crisis response of 2025",
       },
       {
         id: "syria",
@@ -247,7 +247,7 @@ export const reportData = {
         level: "—",
         experts: 1,
         roles: ["Livelihoods/Resilience Advisor"],
-        description: "No formal declaration — 1 advisor deployed for response and recovery planning",
+        description: "No formal declaration. 1 advisor deployed for response and recovery planning",
       },
       {
         id: "madagascar",
@@ -256,7 +256,7 @@ export const reportData = {
         level: "—",
         experts: 4,
         roles: ["Partnerships & Resource Mobilization", "Peacebuilding", "Core Governance Functions", "Youth/Gender/Social Cohesion"],
-        description: "No formal declaration — 4 advisors deployed in November following severe flooding",
+        description: "No formal declaration. 4 advisors deployed in November following severe flooding",
       },
       {
         id: "burkinafaso",
@@ -265,9 +265,33 @@ export const reportData = {
         level: "—",
         experts: 3,
         roles: ["Crisis Communications", "Crisis Coordination", "Stress Counselling"],
-        description: "No formal declaration — 3 advisors/experts deployed following escalation of conflict",
+        description: "No formal declaration. 3 advisors/experts deployed following escalation of conflict",
       },
     ],
+  },
+
+  assessments: {
+    title: "Assessments",
+    intro: "A suite of specialized tools is available to rapidly evaluate crisis impacts across sectors, providing the evidence base for informed decision-making.",
+    tools: [
+      {
+        name: "RAPIDA",
+        fullName: "",
+        description: "Rapid early recovery assessment and analysis.",
+      },
+      {
+        name: "HBDA",
+        fullName: "Household and Building Damage Assessment",
+        description: "Granular evaluation of household and infrastructure damage.",
+      },
+      {
+        name: "SEIA",
+        fullName: "Digital Socio-Economic Impact Assessment",
+        description: "Comprehensive analysis of the socio-economic effects of crises on households and MSMEs.",
+      },
+    ],
+    outro: "Designed and implemented in collaboration with Country Offices, governments, and partners, these assessments ensure that recovery efforts are targeted, inclusive, and grounded in local realities.",
+    dashboardLink: "https://app.powerbi.com/groups/me/reports/dda9197c-ecd3-4af1-9256-7dbd7bdcaacc/b01ffe5c509aea25c0b1?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&experience=power-bi",
   },
 
   talentNetwork: {
@@ -317,7 +341,7 @@ export const reportData = {
         name: "NGO/CSO Engagement",
         value: "$41.6M",
         cases: 166,
-        description: "57 Micro-HACTs waived — 30 to 45 days saved per assessment.",
+        description: "57 Micro-HACTs waived; 30 to 45 days saved per assessment.",
         details: "25 entities engaged 2–3 months faster. Covered protection, livelihoods, shelter, mine action.",
       },
       {
@@ -357,7 +381,7 @@ export const reportData = {
       },
     ],
     coDelivery: [
-      { co: "Syria", cases: 148, value: "$21.2M", detail: "Highest dollar value of any country office. NGO/CSO engagement dominated — mine action, rubble removal, women's empowerment, HLP legal clinics, and livelihoods. Procurement covered solar systems, solid waste removal, and rehabilitation of schools and bakeries." },
+      { co: "Syria", cases: 148, value: "$21.2M", detail: "Highest dollar value of any country office. NGO/CSO engagement dominated: mine action, rubble removal, women's empowerment, HLP legal clinics, and livelihoods. Procurement covered solar systems, solid waste removal, and rehabilitation of schools and bakeries." },
       { co: "PAPP", cases: 144, value: "$18.7M", detail: "Procurement of mobile desalination units, jerrycans, and rehabilitation of hospital wards and solid waste removal. HR measures enabled recruitment across P and GS grades; finance measures covered urgent operational payments." },
       { co: "Haiti", cases: 91, value: "$15.6M", detail: "Cases concentrated in NGO/CSO engagement and procurement, supporting ongoing humanitarian response and recovery programming." },
       { co: "Sudan", cases: 123, value: "$15.1M", detail: "Procurement of water sub-stations, motorcycles, tractors, and solar streetlights for IDPs. Finance measures covered fuel and supplies. Private sector engagement delivered 7 non-financial letters for irrigation and last-mile energy." },
@@ -427,7 +451,7 @@ export const reportData = {
       },
     ],
     aarTracker: [
-      { name: "Ethiopia", status: "done", note: "Delivered end-to-end — inception, field mission, and final report, with recommendations tracked and actioned by focal points." },
+      { name: "Ethiopia", status: "done", note: "Delivered end-to-end: inception, field mission, and final report, with recommendations tracked and actioned by focal points." },
       { name: "Lebanon", status: "ongoing", note: "In progress" },
       { name: "Haiti", status: "ongoing", note: "In progress" },
       { name: "Niger", status: "ongoing", note: "In progress" },
@@ -436,8 +460,8 @@ export const reportData = {
     aarDescription: "A new, lighter After-Action Review methodology was developed and applied across multiple country contexts, enabling faster turnaround.",
     aarDashboardLink: "https://app.powerbi.com/links/Ga6TqORI7o?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&pbi_source=linkShare",
     sopUpdates: [
-      "Crisis Response & Recovery SOPs revised — UNBOA recommendations incorporated",
-      "French and Spanish translations completed — pending publication via SURGE Portal",
+      "Crisis Response & Recovery SOPs revised: UNBOA recommendations incorporated",
+      "French and Spanish translations completed: pending publication via SURGE Portal",
       "Lessons learned documented from Crisis Supplementary Protocols application",
       "Concept note on Crisis Readiness Protocols for Country Offices developed",
     ],

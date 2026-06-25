@@ -22,7 +22,7 @@ export function SpecialMeasuresSection() {
 
   return (
     <section
-      data-chapter="4"
+      data-chapter="5"
       className="relative py-24 px-6 bg-gradient-to-b from-paper to-ice"
     >
       <div className="max-w-6xl mx-auto">
