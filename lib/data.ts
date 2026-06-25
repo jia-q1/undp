@@ -89,7 +89,7 @@ export const reportData = {
   // TRAC 3 and SURGE figures below are computed directly from the source
   // files (TRAC3_3xyears.xlsx, SURGE-4years.xlsx), aggregated 2023–2026.
   directFundingSupport: {
-    title: "Crisis Delivery",
+    title: "Crisis Funding",
     subtitle: "TRAC 3 and SURGE financing across the Crisis Bureau",
     description: "Crisis Bureau leverages TRAC 3 to support response and recovery.",
     toplineIntro: "More than half of UNDP's work happens in crisis settings",
@@ -148,6 +148,25 @@ export const reportData = {
       // aren't decoded here to avoid mislabeling a country in a leadership-facing
       // report. Flagged in the UI; can add once a code-to-country mapping is confirmed.
       countryBreakdownAvailable: false,
+    },
+    leverage: {
+      title: "TRAC 3 Leverage — Resources Mobilized",
+      totalTrac3: "$26.9M",
+      totalMobilized: "$1.2B",
+      ratio: "1:45",
+      description: "For every $1 of TRAC 3 allocated, country offices mobilized $45 in additional resources, 2023–2025 (2026 excluded, data not yet available).",
+      //comparisonNote: "This is significantly higher than the 1:10.2 ratio in BERA's TPS analysis. That's good news — it suggests TRAC 3 is more catalytic than previously estimated — but it also points to methodological inconsistencies between the two analyses.",
+      //skewNote: "These figures are skewed by Ukraine, which alone raised over $600M in resources mobilized in 2024.",
+      // Source analysis breakdown has no per-row labels — five unlabeled
+      // observations summing to the totals above.
+      breakdown: [
+        { trac3: 3604247, mobilized: 18000000, ratio: 4.99 },
+        { trac3: 9919984, mobilized: 399300000, ratio: 40.25 },
+        { trac3: 6493348, mobilized: 60867839, ratio: 9.37 },
+        { trac3: 2514311, mobilized: 614800000, ratio: 244.52 },
+        { trac3: 4412696, mobilized: 113400000, ratio: 25.7 },
+      ],
+      breakdownTotal: { trac3: 26944586, mobilized: 1206367839, ratio: 45 },
     },
   },
 

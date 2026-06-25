@@ -10,7 +10,7 @@ function formatUsd(value: number | string) {
 
 export function DirectFundingSupportSection() {
   const data = reportData.directFundingSupport;
-  const { trac3, surge } = data;
+  const { trac3, surge, leverage } = data;
   const maxBureau = Math.max(...trac3.byBureau.map((b) => b.value));
   const maxCountry = Math.max(...trac3.topCountries.map((c) => c.value));
 
@@ -155,6 +155,68 @@ export function DirectFundingSupportSection() {
                 </div>
               ))}
             </div>
+          </div>
+        </motion.div>
+
+        {/* TRAC 3 Leverage */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">{leverage.title}</h3>
+          <p className="text-mid text-sm leading-relaxed mb-6">{leverage.description}</p>
+
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">{leverage.totalTrac3}</div>
+              <div className="text-xs text-mid mt-1">Total TRAC 3, 2023–2025</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">{leverage.totalMobilized}</div>
+              <div className="text-xs text-mid mt-1">Resources mobilized, 2023–2025</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">{leverage.ratio}</div>
+              <div className="text-xs text-mid mt-1">Leverage ratio</div>
+            </div>
+          </div>
+
+          <p className="text-sm text-mid leading-relaxed mb-3">{leverage.comparisonNote}</p>
+          <p className="text-sm text-mid italic leading-relaxed mb-6">{leverage.skewNote}</p>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-rule">
+                  <th className="text-left font-bold text-mid uppercase text-xs tracking-wide py-2 pr-4">
+                    Total TRAC 3 (2023–2025)
+                  </th>
+                  <th className="text-right font-bold text-mid uppercase text-xs tracking-wide py-2 pr-4">
+                    Total resources mobilized (2023–2025)
+                  </th>
+                  <th className="text-right font-bold text-mid uppercase text-xs tracking-wide py-2">
+                    Ratio
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {leverage.breakdown.map((row, idx) => (
+                  <tr key={idx} className="border-b border-rule">
+                    <td className="py-2 pr-4 text-navy">${row.trac3.toLocaleString()}</td>
+                    <td className="py-2 pr-4 text-right text-navy">${row.mobilized.toLocaleString()}</td>
+                    <td className="py-2 text-right text-coral font-semibold">{row.ratio}</td>
+                  </tr>
+                ))}
+                <tr className="font-bold">
+                  <td className="py-2 pr-4 text-navy">${leverage.breakdownTotal.trac3.toLocaleString()}</td>
+                  <td className="py-2 pr-4 text-right text-navy">${leverage.breakdownTotal.mobilized.toLocaleString()}</td>
+                  <td className="py-2 text-right text-coral">${leverage.breakdownTotal.ratio}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </motion.div>
 

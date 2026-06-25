@@ -7,7 +7,7 @@ export function Header() {
   const activeChapter = useScrollStore((state) => state.activeChapter);
   const chapters = [
     "Global Impact",
-    "Crisis Delivery",
+    "Crisis Funding",
     "Crisis Response",
     "Assessments",
     "Talent Network",
