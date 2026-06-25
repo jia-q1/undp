@@ -280,6 +280,39 @@ export const reportData = {
         },
       ],
     },
+    // Independent satellite nighttime-lights analysis (a well-established proxy
+    // for economic activity), used to test whether UNDP early-recovery
+    // investment is associated with regained economic activity post-crisis.
+    satelliteEvidence: {
+      title: "Satellite Evidence on Early Recovery Impact",
+      approach: "Independent satellite nighttime-lights data measures how much of the post-crisis decline in activity has been regained, comparing levels before the crisis, at its lowest point, and today.",
+      headline: [
+        { value: "$20–40", label: "In additional local economic activity for every $1 invested in Myanmar's early-recovery portfolio" },
+        { value: "≈$1", label: "In economic reactivation for every $1 invested in Gaza employment and cash-for-work programming" },
+      ],
+      robust: [
+        {
+          country: "Myanmar",
+          investment: "$16.8M invested",
+          finding: "Using a difference-in-differences design comparing nighttime lights before and after the 2025 earthquake, UNDP-supported areas recovered 30–55% more than comparable non-UNDP areas (p<0.001).",
+          result: "Linked to an estimated $350–650M in additional local economic activity; $20–40 per $1 invested.",
+          note: "National nighttime lights have returned to ~69% of pre-earthquake levels. The dollar return depends on the beneficiary assumption (~3.5M beneficiaries, $1,122 GDP per capita) and should be confirmed before external citation.",
+        },
+        {
+          country: "Gaza",
+          investment: "Employment & cash-for-work programming",
+          finding: "A sector-level treated-vs-control analysis finds employment and cash-for-work is the only intervention type with a statistically significant positive effect: a +11.8% increase in nighttime lights.",
+          result: "≈$0.17 per $1 invested per year on a conservative satellite-verified count of ~54,000 beneficiaries, rising toward ≈$1 per $1 once UNDP's full reported employment caseload is counted.",
+        },
+      ],
+      correlational: [
+        { country: "Syria", investment: "$98M", recovery: "~100%", note: "Full recovery signal" },
+        { country: "Afghanistan", investment: "$97M", recovery: "~100%", note: "Full recovery in a difficult operating environment" },
+        { country: "DR Congo", investment: "$251M", recovery: "~100%", note: "Strong portfolio-level recovery signal" },
+        { country: "Ukraine", investment: "$971M", recovery: "~48%", note: "Partial recovery amid ongoing war — a resilience signal, not a completed recovery story" },
+      ],
+      caveat: "Myanmar is the strongest causal estimate (difference-in-differences); Gaza the strongest intervention-level signal. Syria, Afghanistan, DR Congo, and Ukraine show recovery alongside UNDP investment, but are correlational. Further causal testing is needed before presenting these as attributable UNDP impact.",
+    },
   },
 
   // Source: leadership presentation slides on UNDP's crisis programming pillars
