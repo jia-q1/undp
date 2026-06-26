@@ -63,7 +63,7 @@ export function GlobalImpactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
           viewport={{ once: true }}
-          className="text-lg font-semibold text-sky mb-10"
+          className="text-3xl md:text-4xl font-bold text-white mb-10"
         >
           {hero.intro}
         </motion.p>
@@ -77,7 +77,7 @@ export function GlobalImpactSection() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="text-xs font-bold uppercase tracking-wide text-sky/80 mb-4">
+              <div className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-white mb-4">
                 {group.title}
               </div>
               <div className="flex flex-wrap justify-center gap-4">
