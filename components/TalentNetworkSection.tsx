@@ -454,6 +454,32 @@ export function TalentNetworkSection() {
             />
           </a>
         </motion.div>
+
+        {/* Competencies dashboard */}
+        <motion.div
+          className="mt-12 bg-white rounded-xl shadow-lg border border-rule p-4 md:p-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-4">
+            UNDP Crisis Competencies Capacity Mapping Dashboard
+          </h3>
+          <a
+            href="https://app.powerbi.com/groups/me/reports/e1e0bc55-7879-4164-b053-751389435d1e/45e5afa9543a37a29cb0?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&experience=power-bi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/competencies.png"
+              alt="Crisis response competencies"
+              className="w-full h-auto rounded-lg hover:shadow-lg transition-shadow"
+            />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

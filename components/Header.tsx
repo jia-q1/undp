@@ -63,7 +63,7 @@ export function Header() {
         </div>
 
         {/* Chapter navigation */}
-        <div className="flex gap-2.5 overflow-x-auto pb-2 md:pb-0 md:justify-center">
+        <div className="flex flex-wrap gap-2.5 overflow-x-auto pb-2 md:overflow-visible md:pb-0 md:justify-center">
           {chapters.map((chapter, index) => (
             <motion.button
               key={index}

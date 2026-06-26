@@ -46,25 +46,48 @@ export function CrisisResponseSection() {
           </p>
         </motion.div>
 
-        {/* Competencies */}
+        {/* Crisis Tracker dashboard */}
         <motion.div
-          className="bg-white rounded-xl shadow-lg border border-rule p-4 md:p-6 mb-8"
+          className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <a
-            href="https://app.powerbi.com/groups/me/reports/e1e0bc55-7879-4164-b053-751389435d1e/45e5afa9543a37a29cb0?ctid=b3e5db5e-2944-4837-99f5-7488ace54319&experience=power-bi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-xl font-bold text-navy mb-2">Crisis Tracker</h3>
+              <p className="text-mid leading-relaxed mb-4">{tracker.description}</p>
+              <div className="grid grid-cols-2 gap-2">
+                {tracker.features.map((feature) => (
+                  <div key={feature} className="flex gap-2 p-2.5 bg-ice rounded-lg text-xs text-slate">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky mt-1 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <a
+                href={tracker.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold bg-navy text-white hover:bg-blue transition-colors"
+              >
+                <span>Open Crisis Tracker Dashboard</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <a href={tracker.link} target="_blank" rel="noopener noreferrer" className="block mt-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/competencies.png"
-              alt="Crisis response competencies"
-              className="w-full h-auto rounded-lg hover:shadow-lg transition-shadow"
+              src="/crisis_tracker_dashboard.png"
+              alt="Crisis Tracker Dashboard preview"
+              className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
             />
           </a>
         </motion.div>
@@ -197,51 +220,6 @@ export function CrisisResponseSection() {
           ))}
         </div>
 
-        {/* Crisis Tracker dashboard */}
-        <motion.div
-          className="mt-12 bg-white rounded-xl shadow-lg border border-rule p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-xl font-bold text-navy mb-2">Crisis Tracker</h3>
-              <p className="text-mid leading-relaxed mb-4">{tracker.description}</p>
-              <div className="grid grid-cols-2 gap-2">
-                {tracker.features.map((feature) => (
-                  <div key={feature} className="flex gap-2 p-2.5 bg-ice rounded-lg text-xs text-slate">
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky mt-1 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex justify-center md:justify-end">
-              <a
-                href={tracker.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold bg-navy text-white hover:bg-blue transition-colors"
-              >
-                <span>Open Crisis Tracker Dashboard</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <a href={tracker.link} target="_blank" rel="noopener noreferrer" className="block mt-6">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/crisis_tracker_dashboard.png"
-              alt="Crisis Tracker Dashboard preview"
-              className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
-            />
-          </a>
-        </motion.div>
       </div>
     </section>
   );

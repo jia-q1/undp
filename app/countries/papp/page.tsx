@@ -1,11 +1,33 @@
 "use client";
 
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { reportData } from "@/lib/data";
 import { Footer } from "@/components/Footer";
 
+const TABS = [
+  "Overview",
+  "Funding",
+  "Programming",
+  "Response",
+  "Assessments",
+  "Talent",
+  "Special Measures",
+  "Crisis Signals",
+] as const;
+
+function PendingCard({ children }: { children: ReactNode }) {
+  return (
+    <div className="bg-white rounded-xl border border-dashed border-rule p-12 text-center">
+      <p className="text-mid italic">{children}</p>
+    </div>
+  );
+}
+
 export default function PappCountryPage() {
+  const [activeTab, setActiveTab] = useState(0);
+
   const profile = reportData.countryProfiles.papp;
   const crisis = reportData.crisisResponse.crises.find((c) => c.id === "papp")!;
   const specialMeasures = reportData.specialMeasures.coDelivery.find((c) => c.co === "PAPP")!;
@@ -13,6 +35,34 @@ export default function PappCountryPage() {
   const extensionRequested = reportData.specialMeasures.extensionsRequested.includes("PAPP");
 
   const formatUsd = (value: number) => `$${(value / 1_000_000).toFixed(1)}M`;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Scroll-spy: same approach as the main report's chapter nav — the active
+      // tab is the last section whose top has scrolled past the sticky header.
+      const headerOffset = 180;
+      const sections = document.querySelectorAll("[data-papp-tab]");
+      let current = 0;
+      sections.forEach((el, idx) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= headerOffset) {
+          current = idx;
+        }
+      });
+      setActiveTab(current);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleTabJump = (index: number) => {
+    const sections = document.querySelectorAll("[data-papp-tab]");
+    if (sections[index]) {
+      sections[index].scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <main className="bg-white">
@@ -30,18 +80,40 @@ export default function PappCountryPage() {
         </div>
       </header>
 
-      {/* Hero stats */}
-      <section className="relative py-16 px-6 bg-gradient-to-b from-navy to-navy/90">
-        <div className="max-w-6xl mx-auto">
-          <motion.p
-            className="text-white/90 text-lg leading-relaxed max-w-3xl mb-12"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+      {/* Tabs */}
+      <div className="sticky top-[72px] z-30 bg-white border-b border-rule">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex gap-2 overflow-x-auto py-3 md:flex-wrap md:justify-center">
+            {TABS.map((tab, idx) => (
+              <button
+                key={tab}
+                onClick={() => handleTabJump(idx)}
+                className={`px-4 py-2 text-sm font-semibold rounded-full whitespace-nowrap transition-all border ${
+                  activeTab === idx
+                    ? "bg-sky/15 text-blue border-sky"
+                    : "bg-white text-mid border-rule hover:border-sky hover:text-blue"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 py-12 space-y-8">
+        {/* Overview */}
+        <motion.div
+          data-papp-tab
+          className="bg-gradient-to-br from-navy to-navy/90 rounded-xl p-8 md:p-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-white/90 text-lg leading-relaxed max-w-3xl mb-10">
             {profile.overview}
-          </motion.p>
+          </p>
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
             {[
               { value: crisis.level, label: "Crisis Level" },
@@ -49,30 +121,139 @@ export default function PappCountryPage() {
               { value: specialMeasures.cases, label: "Special Measures Cases" },
               { value: specialMeasures.value, label: "Special Measures Value" },
               { value: formatUsd(trac3Country.value), label: "TRAC 3 Delivery (2023–2026)" },
-            ].map((stat, idx) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: idx * 0.05 }}
-                viewport={{ once: true }}
-              >
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-white">{stat.value}</div>
                 <div className="text-sm text-sky mt-2">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </motion.div>
 
-      <div className="max-w-6xl mx-auto px-6 py-16 space-y-8">
-        {/* Crisis Response */}
+        {/* Funding */}
         <motion.div
+          data-papp-tab
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">Funding</h3>
+          <p className="text-mid text-sm leading-relaxed mb-6">
+            TRAC 3 recovery and response financing provided to PAPP, part of the Crisis Bureau&apos;s {reportData.directFundingSupport.trac3.total} total across {reportData.directFundingSupport.trac3.countriesReached} countries, 2023–2026.
+          </p>
+          <div className="bg-ice rounded-lg p-4 text-center max-w-[200px]">
+            <div className="text-2xl font-bold text-coral">{formatUsd(trac3Country.value)}</div>
+            <div className="text-xs text-mid mt-1">TRAC 3, 2023–2026</div>
+          </div>
+        </motion.div>
+
+        {/* Programming */}
+        <motion.div
+          data-papp-tab
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-4">Early Recovery in Gaza</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">210K tonnes</div>
+              <div className="text-xs text-mid mt-1">Solid waste collected in Gaza</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">624K</div>
+              <div className="text-xs text-mid mt-1">People benefiting</div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Rule of Law */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-4">Rule of Law</h3>
+          <div className="bg-ice rounded-lg p-4 text-center max-w-[220px]">
+            <div className="text-2xl font-bold text-navy">160K</div>
+            <div className="text-xs text-mid mt-1">
+              Users enabled remote proceedings via the digital court management system
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Debris Management dashboard */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">Debris Management in Gaza</h3>
+          <p className="text-sm text-sky font-semibold mb-4">
+            Planning recycling and disposal sites allocation
+          </p>
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">35.6M</div>
+              <div className="text-xs text-mid mt-1">Tonnes of debris (UNEP)</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">3.6M</div>
+              <div className="text-xs text-mid mt-1">Tonnes from destroyed roads</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">36 ha</div>
+              <div className="text-xs text-mid mt-1">Additional land needed</div>
+            </div>
+          </div>
+          <p className="text-xs text-mid mb-2">Minimum safe distance for disposal sites from:</p>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {[
+              ["Water sources", "60m"],
+              ["Residential areas", "250m"],
+              ["Schools & hospitals", "500m"],
+              ["Greenhouses", "50m"],
+              ["Roads", "10m"],
+              ["Main roads", "50m"],
+            ].map(([label, distance]) => (
+              <span
+                key={label}
+                className="text-xs px-2 py-1 rounded-md bg-ice border border-rule text-blue font-medium"
+              >
+                {label}: <strong className="text-navy">{distance}</strong>
+              </span>
+            ))}
+          </div>
+          <a
+            href="https://geosmart.undp.org/arcgis/apps/dashboards/795ed50f82924207861f7b0d7b611928"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/papp.png"
+              alt="Debris Management in Gaza — Planning recycling and disposal sites allocation"
+              className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
+            />
+          </a>
+        </motion.div>
+
+        {/* Response */}
+        <motion.div
+          data-papp-tab
           className="bg-white rounded-xl shadow-lg border border-rule overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
           <div className="px-8 py-6 text-white" style={{ backgroundColor: "#E05A2B" }}>
@@ -92,12 +273,46 @@ export default function PappCountryPage() {
           </div>
         </motion.div>
 
-        {/* Special Measures */}
+        {/* Assessments */}
+        <div data-papp-tab>
+          <PendingCard>
+            Assessment data (RAPIDA/HBDA/SEIA/PDNA) for PAPP is not yet broken out at the country level.
+          </PendingCard>
+        </div>
+
+        {/* Talent */}
         <motion.div
+          data-papp-tab
           className="bg-white rounded-xl shadow-lg border border-rule p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-4">Deployment Roster</h3>
+          <div className="bg-ice rounded-lg p-4 text-center max-w-[200px] mb-6">
+            <div className="text-2xl font-bold text-navy">{crisis.experts}</div>
+            <div className="text-xs text-mid mt-1">Experts deployed</div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {crisis.roles.map((role) => (
+              <span
+                key={role}
+                className="text-xs px-2 py-1 rounded-md bg-ice border border-rule text-blue font-medium"
+              >
+                {role}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Special Measures */}
+        <motion.div
+          data-papp-tab
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
           <h3 className="text-xl font-bold text-navy mb-1">Special Measures</h3>
@@ -117,34 +332,12 @@ export default function PappCountryPage() {
           )}
         </motion.div>
 
-        {/* Funding */}
-        <motion.div
-          className="bg-white rounded-xl shadow-lg border border-rule p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-xl font-bold text-navy mb-1">Funding</h3>
-          <p className="text-mid text-sm leading-relaxed mb-6">
-            TRAC 3 recovery and response financing provided to PAPP, part of the Crisis Bureau&apos;s {reportData.directFundingSupport.trac3.total} total across {reportData.directFundingSupport.trac3.countriesReached} countries, 2023–2026.
-          </p>
-          <div className="bg-ice rounded-lg p-4 text-center max-w-[200px]">
-            <div className="text-2xl font-bold text-coral">{formatUsd(trac3Country.value)}</div>
-            <div className="text-xs text-mid mt-1">TRAC 3, 2023–2026</div>
-          </div>
-        </motion.div>
-
-        {/* Data pending */}
-        <motion.div
-          className="text-sm text-mid italic text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Assessments (RAPIDA/HBDA/SEIA/PDNA), Readiness & Training, and Crisis Signals data for PAPP are not yet broken out at the country level.
-        </motion.div>
+        {/* Crisis Signals */}
+        <div data-papp-tab>
+          <PendingCard>
+            Crisis Signals data for PAPP is not yet broken out at the country level.
+          </PendingCard>
+        </div>
       </div>
 
       <Footer />

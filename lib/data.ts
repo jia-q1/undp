@@ -199,19 +199,13 @@ export const reportData = {
           ],
         },
         {
-          team: "CB Crisis Readiness, Response and Recovery Team",
-          total: 66318907,
+          team: "CB Crisis Readiness, Response and Recovery Team (incl. Disaster RD & Recovery)",
+          total: 69996972,
           donors: [
             { donor: "Government of Germany", entity: "Government of Germany", amount: 2213778 },
             { donor: "Government of the Republic of Korea", entity: "Government of Republic of Korea", amount: 64000000 },
             { donor: "International Private Sector", entity: "Digital Good", amount: 57240 },
             { donor: "United Nations Agencies", entity: "International Organization for Migration", amount: 47889 },
-          ],
-        },
-        {
-          team: "CB Disaster RD & Recovery",
-          total: 3678065,
-          donors: [
             { donor: "European Union", entity: "European Commission", amount: 3410924 },
             { donor: "Other / unspecified", entity: "—", amount: 267141 },
           ],
