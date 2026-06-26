@@ -179,11 +179,108 @@ export default function PappCountryPage() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-navy mb-4">Rule of Law</h3>
-          <div className="bg-ice rounded-lg p-4 text-center max-w-[220px]">
-            <div className="text-2xl font-bold text-navy">160K</div>
-            <div className="text-xs text-mid mt-1">
-              Users enabled remote proceedings via the digital court management system
+          <h3 className="text-xl font-bold text-navy mb-4">Rule of Law &amp; Access to Justice</h3>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">160K</div>
+              <div className="text-xs text-mid mt-1">Users enabled remote proceedings via the digital court management system</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">34K</div>
+              <div className="text-xs text-mid mt-1">People, mostly women and children, supported with legal aid, mediation, and psychosocial support</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">30</div>
+              <div className="text-xs text-mid mt-1">Judges and prosecutors trained on evidence and human rights adjudication</div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* REVIVE — Shelter & WASH */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">REVIVE — Transitional Shelter &amp; WASH</h3>
+          <p className="text-sm text-sky font-semibold mb-6">
+            Gaza Inclusive Transitional Community Neighbourhood Programme, Oct–Dec 2025
+          </p>
+
+          <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">Humanitarian context</h4>
+          <div className="grid grid-cols-3 gap-4 mb-2">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">71K+</div>
+              <div className="text-xs text-mid mt-1">Lives lost</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">171K+</div>
+              <div className="text-xs text-mid mt-1">Injured</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">90%+</div>
+              <div className="text-xs text-mid mt-1">Of the population displaced</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-4 mb-2">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">92%</div>
+              <div className="text-xs text-mid mt-1">Of housing stock destroyed or damaged</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">61M tonnes</div>
+              <div className="text-xs text-mid mt-1">Debris generated</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">50%+</div>
+              <div className="text-xs text-mid mt-1">Of the territory still inaccessible</div>
+            </div>
+          </div>
+          <p className="text-xs text-mid italic mb-6">
+            A ceasefire reached in October 2025, backed by UNSC Resolution 2803 (November 2025), opened a window for tentative returns — but sporadic violence continues.
+          </p>
+
+          <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">Shelter &amp; WASH delivered</h4>
+          <div className="grid grid-cols-3 gap-4 mb-2">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">1,622</div>
+              <div className="text-xs text-mid mt-1">Relief Housing Units prepositioned, for 9,684 people</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">950</div>
+              <div className="text-xs text-mid mt-1">Wood-frame tents installed, sheltering 5,700 people</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">1,600</div>
+              <div className="text-xs text-mid mt-1">Tarpaulins distributed, protecting 9,600 people</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">20K</div>
+              <div className="text-xs text-mid mt-1">Residents with restored water access (Jabalia well)</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">652</div>
+              <div className="text-xs text-mid mt-1">Water tanks installed or in production</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">426</div>
+              <div className="text-xs text-mid mt-1">Latrines planned (223 in production)</div>
+            </div>
+          </div>
+
+          <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">Site assessment &amp; community partnerships</h4>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">10 / 294</div>
+              <div className="text-xs text-mid mt-1">Sites pre-selected for transitional neighbourhoods, of those identified</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">8</div>
+              <div className="text-xs text-mid mt-1">Local partnerships established for social cohesion and disability inclusion</div>
             </div>
           </div>
         </motion.div>
