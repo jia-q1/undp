@@ -31,7 +31,7 @@ export function WorkforceIntelligenceSection() {
 
         {/* Tool card */}
         <motion.div
-          className="bg-white rounded-xl shadow-lg border border-rule overflow-hidden max-w-4xl mx-auto"
+          className="bg-white rounded-xl shadow-lg border border-rule overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -49,6 +49,14 @@ export function WorkforceIntelligenceSection() {
               <img
                 src="/crisis_demand_profile_dash.png"
                 alt="Crisis Demand Profile Dashboard preview"
+                className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
+              />
+            </a>
+            <a href={tool.link} target="_blank" rel="noopener noreferrer" className="block mb-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/global_crisis_demand_analysis.png"
+                alt="Global Crisis Demand Analysis preview"
                 className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
               />
             </a>

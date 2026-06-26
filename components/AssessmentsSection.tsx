@@ -152,6 +152,26 @@ export function AssessmentsSection() {
           {data.outro}
         </motion.p>
 
+        {/* PDNA track record */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">PDNA Track Record</h3>
+          <p className="text-mid text-sm leading-relaxed mb-6">
+            UNDP&apos;s Post-Disaster Needs Assessment experience spans more than a decade of deployments across every region.
+          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/building_on_worldwide.png"
+            alt="Map of UNDP's worldwide PDNA experience by country and year"
+            className="w-full h-auto rounded-lg border border-rule shadow-sm"
+          />
+        </motion.div>
+
         {/* C3RT dashboard */}
         <motion.div
           className="bg-white rounded-xl shadow-lg border border-rule p-8"

@@ -668,8 +668,30 @@ export const reportData = {
       {
         name: "PDNA",
         fullName: "Post-Disaster Needs Assessment",
-        description: "",
-        statsByYear: [],
+        description: "Joint government-led assessment of disaster impact and recovery needs.",
+        statsByYear: [
+          {
+            year: "2025",
+            total: 4,
+            countries: [
+              { name: "Gaza", count: 1 },
+              { name: "Burundi", count: 1 },
+              { name: "Cabo Verde", count: 1 },
+              { name: "Afghanistan", count: 1 },
+            ],
+          },
+          {
+            year: "2026",
+            total: 5,
+            countries: [
+              { name: "Sri Lanka", count: 1 },
+              { name: "Madagascar", count: 1 },
+              { name: "Moldova", count: 1 },
+              { name: "Ukraine", count: 1 },
+              { name: "Gaza", count: 1 },
+            ],
+          },
+        ],
       },
     ],
     outro: "Designed and implemented in collaboration with Country Offices, governments, and partners, these assessments ensure that recovery efforts are targeted, inclusive, and grounded in local realities.",
