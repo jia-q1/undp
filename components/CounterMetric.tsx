@@ -71,8 +71,8 @@ export function CounterMetric({ value, label, prefix = "", suffix = "", delay = 
         {isDecimal ? displayValue.toFixed(1) : displayValue.toLocaleString()}
         {suffix}
       </div>
-      <div className="text-sm text-navy mt-2">{label}</div>
-      {sub && <div className="text-xs text-navy mt-1">{sub}</div>}
+      <div className="text-sm text-white/90 mt-2 leading-snug">{label}</div>
+      {sub && <div className="text-xs text-sky mt-1">{sub}</div>}
     </motion.div>
   );
 }

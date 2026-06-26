@@ -3,13 +3,32 @@ export const reportData = {
   hero: {
     eyebrow: "2025 Crisis Bureau Launch",
     headline: "When crisis hits, UNDP moves first.",
-    metrics: [
-      { value: 2585, label: "Total Deployments Facilitated", animated: true, sub: "Including crisis response" },
-      { value: 150, label: "Country offices supported", animated: true, suffix: "+" },
-      { value: 100, label: "Accelerated Crisis Recovery Delivery", animated: true, prefix: "$", suffix: "M" },
-      { value: 15000, label: "Vetted experts", animated: true, suffix: "+" },
-      { value: 1315, label: "Personnel reached", animated: true },
-      { value: 140, label: "Trained in 2025", animated: true, sub: "Crisis readiness training" },
+    intro: "In 2025…",
+    metricGroups: [
+      {
+        title: "Financial Impact",
+        metrics: [
+          { value: 105.3, label: "Mobilized by Crisis Bureau", prefix: "$", suffix: "M", sub: "" },
+          { value: 100, label: "In accelerated recovery through Special Measures", prefix: "$", suffix: "M", sub: "" },
+        ],
+      },
+      {
+        title: "Country Office Support",
+        metrics: [
+          { value: 15, label: "RAPIDA Assessments", prefix: "", suffix: "", sub: "" },
+          { value: 17, label: "COs provided SURGE, Early Recovery and Crisis Operations support", prefix: "", suffix: "", sub: "" },
+          { value: 12, label: "COs provided Stabilization support", prefix: "", suffix: "", sub: "" },
+          { value: 14, label: "COs provided recovery finance support", prefix: "", suffix: "", sub: "" },
+        ],
+      },
+      {
+        title: "Capacity & Reach",
+        metrics: [
+          { value: 2585, label: "Rapid deployments facilitated, via CB's AI deployment infrastructure", prefix: "", suffix: "", sub: "Incl. 370+ crisis deployments" },
+          { value: 3500, label: "Crisis practitioners mapped in UNDP", prefix: "", suffix: "+", sub: "Capacity mapping, in collaboration with OHR" },
+          { value: 500, label: "UNDP personnel trained on crisis tools and methodologies", prefix: "", suffix: "+", sub: "Through the Crisis and SURGE Academy" },
+        ],
+      },
     ],
   },
 
@@ -92,6 +111,34 @@ export const reportData = {
     title: "Crisis Funding",
     subtitle: "TRAC 3 and SURGE financing across the Crisis Bureau",
     description: "Crisis Bureau leverages TRAC 3 to support response and recovery.",
+    multiplierEffect: {
+      headline: "CB does not spend money. It multiplies it.",
+      quote: {
+        source: "IMF",
+        text: "Every $1 invested in development and conflict prevention can save up to $103 in future crisis costs.",
+        note: "CB is the mechanism through which that investment becomes deployable at the right moment.",
+      },
+      cases: [
+        {
+          tag: "Iraq",
+          stat: "$1.6B pooled from 30+ donors",
+          description: "CB built and managed the fiduciary and coordination backbone. 4.8 million displaced people returned home. Local firms executed the majority of works.",
+          note: "The model is now being adapted in Syria, Lebanon, Sudan, Haiti and Somalia.",
+        },
+        {
+          tag: "Ukraine",
+          stat: "$1.4B in EIB financing unlocked",
+          description: "CB operational presence and track record gave donors and financiers the confidence to commit at scale for socio-economic recovery.",
+          note: "6.6 million people had energy services restored or maintained in 2025.",
+        },
+        {
+          tag: "TRAC3: 2023 to 2026",
+          stat: "~$33M invested across 6 crisis countries",
+          description: "Sudan, Syria, Myanmar, Palestinian territories, DRC, Lebanon. In each context, this allocation is the anchor that brings in multiples from bilateral donors.",
+          note: "[PLACEHOLDER: TRAC3 return-on-modelling, multiplier on downstream financing]",
+        },
+      ],
+    },
     toplineIntro: "More than half of UNDP's work happens in crisis settings",
     topline: [
       { value: "$2.6B", label: "Delivered in crisis and fragility contexts", sub: "in 2025" },

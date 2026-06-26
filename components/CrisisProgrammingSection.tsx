@@ -10,6 +10,7 @@ export function CrisisProgrammingSection() {
   const [selectedId, setSelectedId] = useState(pillars[0].id);
   const selected = pillars.find((p) => p.id === selectedId)!;
   const gender = data.genderEquality;
+  const satelliteEvidence = reportData.directFundingSupport.satelliteEvidence;
 
   return (
     <section
@@ -113,6 +114,54 @@ export function CrisisProgrammingSection() {
 
             {selected.note && (
               <p className="text-sm text-mid italic mb-4">{selected.note}</p>
+            )}
+
+            {selected.id === "early-recovery" && (
+              <div className="border-t border-rule pt-6 mb-6">
+                <h4 className="text-lg font-bold text-navy mb-1">{satelliteEvidence.title}</h4>
+                <p className="text-mid text-sm leading-relaxed mb-6">{satelliteEvidence.approach}</p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                  {satelliteEvidence.headline.map((stat, idx) => (
+                    <div key={idx} className="bg-navy rounded-xl p-6 relative overflow-hidden">
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gold" />
+                      <div className="text-3xl font-bold text-teal">{stat.value}</div>
+                      <div className="text-sm text-white/90 mt-2 leading-snug">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-4">Robust Impact Evidence</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {satelliteEvidence.robust.map((item) => (
+                    <div key={item.country} className="bg-ice rounded-lg p-5 border-l-3 border-blue" style={{ borderLeftWidth: 3 }}>
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="font-bold text-navy">{item.country}</span>
+                        <span className="text-xs text-mid">{item.investment}</span>
+                      </div>
+                      <p className="text-sm text-slate leading-relaxed mb-2">{item.finding}</p>
+                      <p className="text-sm font-semibold text-coral leading-relaxed">{item.result}</p>
+                      {item.note && <p className="text-xs text-mid italic leading-relaxed mt-2">{item.note}</p>}
+                    </div>
+                  ))}
+                </div>
+
+                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-4">
+                  Correlational Recovery Signals <span className="font-normal text-mid/70">(additional country findings)</span>
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2.5 mb-6">
+                  {satelliteEvidence.correlational.map((item) => (
+                    <div key={item.country} className="grid grid-cols-[110px_70px_60px_1fr] items-baseline gap-2">
+                      <span className="text-sm font-semibold text-navy">{item.country}</span>
+                      <span className="text-sm text-blue">{item.investment}</span>
+                      <span className="text-sm font-bold text-coral">{item.recovery}</span>
+                      <span className="text-xs text-mid">{item.note}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-xs text-mid italic leading-relaxed border-t border-rule pt-4">{satelliteEvidence.caveat}</p>
+              </div>
             )}
 
             {selected.partners && (

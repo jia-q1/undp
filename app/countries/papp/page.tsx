@@ -12,7 +12,6 @@ const TABS = [
   "Programming",
   "Response",
   "Assessments",
-  "Talent",
   "Special Measures",
   "Crisis Signals",
 ] as const;
@@ -376,32 +375,6 @@ export default function PappCountryPage() {
             Assessment data (RAPIDA/HBDA/SEIA/PDNA) for PAPP is not yet broken out at the country level.
           </PendingCard>
         </div>
-
-        {/* Talent */}
-        <motion.div
-          data-papp-tab
-          className="bg-white rounded-xl shadow-lg border border-rule p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-xl font-bold text-navy mb-4">Deployment Roster</h3>
-          <div className="bg-ice rounded-lg p-4 text-center max-w-[200px] mb-6">
-            <div className="text-2xl font-bold text-navy">{crisis.experts}</div>
-            <div className="text-xs text-mid mt-1">Experts deployed</div>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {crisis.roles.map((role) => (
-              <span
-                key={role}
-                className="text-xs px-2 py-1 rounded-md bg-ice border border-rule text-blue font-medium"
-              >
-                {role}
-              </span>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Special Measures */}
         <motion.div

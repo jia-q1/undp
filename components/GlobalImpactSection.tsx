@@ -6,16 +6,7 @@ import { reportData } from "@/lib/data";
 
 export function GlobalImpactSection() {
   const hero = reportData.hero;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
+  const allMetrics = hero.metricGroups.flatMap((group) => group.metrics);
 
   return (
     <section
@@ -58,25 +49,61 @@ export function GlobalImpactSection() {
           {hero.headline}
         </motion.h1>
 
-        <motion.div
-          className="flex flex-wrap justify-center gap-x-12 gap-y-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.05 }}
           viewport={{ once: true }}
+          className="text-lg font-semibold text-sky mb-10"
         >
-          {hero.metrics.map((metric, idx) => (
+          {hero.intro}
+        </motion.p>
+      </div>
+
+      {/* Stats marquee — full-bleed scrolling strip, paused on hover */}
+      <motion.div
+        className="marquee-pause relative print:hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
+        }}
+      >
+        <div className="overflow-hidden">
+          <div className="flex gap-4 w-max animate-marquee pb-24">
+            {[...allMetrics, ...allMetrics].map((metric, idx) => (
+              <div
+                key={idx}
+                className="bg-navy/90 border border-white/10 shadow-lg rounded-xl p-5 w-64 flex-shrink-0"
+              >
+                <CounterMetric
+                  value={metric.value}
+                  label={metric.label}
+                  prefix={metric.prefix}
+                  suffix={metric.suffix}
+                  sub={metric.sub}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Print-only: static grid (the marquee track above never renders on paper) */}
+      <div className="hidden print:grid print:grid-cols-3 print:gap-4 max-w-6xl mx-auto px-6 pb-6">
+        {allMetrics.map((metric) => (
+          <div key={metric.label} className="bg-navy/90 border border-white/10 rounded-xl p-4">
             <CounterMetric
-              key={metric.label}
               value={metric.value}
               label={metric.label}
               prefix={metric.prefix}
               suffix={metric.suffix}
               sub={metric.sub}
-              delay={idx * 0.1}
             />
-          ))}
-        </motion.div>
+          </div>
+        ))}
       </div>
     </section>
   );

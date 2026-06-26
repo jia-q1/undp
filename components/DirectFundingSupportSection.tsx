@@ -11,7 +11,7 @@ function formatUsd(value: number | string) {
 
 export function DirectFundingSupportSection() {
   const data = reportData.directFundingSupport;
-  const { trac3, surge, leverage, resourceMobilization2025, satelliteEvidence } = data;
+  const { trac3, surge, leverage, resourceMobilization2025, multiplierEffect } = data;
   const maxBureau = Math.max(...trac3.byBureau.map((b) => b.value));
   const maxCountry = Math.max(...trac3.topCountries.map((c) => c.value));
   const [expandedTeam, setExpandedTeam] = useState<string | null>(null);
@@ -57,6 +57,37 @@ export function DirectFundingSupportSection() {
           </div>
           <p className="text-center text-mid italic mt-6 max-w-2xl mx-auto">{data.toplineOutro}</p>
           <p className="text-lg text-mid max-w-2xl mx-auto text-center mt-8">{data.description}</p>
+        </motion.div>
+
+        {/* Multiplier effect */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-3xl md:text-4xl font-bold text-navy mb-6">{multiplierEffect.headline}</h3>
+
+          <div className="bg-gold/10 border border-gold rounded-xl p-6 mb-8">
+            <p className="text-navy leading-relaxed">
+              <strong>{multiplierEffect.quote.source}:</strong> {multiplierEffect.quote.text}{" "}
+              <span className="italic text-mid">{multiplierEffect.quote.note}</span>
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {multiplierEffect.cases.map((item) => (
+              <div key={item.tag} className="bg-ice rounded-xl border border-rule p-6">
+                <span className="inline-block px-3 py-1 rounded-md bg-navy text-white text-xs font-bold mb-4">
+                  {item.tag}
+                </span>
+                <div className="text-xl font-bold text-navy mb-3 leading-snug">{item.stat}</div>
+                <p className="text-sm text-mid leading-relaxed mb-3">{item.description}</p>
+                <p className="text-xs text-mid italic leading-relaxed">{item.note}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* TRAC 3 */}
@@ -359,58 +390,6 @@ export function DirectFundingSupportSection() {
           </div>
         </motion.div>
 
-        {/* Satellite Evidence on Early Recovery Impact */}
-        <motion.div
-          className="bg-white rounded-xl shadow-lg border border-rule p-8 mt-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-xl font-bold text-navy mb-1">{satelliteEvidence.title}</h3>
-          <p className="text-mid text-sm leading-relaxed mb-6">{satelliteEvidence.approach}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            {satelliteEvidence.headline.map((stat, idx) => (
-              <div key={idx} className="bg-navy rounded-xl p-6 relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gold" />
-                <div className="text-3xl font-bold text-teal">{stat.value}</div>
-                <div className="text-sm text-white/90 mt-2 leading-snug">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          <h4 className="text-sm font-bold text-mid uppercase tracking-wide mb-4">Robust Impact Evidence</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {satelliteEvidence.robust.map((item) => (
-              <div key={item.country} className="bg-ice rounded-lg p-5 border-l-3 border-blue" style={{ borderLeftWidth: 3 }}>
-                <div className="flex items-baseline justify-between mb-2">
-                  <span className="font-bold text-navy">{item.country}</span>
-                  <span className="text-xs text-mid">{item.investment}</span>
-                </div>
-                <p className="text-sm text-slate leading-relaxed mb-2">{item.finding}</p>
-                <p className="text-sm font-semibold text-coral leading-relaxed">{item.result}</p>
-                {item.note && <p className="text-xs text-mid italic leading-relaxed mt-2">{item.note}</p>}
-              </div>
-            ))}
-          </div>
-
-          <h4 className="text-sm font-bold text-mid uppercase tracking-wide mb-4">
-            Correlational Recovery Signals <span className="font-normal text-mid/70">(additional country findings)</span>
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2.5 mb-6">
-            {satelliteEvidence.correlational.map((item) => (
-              <div key={item.country} className="grid grid-cols-[110px_70px_60px_1fr] items-baseline gap-2">
-                <span className="text-sm font-semibold text-navy">{item.country}</span>
-                <span className="text-sm text-blue">{item.investment}</span>
-                <span className="text-sm font-bold text-coral">{item.recovery}</span>
-                <span className="text-xs text-mid">{item.note}</span>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-xs text-mid italic leading-relaxed border-t border-rule pt-4">{satelliteEvidence.caveat}</p>
-        </motion.div>
       </div>
     </section>
   );
