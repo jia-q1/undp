@@ -246,13 +246,18 @@ export const reportData = {
           ],
         },
         {
-          team: "CB Crisis Readiness, Response and Recovery Team",
-          total: 66318907,
+          team: "CB Crisis Readiness, Response and Recovery Team (incl. Recovery Solutions & H Mobility)",
+          total: 68970854,
           donors: [
             { donor: "Government of Germany", entity: "Government of Germany", amount: 2213778 },
             { donor: "Government of the Republic of Korea", entity: "Government of Republic of Korea", amount: 64000000 },
             { donor: "International Private Sector", entity: "Digital Good", amount: 57240 },
-            { donor: "United Nations Agencies", entity: "International Organization for Migration", amount: 47889 },
+            { donor: "United Nations Agencies", entity: "International Organization for Migration", amount: 247889 },
+            { donor: "Government of Japan", entity: "Government of Japan", amount: 722772 },
+            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 187980 },
+            { donor: "Multi Partner Trust Funds", entity: "MPTF - Leaving No One Behind - The Internal Displacement Solutions Fund", amount: 677695 },
+            { donor: "United Nations Agencies", entity: "UN High Commissioner for Refugees", amount: 200000 },
+            { donor: "Other / unspecified", entity: "—", amount: 663500 },
           ],
         },
         {
@@ -304,18 +309,6 @@ export const reportData = {
             { donor: "Multi Partner Trust Funds", entity: "MPTF-Conflict Sexual Violence", amount: 130335 },
             { donor: "Multi Partner Trust Funds", entity: "Peacebuilding Fund", amount: 493331 },
             { donor: "Other / unspecified", entity: "—", amount: 1034138 },
-          ],
-        },
-        {
-          team: "CB Recovery Solutions & H Mobility",
-          total: 2651947,
-          donors: [
-            { donor: "Government of Japan", entity: "Government of Japan", amount: 722772 },
-            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 187980 },
-            { donor: "Multi Partner Trust Funds", entity: "MPTF - Leaving No One Behind - The Internal Displacement Solutions Fund", amount: 677695 },
-            { donor: "United Nations Agencies", entity: "International Organization for Migration", amount: 200000 },
-            { donor: "United Nations Agencies", entity: "UN High Commissioner for Refugees", amount: 200000 },
-            { donor: "Other / unspecified", entity: "—", amount: 663500 },
           ],
         },
         {
