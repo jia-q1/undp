@@ -370,11 +370,40 @@ export default function PappCountryPage() {
         </motion.div>
 
         {/* Assessments */}
-        <div data-papp-tab>
-          <PendingCard>
-            Assessment data (RAPIDA/HBDA/SEIA/PDNA) for PAPP is not yet broken out at the country level.
-          </PendingCard>
-        </div>
+        <motion.div
+          data-papp-tab
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">Rafah Debris Dashboard</h3>
+          <p className="text-sm text-sky font-semibold mb-4">Debris mapping and clearance tracking for Rafah</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/rafah.png"
+            alt="Rafah Debris Dashboard"
+            className="w-full h-auto rounded-lg border border-rule shadow-sm"
+          />
+        </motion.div>
+
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">Gaza Strip Comprehensive Roads Assessment Dashboard</h3>
+          <p className="text-sm text-sky font-semibold mb-4">Road network damage assessment across the Gaza Strip</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/gaza_strip.png"
+            alt="Gaza Strip Comprehensive Roads Assessment Dashboard"
+            className="w-full h-auto rounded-lg border border-rule shadow-sm"
+          />
+        </motion.div>
 
         {/* Special Measures */}
         <motion.div
@@ -387,7 +416,7 @@ export default function PappCountryPage() {
         >
           <h3 className="text-xl font-bold text-navy mb-1">Special Measures</h3>
           <p className="text-mid text-sm leading-relaxed mb-6">{specialMeasures.detail}</p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-ice rounded-lg p-4 text-center">
               <div className="text-2xl font-bold text-navy">{specialMeasures.cases}</div>
               <div className="text-xs text-mid mt-1">Cases processed</div>
@@ -397,6 +426,29 @@ export default function PappCountryPage() {
               <div className="text-xs text-mid mt-1">Total value</div>
             </div>
           </div>
+
+          {specialMeasures.categoryBreakdown.length > 0 && (
+            <>
+              <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">By category</h4>
+              <div className="space-y-2 mb-6">
+                {specialMeasures.categoryBreakdown.map((cat) => (
+                  <div key={cat.name} className="grid grid-cols-[1fr_60px_70px_50px] items-center gap-2">
+                    <div className="text-sm text-slate">{cat.name}</div>
+                    <div className="text-xs text-mid text-right">{cat.cases} cases</div>
+                    <div className="text-sm font-semibold text-navy text-right">{cat.value}</div>
+                    <div className="text-xs text-mid text-right">{cat.share}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-2 mb-2">
+                {specialMeasures.categoryNotes.map((note, idx) => (
+                  <p key={idx} className="text-xs text-mid leading-relaxed">{note}</p>
+                ))}
+              </div>
+            </>
+          )}
+
           {extensionRequested && (
             <p className="text-xs text-mid italic mt-4">Extension of pre-approved Special Measures requested.</p>
           )}
