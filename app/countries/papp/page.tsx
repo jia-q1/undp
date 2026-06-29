@@ -24,6 +24,10 @@ function PendingCard({ children }: { children: ReactNode }) {
   );
 }
 
+// Combined height of the sticky header + sticky tabs bar, so jumping to a
+// section (or detecting which one is active) accounts for what they cover.
+const STICKY_OFFSET = 140;
+
 export default function PappCountryPage() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -39,12 +43,11 @@ export default function PappCountryPage() {
     const handleScroll = () => {
       // Scroll-spy: same approach as the main report's chapter nav — the active
       // tab is the last section whose top has scrolled past the sticky header.
-      const headerOffset = 180;
       const sections = document.querySelectorAll("[data-papp-tab]");
       let current = 0;
       sections.forEach((el, idx) => {
         const rect = el.getBoundingClientRect();
-        if (rect.top <= headerOffset) {
+        if (rect.top <= STICKY_OFFSET + 20) {
           current = idx;
         }
       });
@@ -58,8 +61,10 @@ export default function PappCountryPage() {
 
   const handleTabJump = (index: number) => {
     const sections = document.querySelectorAll("[data-papp-tab]");
-    if (sections[index]) {
-      sections[index].scrollIntoView({ behavior: "smooth" });
+    const target = sections[index];
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.scrollY - STICKY_OFFSET;
+      window.scrollTo({ top, behavior: "smooth" });
     }
   };
 
@@ -142,9 +147,19 @@ export default function PappCountryPage() {
           <p className="text-mid text-sm leading-relaxed mb-6">
             TRAC 3 recovery and response financing provided to PAPP, part of the Crisis Bureau&apos;s {reportData.directFundingSupport.trac3.total} total across {reportData.directFundingSupport.trac3.countriesReached} countries, 2023–2026.
           </p>
-          <div className="bg-ice rounded-lg p-4 text-center max-w-[200px]">
-            <div className="text-2xl font-bold text-coral">{formatUsd(trac3Country.value)}</div>
-            <div className="text-xs text-mid mt-1">TRAC 3, 2023–2026</div>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-coral">{formatUsd(trac3Country.value)}</div>
+              <div className="text-xs text-mid mt-1">TRAC 3, 2023–2026</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-navy">{formatUsd(9722223)}</div>
+              <div className="text-xs text-mid mt-1">REVIVE</div>
+            </div>
+            <div className="bg-ice rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue">{formatUsd(9722222)}</div>
+              <div className="text-xs text-mid mt-1">REVIVE Debris Management</div>
+            </div>
           </div>
         </motion.div>
 
@@ -455,11 +470,31 @@ export default function PappCountryPage() {
         </motion.div>
 
         {/* Crisis Signals */}
-        <div data-papp-tab>
-          <PendingCard>
-            Crisis Signals data for PAPP is not yet broken out at the country level.
-          </PendingCard>
-        </div>
+        <motion.div
+          data-papp-tab
+          className="bg-white rounded-xl shadow-lg border border-rule p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-1">Crisis Demand Profile</h3>
+          <p className="text-sm text-sky font-semibold mb-4">
+            See the full Crisis Signals tool on the main report
+          </p>
+          <Link href="/#crisis-signals" className="block">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/CDP.png"
+              alt="Crisis Demand Profile"
+              className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
+            />
+          </Link>
+        </motion.div>
+
+        <PendingCard>
+          Crisis Signals data for PAPP is not yet broken out at the country level.
+        </PendingCard>
       </div>
 
       <Footer />

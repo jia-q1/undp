@@ -8,6 +8,7 @@ export function WorkforceIntelligenceSection() {
 
   return (
     <section
+      id="crisis-signals"
       data-chapter="8"
       className="relative py-24 px-6 bg-gradient-to-b from-paper to-ice"
     >
