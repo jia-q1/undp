@@ -1,10 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { useScrollStore } from "@/lib/store";
+import { reportData } from "@/lib/data";
 
 export function Header() {
   const activeChapter = useScrollStore((state) => state.activeChapter);
+  const pathname = usePathname();
+  const [countriesOpen, setCountriesOpen] = useState(false);
+  const countries = Object.entries(reportData.countryProfiles).map(([id, profile]) => ({
+    id,
+    name: profile.name,
+  }));
+  const onCountryPage = pathname?.startsWith("/countries/") ?? false;
   const chapters = [
     "Global Impact",
     "Crisis Funding",
@@ -83,7 +94,52 @@ export function Header() {
               {chapter}
             </motion.button>
           ))}
+
+          <motion.button
+            onClick={() => setCountriesOpen((open) => !open)}
+            className="px-5 py-2.5 text-sm font-semibold rounded-full whitespace-nowrap transition-all border inline-flex items-center gap-1.5"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: chapters.length * 0.05 }}
+            style={{
+              background: countriesOpen || onCountryPage ? "rgba(0, 157, 219, 0.25)" : "rgba(255, 255, 255, 0.12)",
+              color: countriesOpen || onCountryPage ? "#009EDB" : "rgba(255, 255, 255, 0.9)",
+              borderColor: countriesOpen || onCountryPage ? "#009EDB" : "rgba(255, 255, 255, 0.25)",
+            }}
+          >
+            Countries
+            <motion.span animate={{ rotate: countriesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+              ▾
+            </motion.span>
+          </motion.button>
         </div>
+
+        {/* Countries panel — expands inline below the chapter nav */}
+        <AnimatePresence initial={false}>
+          {countriesOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="overflow-hidden"
+            >
+              <div className="flex flex-wrap gap-2.5 justify-center pt-4 mt-2 border-t border-white/10">
+                {countries.map((country) => (
+                  <Link
+                    key={country.id}
+                    href={`/countries/${country.id}`}
+                    className="px-4 py-2 text-sm font-medium rounded-full whitespace-nowrap border border-white/20 text-white/80 bg-white/5 hover:bg-white/15 hover:text-white transition-colors"
+                  >
+                    {country.name}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
