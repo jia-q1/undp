@@ -13,6 +13,7 @@ import { TalentNetworkSection } from "@/components/TalentNetworkSection";
 import { SpecialMeasuresSection } from "@/components/SpecialMeasuresSection";
 import { ReadinessTrainingSection } from "@/components/ReadinessTrainingSection";
 import { WorkforceIntelligenceSection } from "@/components/WorkforceIntelligenceSection";
+import { CrisisRiskAnticipationSection } from "@/components/CrisisRiskAnticipationSection";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -57,6 +58,7 @@ export default function Home() {
       <TalentNetworkSection />
       <SpecialMeasuresSection />
       <ReadinessTrainingSection />
+      <CrisisRiskAnticipationSection />
       <WorkforceIntelligenceSection />
       <Footer />
     </main>

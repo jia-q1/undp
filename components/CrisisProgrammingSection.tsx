@@ -8,11 +8,9 @@ export function CrisisProgrammingSection() {
   const data = reportData.crisisProgramming;
   const pillars = data.pillars;
   const GENDER_TAB_ID = "gender-equality";
-  const RISK_TAB_ID = "crisis-risk-anticipation";
   const [selectedId, setSelectedId] = useState(pillars[0].id);
   const selected = pillars.find((p) => p.id === selectedId);
   const gender = data.genderEquality;
-  const riskAnticipation = data.crisisRiskAnticipation;
   const satelliteEvidence = reportData.directFundingSupport.satelliteEvidence;
   const erh = reportData.readinessTraining.erh;
 
@@ -74,85 +72,11 @@ export function CrisisProgrammingSection() {
           >
             {gender.name}
           </motion.button>
-          <motion.button
-            onClick={() => setSelectedId(RISK_TAB_ID)}
-            className={`px-5 py-3 rounded-xl text-sm font-bold whitespace-nowrap transition-all ${
-              selectedId === RISK_TAB_ID
-                ? "bg-navy text-white shadow-lg ring-2 ring-blue ring-offset-2 ring-offset-paper"
-                : "bg-white border border-rule text-slate hover:border-sky"
-            }`}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: (pillars.length + 1) * 0.04, duration: 0.4 }}
-            viewport={{ once: true }}
-          >
-            {riskAnticipation.name}
-          </motion.button>
         </div>
 
         {/* Detail panel */}
         <AnimatePresence mode="wait">
-          {selectedId === RISK_TAB_ID ? (
-            <motion.div
-              key={RISK_TAB_ID}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-12 print:hidden"
-            >
-              <h3 className="text-2xl font-bold text-navy mb-8">{riskAnticipation.name}</h3>
-
-              <div className="space-y-10">
-                {riskAnticipation.tools.map((tool) => (
-                  <div key={tool.name} className="border-t border-rule pt-8 first:border-t-0 first:pt-0">
-                    <h4 className="text-lg font-bold text-navy mb-3">{tool.name}</h4>
-                    <p className="text-mid text-sm leading-relaxed mb-6">{tool.description}</p>
-                    {tool.screenshot ? (
-                      <a
-                        href={tool.link || undefined}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={tool.link ? "block mb-4" : "block mb-4 pointer-events-none"}
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={tool.screenshot}
-                          alt={`${tool.name} screenshot`}
-                          className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
-                        />
-                      </a>
-                    ) : (
-                      <div className="w-full h-48 rounded-lg border-2 border-dashed border-rule bg-ice flex items-center justify-center text-mid text-sm mb-4">
-                        Screenshot coming soon
-                      </div>
-                    )}
-                    {tool.linkLabel && (
-                      tool.link ? (
-                        <a
-                          href={tool.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-blue text-white hover:bg-navy transition-colors"
-                        >
-                          {tool.linkLabel}
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
-                      ) : (
-                        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-ice text-mid border border-rule cursor-default">
-                          {tool.linkLabel}
-                        </span>
-                      )
-                    )}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ) : selectedId === GENDER_TAB_ID ? (
+          {selectedId === GENDER_TAB_ID ? (
             <motion.div
               key={GENDER_TAB_ID}
               initial={{ opacity: 0, y: 20 }}

@@ -25,6 +25,7 @@ export function Header() {
     "Talent Network",
     "Crisis Operations",
     "Readiness",
+    "Crisis Risk & Anticipation",
     "Crisis Signals",
   ];
 
