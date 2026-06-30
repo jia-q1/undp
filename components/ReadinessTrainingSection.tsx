@@ -121,6 +121,72 @@ export function ReadinessTrainingSection() {
             </div>
           </motion.div>
 
+        {/* Crisis & SURGE Academy */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl font-bold text-navy mb-3">Crisis & SURGE Academy</h3>
+
+          <p className="text-sm text-mid mb-4">
+            3,000+ alumni · 19 courses · 4 campuses: Prevention, Recovery, Nexus, Crisis Financing · Free &amp; globally accessible
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-8">
+            {["Prevention", "Recovery", "Nexus", "Crisis Financing"].map((campus) => (
+              <span key={campus} className="text-xs px-3 py-1.5 rounded-full bg-teal/10 border border-teal/20 text-teal font-medium">
+                {campus}
+              </span>
+            ))}
+          </div>
+
+          <div className="border-t border-rule pt-6">
+            <div className="mb-4">
+              <div className="text-3xl font-bold text-navy">500</div>
+              <div className="text-sm text-mid mt-1">people trained in 2025</div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">By Gender</h4>
+                <div className="space-y-2">
+                  {[
+                    { label: "Women", value: 250 },
+                    { label: "Men", value: 250 },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center justify-between text-sm border-b border-rule py-1.5">
+                      <span className="text-slate">{row.label}</span>
+                      <span className="font-semibold text-navy">{row.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">By Region</h4>
+                <div className="space-y-2">
+                  {[
+                    { label: "Asia and the Pacific", value: 60 },
+                    { label: "Africa", value: 50 },
+                    { label: "Arab States", value: 25 },
+                    { label: "Europe and Central Asia", value: 25 },
+                    { label: "Latin America and the Caribbean", value: 20 },
+                    { label: "Headquarters", value: 20 },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center justify-between text-sm border-b border-rule py-1.5">
+                      <span className="text-slate">{row.label}</span>
+                      <span className="font-semibold text-navy">{row.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Institutional Learning: AARs + SOPs + dashboard */}
         <motion.div
           className="bg-white rounded-xl shadow-lg border border-rule p-8"
