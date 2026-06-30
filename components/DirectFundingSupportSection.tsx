@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { reportData } from "@/lib/data";
 
@@ -14,7 +14,7 @@ export function DirectFundingSupportSection() {
   const { trac3, surge, leverage, resourceMobilization2025, multiplierEffect } = data;
   const maxBureau = Math.max(...trac3.byBureau.map((b) => b.value));
   const maxCountry = Math.max(...trac3.topCountries.map((c) => c.value));
-  const [expandedTeam, setExpandedTeam] = useState<string | null>(null);
+
 
   return (
     <section
@@ -101,46 +101,35 @@ export function DirectFundingSupportSection() {
           <h3 className="text-xl font-bold text-navy mb-1">{trac3.title}</h3>
           <p className="text-mid text-sm leading-relaxed mb-6">{trac3.description}</p>
 
-          <div className="grid grid-cols-3 gap-4 mb-8">
+          <div className="mb-8">
             <div className="bg-ice rounded-lg p-4 text-center">
               <div className="text-2xl font-bold text-navy">{trac3.total}</div>
-              <div className="text-xs text-mid mt-1">Total, 2023–2026</div>
-            </div>
-            <div className="bg-ice rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-blue">{trac3.recoveryTotal}</div>
-              <div className="text-xs text-mid mt-1">Recovery</div>
-            </div>
-            <div className="bg-ice rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-coral">{trac3.responseTotal}</div>
-              <div className="text-xs text-mid mt-1">Response</div>
+              <div className="text-xs text-mid mt-1">Response and Recovery</div>
             </div>
           </div>
 
           {/* Trend chart (screen only) */}
           <div className="mb-8 print:hidden" style={{ height: 260 }}>
-            <h4 className="text-sm font-bold text-mid uppercase tracking-wide mb-3">4-year trend — Recovery vs. Response</h4>
+            <h4 className="text-sm font-bold text-mid uppercase tracking-wide mb-3">4-year trend</h4>
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={trac3.byYear} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+              <BarChart data={trac3.byYear.map((y) => ({ year: y.year, total: y.recovery + y.response }))} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#D0DFE8" />
                 <XAxis dataKey="year" tick={{ fontSize: 12, fill: "#4A6174" }} axisLine={{ stroke: "#D0DFE8" }} />
                 <YAxis tickFormatter={(v) => formatUsd(v)} tick={{ fontSize: 12, fill: "#4A6174" }} axisLine={false} tickLine={false} />
                 <Tooltip formatter={(v) => formatUsd(v as number)} />
-                <Legend wrapperStyle={{ fontSize: 12 }} />
-                <Bar dataKey="recovery" name="Recovery" stackId="a" fill="#00689D" radius={[0, 0, 0, 0]} />
-                <Bar dataKey="response" name="Response" stackId="a" fill="#E05A2B" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="total" name="Response and Recovery" fill="#00689D" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
 
           {/* Print-only: plain trend table */}
           <div className="hidden print:block mb-8">
-            <h4 className="text-sm font-bold text-mid uppercase tracking-wide mb-2">4-year trend — Recovery vs. Response</h4>
+            <h4 className="text-sm font-bold text-mid uppercase tracking-wide mb-2">4-year trend</h4>
             <div className="space-y-1">
               {trac3.byYear.map((y) => (
-                <div key={y.year} className="grid grid-cols-3 text-sm border-b border-rule py-1">
+                <div key={y.year} className="grid grid-cols-2 text-sm border-b border-rule py-1">
                   <span className="font-semibold text-navy">{y.year}</span>
-                  <span className="text-blue">{formatUsd(y.recovery)} recovery</span>
-                  <span className="text-coral">{formatUsd(y.response)} response</span>
+                  <span className="text-navy">{formatUsd(y.recovery + y.response)}</span>
                 </div>
               ))}
             </div>
@@ -217,80 +206,6 @@ export function DirectFundingSupportSection() {
             </div>
           </div>
 
-          <div className="overflow-x-auto mt-6">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-rule">
-                  <th className="text-left font-bold text-mid uppercase text-xs tracking-wide py-2 pr-4">
-                    Total TRAC 3 (2023–2025)
-                  </th>
-                  <th className="text-right font-bold text-mid uppercase text-xs tracking-wide py-2 pr-4">
-                    Total resources mobilized (2023–2025)
-                  </th>
-                  <th className="text-right font-bold text-mid uppercase text-xs tracking-wide py-2">
-                    Ratio
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {leverage.breakdown.map((row, idx) => (
-                  <tr key={idx} className="border-b border-rule">
-                    <td className="py-2 pr-4 text-navy">${row.trac3.toLocaleString()}</td>
-                    <td className="py-2 pr-4 text-right text-navy">${row.mobilized.toLocaleString()}</td>
-                    <td className="py-2 text-right text-coral font-semibold">{row.ratio}</td>
-                  </tr>
-                ))}
-                <tr className="font-bold">
-                  <td className="py-2 pr-4 text-navy">${leverage.breakdownTotal.trac3.toLocaleString()}</td>
-                  <td className="py-2 pr-4 text-right text-navy">${leverage.breakdownTotal.mobilized.toLocaleString()}</td>
-                  <td className="py-2 text-right text-coral">${leverage.breakdownTotal.ratio}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
-
-        {/* SURGE */}
-        <motion.div
-          className="bg-white rounded-xl shadow-lg border border-rule p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-xl font-bold text-navy mb-1">{surge.title}</h3>
-          <p className="text-mid text-sm leading-relaxed mb-6">{surge.description}</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <div className="bg-ice rounded-lg p-4 text-center md:max-w-[200px]">
-              <div className="text-2xl font-bold text-green">{surge.total}</div>
-              <div className="text-xs text-mid mt-1">Total, 2023–2026</div>
-            </div>
-
-            <div className="print:hidden" style={{ height: 200 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={surge.byYear} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#D0DFE8" />
-                  <XAxis dataKey="year" tick={{ fontSize: 12, fill: "#4A6174" }} axisLine={{ stroke: "#D0DFE8" }} />
-                  <YAxis tickFormatter={(v) => formatUsd(v)} tick={{ fontSize: 12, fill: "#4A6174" }} axisLine={false} tickLine={false} />
-                  <Tooltip formatter={(v) => formatUsd(v as number)} />
-                  <Bar dataKey="value" name="SURGE spend" fill="#1D9E75" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          {/* Print-only: plain trend table */}
-          <div className="hidden print:block mt-4">
-            <div className="space-y-1">
-              {surge.byYear.map((y) => (
-                <div key={y.year} className="grid grid-cols-2 text-sm border-b border-rule py-1">
-                  <span className="font-semibold text-navy">{y.year}</span>
-                  <span className="text-green">{formatUsd(y.value)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </motion.div>
 
         {/* Resource Mobilization 2025 */}
@@ -303,91 +218,29 @@ export function DirectFundingSupportSection() {
         >
           <h3 className="text-xl font-bold text-navy mb-1">Resource Mobilization (2025)</h3>
           <p className="text-mid text-sm leading-relaxed mb-6">
-            Funds mobilized by Crisis Bureau teams from donors in 2025. Click a team to see its donor breakdown.
+            Funds mobilized by Crisis Bureau teams from donors in 2025.
           </p>
 
-          <div className="bg-ice rounded-lg p-4 text-center max-w-[200px] mb-8">
-            <div className="text-2xl font-bold text-navy">{formatUsd(resourceMobilization2025.total)}</div>
-            <div className="text-xs text-mid mt-1">Total mobilized, 2025</div>
-          </div>
-
-          <div className="space-y-2 print:hidden">
-            {resourceMobilization2025.byTeam.map((team) => {
-              const isOpen = expandedTeam === team.team;
-              return (
-                <div key={team.team} className="border border-rule rounded-lg overflow-hidden">
-                  <button
-                    onClick={() => setExpandedTeam(isOpen ? null : team.team)}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-left bg-ice/60 hover:bg-ice transition-colors"
-                  >
-                    <div className="text-sm font-semibold text-navy flex-1">{team.team}</div>
-                    <div className="text-sm font-bold text-navy w-16 text-right flex-shrink-0">{formatUsd(team.total)}</div>
-                    <motion.span
-                      animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="text-mid flex-shrink-0"
-                    >
-                      ▾
-                    </motion.span>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-4 py-3">
-                          <table className="w-full text-sm">
-                            <thead>
-                              <tr className="border-b border-rule">
-                                <th className="text-left font-bold text-mid uppercase text-xs tracking-wide py-1.5 pr-4">Donor</th>
-                                <th className="text-left font-bold text-mid uppercase text-xs tracking-wide py-1.5 pr-4">Entity</th>
-                                <th className="text-right font-bold text-mid uppercase text-xs tracking-wide py-1.5">Contribution</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {team.donors.map((d, idx) => (
-                                <tr key={idx} className="border-b border-rule last:border-0">
-                                  <td className="py-1.5 pr-4 text-slate">{d.donor}</td>
-                                  <td className="py-1.5 pr-4 text-mid">{d.entity}</td>
-                                  <td className="py-1.5 text-right text-navy font-semibold">
-                                    {d.amount < 0 ? "-" : ""}${Math.abs(d.amount).toLocaleString()}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Print-only: full listing (screen shows collapsible dropdowns above) */}
-          <div className="hidden print:block space-y-4">
-            {resourceMobilization2025.byTeam.map((team) => (
-              <div key={team.team} className="break-inside-avoid">
-                <div className="flex items-center justify-between text-sm font-bold text-navy border-b border-rule pb-1 mb-1.5">
-                  <span>{team.team}</span>
-                  <span>{formatUsd(team.total)}</span>
-                </div>
-                {team.donors.map((d, idx) => (
-                  <div key={idx} className="flex items-center justify-between text-xs text-mid py-0.5">
-                    <span>{d.donor} — {d.entity}</span>
-                    <span className="text-navy font-semibold">
-                      {d.amount < 0 ? "-" : ""}${Math.abs(d.amount).toLocaleString()}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-rule">
+                <th className="text-left font-bold text-mid uppercase text-xs tracking-wide py-2 pr-4">Team</th>
+                <th className="text-right font-bold text-mid uppercase text-xs tracking-wide py-2">Contribution</th>
+              </tr>
+            </thead>
+            <tbody>
+              {resourceMobilization2025.byTeam.map((team) => (
+                <tr key={team.team} className="border-b border-rule">
+                  <td className="py-2 pr-4 text-navy">{team.team}</td>
+                  <td className="py-2 text-right text-navy font-semibold">${team.total.toLocaleString()}</td>
+                </tr>
+              ))}
+              <tr className="font-bold">
+                <td className="py-2 pr-4 text-navy">Grand Total</td>
+                <td className="py-2 text-right text-navy">${resourceMobilization2025.total.toLocaleString()}</td>
+              </tr>
+            </tbody>
+          </table>
         </motion.div>
 
       </div>

@@ -7,10 +7,12 @@ import { reportData } from "@/lib/data";
 export function CrisisProgrammingSection() {
   const data = reportData.crisisProgramming;
   const pillars = data.pillars;
+  const GENDER_TAB_ID = "gender-equality";
   const [selectedId, setSelectedId] = useState(pillars[0].id);
-  const selected = pillars.find((p) => p.id === selectedId)!;
+  const selected = pillars.find((p) => p.id === selectedId);
   const gender = data.genderEquality;
   const satelliteEvidence = reportData.directFundingSupport.satelliteEvidence;
+  const erh = reportData.readinessTraining.erh;
 
   return (
     <section
@@ -54,135 +56,223 @@ export function CrisisProgrammingSection() {
               {pillar.name}
             </motion.button>
           ))}
+          <motion.button
+            onClick={() => setSelectedId(GENDER_TAB_ID)}
+            className={`px-5 py-3 rounded-xl text-sm font-bold whitespace-nowrap transition-all ${
+              selectedId === GENDER_TAB_ID
+                ? "bg-navy text-white shadow-lg ring-2 ring-blue ring-offset-2 ring-offset-paper"
+                : "bg-white border border-rule text-slate hover:border-sky"
+            }`}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: pillars.length * 0.04, duration: 0.4 }}
+            viewport={{ once: true }}
+          >
+            {gender.name}
+          </motion.button>
         </div>
 
         {/* Detail panel */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={selected.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-12 print:hidden"
-          >
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-              <h3 className="text-2xl font-bold text-navy">{selected.name}</h3>
-              {selected.scope && (
-                <span className="px-3 py-1.5 rounded-full bg-ice text-blue text-sm font-semibold">
-                  {selected.scope}
-                </span>
-              )}
-            </div>
+          {selectedId === GENDER_TAB_ID ? (
+            <motion.div
+              key={GENDER_TAB_ID}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="bg-navy rounded-xl shadow-lg p-8 mb-12 print:hidden"
+            >
+              <h3 className="text-2xl font-bold text-white mb-6">{gender.name}</h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              {selected.stats.map((stat, idx) => (
-                <div key={idx} className="bg-ice rounded-lg p-5">
-                  <div className="text-3xl font-bold text-coral mb-1">{stat.value}</div>
-                  <div className="text-sm text-mid leading-snug">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {selected.examples && (
-              <div className="mb-6">
-                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">In Practice</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {selected.examples.map((ex) => (
-                    <div key={ex.country} className="border-l-2 border-sky pl-3">
-                      <div className="text-sm font-bold text-navy">{ex.country}</div>
-                      <div className="text-xs text-mid leading-snug">{ex.note}</div>
-                    </div>
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                {gender.contextStats.map((stat, idx) => (
+                  <div key={idx} className="text-center">
+                    <div className="text-3xl font-bold text-teal mb-1">{stat.value}</div>
+                    <div className="text-xs text-white/80 leading-snug">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-            )}
 
-            {selected.countryHighlights && (
-              <div className="mb-6">
-                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">Country Highlights</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {selected.countryHighlights.map((ex) => (
-                    <div key={ex.country} className="border-l-2 border-teal pl-3">
-                      <div className="text-sm font-bold text-navy">{ex.country}</div>
-                      <div className="text-xs text-mid leading-snug">{ex.note}</div>
-                    </div>
-                  ))}
-                </div>
+              <h4 className="text-xs font-bold text-white/60 uppercase tracking-wide mb-4 text-center">
+                Impact at Scale (2024)
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                {gender.impactStats.map((stat, idx) => (
+                  <div key={idx} className="bg-white/10 rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+                    <div className="text-xs text-white/80 leading-snug">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-            )}
 
-            {selected.note && (
-              <p className="text-sm text-mid italic mb-4">{selected.note}</p>
-            )}
+              <p className="text-sm text-white/70 italic text-center">{gender.note}</p>
+            </motion.div>
+          ) : selected ? (
+            <motion.div
+              key={selected.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-12 print:hidden"
+            >
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                <h3 className="text-2xl font-bold text-navy">{selected.name}</h3>
+                {selected.scope && (
+                  <span className="px-3 py-1.5 rounded-full bg-ice text-blue text-sm font-semibold">
+                    {selected.scope}
+                  </span>
+                )}
+              </div>
 
-            {selected.id === "early-recovery" && (
-              <div className="border-t border-rule pt-6 mb-6">
-                <h4 className="text-lg font-bold text-navy mb-1">{satelliteEvidence.title}</h4>
-                <p className="text-mid text-sm leading-relaxed mb-6">{satelliteEvidence.approach}</p>
+              {selected.id === "early-recovery" && (
+                <div className="mb-8 pb-8 border-b border-rule">
+                  <h4 className="text-lg font-bold text-navy mb-1">{erh.name}</h4>
+                  <p className="text-sm text-sky mb-4">Central digital platform</p>
+                  <p className="text-mid text-sm leading-relaxed mb-6">{erh.description}</p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  {satelliteEvidence.headline.map((stat, idx) => (
-                    <div key={idx} className="bg-navy rounded-xl p-6 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gold" />
-                      <div className="text-3xl font-bold text-teal">{stat.value}</div>
-                      <div className="text-sm text-white/90 mt-2 leading-snug">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-4">Robust Impact Evidence</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  {satelliteEvidence.robust.map((item) => (
-                    <div key={item.country} className="bg-ice rounded-lg p-5 border-l-3 border-blue" style={{ borderLeftWidth: 3 }}>
-                      <div className="flex items-baseline justify-between mb-2">
-                        <span className="font-bold text-navy">{item.country}</span>
-                        <span className="text-xs text-mid">{item.investment}</span>
+                  <div className="space-y-2 mb-6">
+                    {erh.features.map((feature, idx) => (
+                      <div key={idx} className="flex gap-3 p-3 bg-sky/5 rounded-lg">
+                        <div className="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 flex-shrink-0" />
+                        <div className="text-sm text-slate">{feature}</div>
                       </div>
-                      <p className="text-sm text-slate leading-relaxed mb-2">{item.finding}</p>
-                      <p className="text-sm font-semibold text-coral leading-relaxed">{item.result}</p>
-                      {item.note && <p className="text-xs text-mid italic leading-relaxed mt-2">{item.note}</p>}
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <div className="p-3 bg-gradient-to-r from-sky/10 to-teal/10 rounded-lg border border-sky/20">
+                      <div className="text-xl font-bold text-navy">{erh.pageViews}</div>
+                      <div className="text-xs text-mid">page views</div>
                     </div>
-                  ))}
-                </div>
-
-                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-4">
-                  Correlational Recovery Signals <span className="font-normal text-mid/70">(additional country findings)</span>
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2.5 mb-6">
-                  {satelliteEvidence.correlational.map((item) => (
-                    <div key={item.country} className="grid grid-cols-[110px_70px_60px_1fr] items-baseline gap-2">
-                      <span className="text-sm font-semibold text-navy">{item.country}</span>
-                      <span className="text-sm text-blue">{item.investment}</span>
-                      <span className="text-sm font-bold text-coral">{item.recovery}</span>
-                      <span className="text-xs text-mid">{item.note}</span>
+                    <div className="p-3 bg-gradient-to-r from-sky/10 to-teal/10 rounded-lg border border-sky/20">
+                      <div className="text-xl font-bold text-navy">{erh.uniqueVisitors}</div>
+                      <div className="text-xs text-mid">unique visitors</div>
                     </div>
-                  ))}
-                </div>
+                  </div>
 
-                <p className="text-xs text-mid italic leading-relaxed border-t border-rule pt-4">{satelliteEvidence.caveat}</p>
-              </div>
-            )}
-
-            {selected.partners && (
-              <div>
-                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-2">Current Partners</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selected.partners.map((partner) => (
-                    <span
-                      key={partner}
-                      className="text-xs px-2 py-1 rounded-md bg-ice border border-rule text-blue font-medium"
-                    >
-                      {partner}
-                    </span>
-                  ))}
+                  <div className="p-4 bg-gradient-to-r from-sky/10 to-teal/10 rounded-lg border border-sky/20">
+                    <div className="text-2xl font-bold text-navy">{erh.reach.toLocaleString()}</div>
+                    <div className="text-sm text-mid">
+                      personnel reached via {erh.sessionsDelivered} sessions across {erh.bureausReached} bureaus and{" "}
+                      {erh.officesReached} country offices
+                    </div>
+                  </div>
                 </div>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                {selected.stats.map((stat, idx) => (
+                  <div key={idx} className="bg-ice rounded-lg p-5">
+                    <div className="text-3xl font-bold text-coral mb-1">{stat.value}</div>
+                    <div className="text-sm text-mid leading-snug">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-            )}
-          </motion.div>
+
+              {selected.examples && (
+                <div className="mb-6">
+                  <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">In Practice</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {selected.examples.map((ex) => (
+                      <div key={ex.country} className="border-l-2 border-sky pl-3">
+                        <div className="text-sm font-bold text-navy">{ex.country}</div>
+                        <div className="text-xs text-mid leading-snug">{ex.note}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selected.countryHighlights && (
+                <div className="mb-6">
+                  <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">Country Highlights</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {selected.countryHighlights.map((ex) => (
+                      <div key={ex.country} className="border-l-2 border-teal pl-3">
+                        <div className="text-sm font-bold text-navy">{ex.country}</div>
+                        <div className="text-xs text-mid leading-snug">{ex.note}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selected.note && (
+                <p className="text-sm text-mid italic mb-4">{selected.note}</p>
+              )}
+
+              {selected.id === "early-recovery" && (
+                <div className="border-t border-rule pt-6 mb-6">
+                  <h4 className="text-lg font-bold text-navy mb-1">{satelliteEvidence.title}</h4>
+                  <p className="text-mid text-sm leading-relaxed mb-6">{satelliteEvidence.approach}</p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    {satelliteEvidence.headline.map((stat, idx) => (
+                      <div key={idx} className="bg-navy rounded-xl p-6 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gold" />
+                        <div className="text-3xl font-bold text-teal">{stat.value}</div>
+                        <div className="text-sm text-white/90 mt-2 leading-snug">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-4">Robust Impact Evidence</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    {satelliteEvidence.robust.map((item) => (
+                      <div key={item.country} className="bg-ice rounded-lg p-5 border-l-3 border-blue" style={{ borderLeftWidth: 3 }}>
+                        <div className="flex items-baseline justify-between mb-2">
+                          <span className="font-bold text-navy">{item.country}</span>
+                          <span className="text-xs text-mid">{item.investment}</span>
+                        </div>
+                        <p className="text-sm text-slate leading-relaxed mb-2">{item.finding}</p>
+                        <p className="text-sm font-semibold text-coral leading-relaxed">{item.result}</p>
+                        {item.note && <p className="text-xs text-mid italic leading-relaxed mt-2">{item.note}</p>}
+                      </div>
+                    ))}
+                  </div>
+
+                  <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-4">
+                    Correlational Recovery Signals <span className="font-normal text-mid/70">(additional country findings)</span>
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2.5 mb-6">
+                    {satelliteEvidence.correlational.map((item) => (
+                      <div key={item.country} className="grid grid-cols-[110px_70px_60px_1fr] items-baseline gap-2">
+                        <span className="text-sm font-semibold text-navy">{item.country}</span>
+                        <span className="text-sm text-blue">{item.investment}</span>
+                        <span className="text-sm font-bold text-coral">{item.recovery}</span>
+                        <span className="text-xs text-mid">{item.note}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="text-xs text-mid italic leading-relaxed border-t border-rule pt-4">{satelliteEvidence.caveat}</p>
+                </div>
+              )}
+
+              {selected.partners && (
+                <div>
+                  <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-2">Current Partners</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selected.partners.map((partner) => (
+                      <span
+                        key={partner}
+                        className="text-xs px-2 py-1 rounded-md bg-ice border border-rule text-blue font-medium"
+                      >
+                        {partner}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          ) : null}
         </AnimatePresence>
 
-        {/* Print-only: full listing of all pillars (screen shows one at a time above) */}
+        {/* Print-only: full listing of all pillars */}
         <div className="hidden print:block space-y-4 mb-12">
           {pillars.map((pillar) => (
             <div key={pillar.id} className="border border-rule rounded-lg p-4 break-inside-avoid">
@@ -203,40 +293,6 @@ export function CrisisProgrammingSection() {
             </div>
           ))}
         </div>
-
-        {/* Gender Equality — cross-cutting lens */}
-        <motion.div
-          className="bg-navy rounded-xl shadow-lg p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-white mb-6">{gender.name}</h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-            {gender.contextStats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-3xl font-bold text-teal mb-1">{stat.value}</div>
-                <div className="text-xs text-white/80 leading-snug">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          <h4 className="text-xs font-bold text-white/60 uppercase tracking-wide mb-4 text-center">
-            Impact at Scale (2024)
-          </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-            {gender.impactStats.map((stat, idx) => (
-              <div key={idx} className="bg-white/10 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-xs text-white/80 leading-snug">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-sm text-white/70 italic text-center">{gender.note}</p>
-        </motion.div>
       </div>
     </section>
   );

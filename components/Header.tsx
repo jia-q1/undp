@@ -26,7 +26,6 @@ export function Header() {
     "Special Measures",
     "Readiness",
     "Crisis Signals",
-    "Outlook",
   ];
 
   const handleChapterJump = (index: number) => {

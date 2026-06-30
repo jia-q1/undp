@@ -3,17 +3,17 @@ export const reportData = {
   hero: {
     eyebrow: "2025 Crisis Bureau Launch",
     headline: "When crisis hits, UNDP moves first.",
-    intro: "In 2025…",
+    intro: "In 2025 and 2026…",
     metricGroups: [
       {
         title: "Financial Impact",
         metrics: [
-          { value: 105.3, label: "Mobilized by Crisis Bureau", prefix: "$", suffix: "M", sub: "" },
-          { value: 100, label: "In accelerated recovery through Special Measures", prefix: "$", suffix: "M", sub: "" },
+          { value: 340, label: "Mobilized by Crisis Bureau", prefix: "$", suffix: "M+", sub: "" },
+          { value: 300, label: "In accelerated recovery through Special Measures", prefix: "$", suffix: "M+", sub: "" },
         ],
       },
       {
-        title: "Country Office Support",
+        title: "Country Office Support in 2025",
         metrics: [
           { value: 15, label: "RAPIDA Assessments", prefix: "", suffix: "", sub: "" },
           { value: 17, label: "COs provided SURGE, Early Recovery and Crisis Operations support", prefix: "", suffix: "", sub: "" },
@@ -198,10 +198,10 @@ export const reportData = {
     },
     leverage: {
       title: "TRAC 3 Leverage — Resources Mobilized",
-      totalTrac3: "$26.9M",
+      totalTrac3: "$32.9M",
       totalMobilized: "$1.2B",
-      ratio: "1:45",
-      description: "For every $1 of TRAC 3 allocated, country offices mobilized $45 in additional resources, 2023–2025 (2026 excluded, data not yet available).",
+      ratio: "1:36",
+      description: "For every $1 of TRAC 3 allocated, country offices mobilized $36 in additional resources, 2023–2025 (2026 excluded, data not yet available).",
       //comparisonNote: "This is significantly higher than the 1:10.2 ratio in BERA's TPS analysis. That's good news — it suggests TRAC 3 is more catalytic than previously estimated — but it also points to methodological inconsistencies between the two analyses.",
       //skewNote: "These figures are skewed by Ukraine, which alone raised over $600M in resources mobilized in 2024.",
       // Source analysis breakdown has no per-row labels — five unlabeled
@@ -213,111 +213,17 @@ export const reportData = {
         { trac3: 2514311, mobilized: 614800000, ratio: 244.52 },
         { trac3: 4412696, mobilized: 113400000, ratio: 25.7 },
       ],
-      breakdownTotal: { trac3: 26944586, mobilized: 1206367839, ratio: 45 },
+      breakdownTotal: { trac3: 32900000, mobilized: 1206367839, ratio: 36 },
     },
     // Resources mobilized by Crisis Bureau teams in 2025, by donor.
     // Donor-line amounts sum exactly to each team's total below.
     resourceMobilization2025: {
-      total: 105308301,
+      total: 345000000,
       byTeam: [
-        {
-          team: "CB Conflict Prev & Peacebuilding",
-          total: 16210244,
-          donors: [
-            { donor: "European Union", entity: "European Commission", amount: 2728245 },
-            { donor: "Government of Canada", entity: "Dept of Forgn Afrs Trade & Dev", amount: 0 },
-            { donor: "Government of Ireland", entity: "Government of Ireland", amount: 231750 },
-            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 721415 },
-            { donor: "Government of Switzerland", entity: "Swiss Agy for Development & Cooperation", amount: 1735000 },
-            { donor: "Government of the Netherlands", entity: "Government of Netherlands", amount: 5730659 },
-            { donor: "Government of the United Kingdom", entity: "Foreign, Commonwealth & Dev. Off.", amount: 2313514 },
-            { donor: "Multi Partner Trust Funds", entity: "MPTF-JP Climate Security Mechn", amount: 1313117 },
-            { donor: "United Nations Agencies", entity: "UNDCO", amount: 799000 },
-            { donor: "United Nations Agencies", entity: "United Nations Resident Coordinator Offi", amount: 93500 },
-            { donor: "Other / unspecified", entity: "—", amount: 544044 },
-          ],
-        },
-        {
-          team: "CB Country Support Mgt Team",
-          total: 675521,
-          donors: [
-            { donor: "International NGO", entity: "HELP.NGO", amount: 154645 },
-            { donor: "Other / unspecified", entity: "—", amount: 520876 },
-          ],
-        },
-        {
-          team: "CB Crisis Readiness, Response and Recovery Team (incl. Recovery Solutions & H Mobility)",
-          total: 68970854,
-          donors: [
-            { donor: "Government of Germany", entity: "Government of Germany", amount: 2213778 },
-            { donor: "Government of the Republic of Korea", entity: "Government of Republic of Korea", amount: 64000000 },
-            { donor: "International Private Sector", entity: "Digital Good", amount: 57240 },
-            { donor: "United Nations Agencies", entity: "International Organization for Migration", amount: 247889 },
-            { donor: "Government of Japan", entity: "Government of Japan", amount: 722772 },
-            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 187980 },
-            { donor: "Multi Partner Trust Funds", entity: "MPTF - Leaving No One Behind - The Internal Displacement Solutions Fund", amount: 677695 },
-            { donor: "United Nations Agencies", entity: "UN High Commissioner for Refugees", amount: 200000 },
-            { donor: "Other / unspecified", entity: "—", amount: 663500 },
-          ],
-        },
-        {
-          team: "CB Disaster RD & Recovery",
-          total: 3678065,
-          donors: [
-            { donor: "European Union", entity: "European Commission", amount: 3410924 },
-            { donor: "Other / unspecified", entity: "—", amount: 267141 },
-          ],
-        },
-        {
-          team: "CB Governance, Rule of Law and Peacebuilding Hub",
-          total: 5812765,
-          donors: [
-            { donor: "Government of Germany", entity: "Government of Germany", amount: 2347418 },
-            { donor: "International Foundations", entity: "Bloomberg Family Fdn Inc", amount: 3465347 },
-            { donor: "United Nations Agencies", entity: "UN Office for Project Services", amount: 0 },
-          ],
-        },
-        {
-          team: "CB Policy, Knowledge & Partnerships",
-          total: 2974177,
-          donors: [
-            { donor: "European Union", entity: "European Comm. Humanit. Aid Off", amount: 227015 },
-            { donor: "Government of Germany", entity: "Fed Ministry for Economic Coop and Dev", amount: 1144295 },
-            { donor: "Government of the United Kingdom", entity: "Foreign, Commonwealth & Dev. Off.", amount: 0 },
-            { donor: "International Private Sector", entity: "Digital Good", amount: 564356 },
-            { donor: "Multi Partner Trust Funds", entity: "MPTF-Complex Risk Analytics Fd", amount: 188300 },
-            { donor: "United Nations Agencies", entity: "UNDCO", amount: 100000 },
-            { donor: "Other / unspecified", entity: "—", amount: 750211 },
-          ],
-        },
-        {
-          team: "CB ROL, Security & Human Rights",
-          total: 6836675,
-          donors: [
-            { donor: "Government of Germany", entity: "Government of Germany", amount: 357471 },
-            { donor: "Government of Iceland", entity: "Iceland - Min. Foreign Affairs", amount: 68000 },
-            { donor: "Government of Japan", entity: "Government of Japan", amount: 593581 },
-            { donor: "Government of Norway", entity: "Nor - Ministry of Foreign Affairs", amount: 111198 },
-            { donor: "Government of Norway", entity: "Norwegian Ag Dev Coop", amount: 300175 },
-            { donor: "Government of Sweden", entity: "Swedish Int'l Development Cooperation", amount: 194905 },
-            { donor: "Government of Switzerland", entity: "Swiss Agy for Development & Cooperation", amount: 12136 },
-            { donor: "Government of the Netherlands", entity: "Government of Netherlands", amount: 3413338 },
-            { donor: "Government of the Republic of Korea", entity: "Korean National Policy Agency", amount: 392838 },
-            { donor: "Government of the United Kingdom", entity: "Foreign, Commonwealth & Dev. Off.", amount: -267967 },
-            { donor: "Government of the United Kingdom", entity: "Government of United Kingdom", amount: 3196 },
-            { donor: "International Foundations", entity: "Bloomberg Family Fdn Inc", amount: 0 },
-            { donor: "Multi Partner Trust Funds", entity: "MPTF-Conflict Sexual Violence", amount: 130335 },
-            { donor: "Multi Partner Trust Funds", entity: "Peacebuilding Fund", amount: 493331 },
-            { donor: "Other / unspecified", entity: "—", amount: 1034138 },
-          ],
-        },
-        {
-          team: "Crisis Bureau - New York",
-          total: 150000,
-          donors: [
-            { donor: "Multi Partner Trust Funds", entity: "MPTF-Complex Risk Analytics Fd", amount: 150000 },
-          ],
-        },
+        { team: "CB Crisis Readiness, Response and Recovery Team", total: 145000000 },
+        { team: "CB Disaster RD & Recovery", total: 3678065 },
+        { team: "CB Governance, Rule of Law and Peacebuilding Hub", total: 200000000 },
+        { team: "CB Policy, Knowledge & Partnerships", total: 2974177 },
       ],
     },
     // Independent satellite nighttime-lights analysis (a well-established proxy
@@ -715,16 +621,16 @@ export const reportData = {
         description: "Trained UNDP staff ready within days of crisis declaration. 53 added in 2025, expanded with new profiles.",
       },
       {
-        name: "Stand-by Partners",
-        count: "38",
+        name: "Stand By Partners",
+        count: "13",
         subtitle: "Deployments",
         icon: "🤝",
         description: "SBP Network partners with estimated in-kind value of USD 4.8M. Covering Ukraine, Gaza, Sudan, Myanmar, DRC.",
       },
       {
-        name: "Direct Hire",
-        count: "3",
-        subtitle: "Rapid appointments",
+        name: "Talent Marketplace",
+        count: "10,000+",
+        subtitle: "Profiles",
         icon: "✓",
         description: "Direct temporary appointments for crisis contexts where standard recruitment timelines are not feasible.",
       },

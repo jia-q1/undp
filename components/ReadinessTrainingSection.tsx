@@ -5,7 +5,7 @@ import { reportData } from "@/lib/data";
 
 export function ReadinessTrainingSection() {
   const cohorts = reportData.readinessTraining.trainingCohorts;
-  const { erh, aarTracker, aarDescription, aarDashboardLink, sopUpdates } = reportData.readinessTraining;
+  const { aarTracker, aarDescription, aarDashboardLink, sopUpdates } = reportData.readinessTraining;
 
   const barVariants = {
     hidden: { scaleX: 0, originX: 0 },
@@ -36,80 +36,18 @@ export function ReadinessTrainingSection() {
           </span>
           <h2 className="text-5xl font-bold text-navy mb-4">Readiness & Training</h2>
           <p className="text-lg text-mid max-w-2xl mx-auto">
-            Building the network&apos;s capacity to prepare, respond, and recover across {erh.officesReached} country offices
+            Building the network&apos;s capacity to prepare, respond, and recover
           </p>
         </motion.div>
 
-        {/* Two Column Layout: ERH + Training */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Early Recovery Hub */}
-          <motion.div
-            className="bg-white rounded-xl shadow-lg border border-rule p-8"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold text-navy">Early Recovery Hub</h3>
-              <p className="text-sm text-sky">Central digital platform</p>
-            </div>
-
-            <p className="text-mid mb-6 leading-relaxed">
-              Launched by the UNDP Administrator, the ERH is the central digital platform for crisis response
-              and early recovery programming — available in English, French, and Spanish with AI-enabled support.
-            </p>
-
-            <div className="space-y-3 mb-6">
-              {erh.features.map((feature, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex gap-3 p-3 bg-sky/5 rounded-lg"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 flex-shrink-0" />
-                  <div className="text-sm text-slate">{feature}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="p-3 bg-gradient-to-r from-sky/10 to-teal/10 rounded-lg border border-sky/20">
-                <div className="text-xl font-bold text-navy">{erh.pageViews}</div>
-                <div className="text-xs text-mid">page views</div>
-              </div>
-              <div className="p-3 bg-gradient-to-r from-sky/10 to-teal/10 rounded-lg border border-sky/20">
-                <div className="text-xl font-bold text-navy">{erh.uniqueVisitors}</div>
-                <div className="text-xs text-mid">unique visitors</div>
-              </div>
-            </div>
-
-            <motion.div
-              className="p-4 bg-gradient-to-r from-sky/10 to-teal/10 rounded-lg border border-sky/20"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <div className="text-2xl font-bold text-navy">{erh.reach.toLocaleString()}</div>
-              <div className="text-sm text-mid">
-                personnel reached via {erh.sessionsDelivered} sessions across {erh.bureausReached} bureaus and{" "}
-                {erh.officesReached} country offices
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Training Outcomes */}
-          <motion.div
-            className="bg-white rounded-xl shadow-lg border border-rule p-8"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+        {/* Training Outcomes */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
             <h3 className="text-2xl font-bold text-navy mb-6">Training Transformation</h3>
 
             <div className="space-y-7">
@@ -182,7 +120,6 @@ export function ReadinessTrainingSection() {
               ))}
             </div>
           </motion.div>
-        </div>
 
         {/* Institutional Learning: AARs + SOPs + dashboard */}
         <motion.div
