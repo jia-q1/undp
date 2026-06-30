@@ -356,6 +356,25 @@ export const reportData = {
     // Cross-cutting lens, not a programmatic pillar — kept separate from the
     // `pillars` array since it has a different shape (context stats describing
     // why this matters, plus impact-at-scale stats, rather than one stat set).
+    crisisRiskAnticipation: {
+      name: "Crisis Risk & Anticipation",
+      tools: [
+        {
+          name: "Risk Anticipation Data Hub (RAD)",
+          description: "An open, integrated data platform that aggregates and harmonizes risk data across sectors and geographies. It enables more accessible, interoperable, and decision-focused analysis, supporting risk-informed programming and anticipatory action by UNDP and partners.",
+          screenshot: "/RAD.png",
+          link: "https://dev-dc-web-service-201450022936.europe-west4.run.app/",
+          linkLabel: "Access the RAD platform",
+        },
+        {
+          name: "INFORM Warning",
+          description: "A global early-warning system that monitors and interprets emerging, multi-dimensional risks over a 1–12 month horizon. It translates risk trends, forecasts and scenarios into forward-looking signals that support earlier decision-making for prevention, preparedness, and early action.",
+          screenshot: "/inform.png",
+          link: "https://drmkc.jrc.ec.europa.eu/inform-index/inform-warning-tool/",
+          linkLabel: "Access the INFORM Warning tool",
+        },
+      ],
+    },
     genderEquality: {
       name: "Gender Equality in Crisis Contexts",
       contextStats: [

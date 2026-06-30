@@ -23,7 +23,7 @@ export function Header() {
     "Crisis Response",
     "Assessments",
     "Talent Network",
-    "Special Measures",
+    "Crisis Operations",
     "Readiness",
     "Crisis Signals",
   ];

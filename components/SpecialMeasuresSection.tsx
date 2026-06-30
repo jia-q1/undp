@@ -37,7 +37,7 @@ export function SpecialMeasuresSection() {
           <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-semibold mb-4">
             Crisis Authorization
           </span>
-          <h2 className="text-5xl font-bold text-navy mb-4">Special Measures</h2>
+          <h2 className="text-5xl font-bold text-navy mb-4">Crisis Operations</h2>
           <p className="text-lg text-mid max-w-2xl mx-auto">
             Pre-approved fast-track authority for crisis delivery: <strong>{reportData.specialMeasures.totalValue}</strong> across{" "}
             <strong>{reportData.specialMeasures.totalCases}</strong> cases
@@ -267,7 +267,7 @@ export function SpecialMeasuresSection() {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
             <div>
-              <h3 className="text-xl font-bold text-navy mb-1">Special Measures Dashboard</h3>
+              <h3 className="text-xl font-bold text-navy mb-1">Crisis Operations Dashboard</h3>
               <p className="text-mid text-sm">Full case-level detail and live tracking across all six pillars.</p>
             </div>
             <a
@@ -287,7 +287,7 @@ export function SpecialMeasuresSection() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/special_measures_dash.png"
-              alt="Special Measures Dashboard preview"
+              alt="Crisis Operations Dashboard preview"
               className="w-full h-auto rounded-lg border border-rule shadow-sm hover:shadow-lg transition-shadow"
             />
           </a>
