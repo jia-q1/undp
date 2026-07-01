@@ -182,7 +182,7 @@ export function AssessmentsSection() {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
             <div>
-              <h3 className="text-xl font-bold text-navy mb-1">C3RT Assessments Dashboard</h3>
+              <h3 className="text-xl font-bold text-navy mb-1">CB Assessments and Digital Solutions</h3>
               <p className="text-mid text-sm">Live tracking of RAPIDA, HBDA, and SEIA assessments across crisis contexts.</p>
             </div>
             <a

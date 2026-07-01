@@ -1,8 +1,8 @@
 // Crisis Bureau 2025 Data
 export const reportData = {
   hero: {
-    eyebrow: "2025 Crisis Bureau Launch",
-    headline: "When crisis hits, UNDP moves first.",
+    eyebrow: "Crisis Bureau",
+    headline: "When crisis hits, CB moves first.",
     intro: "In 2025 and 2026…",
     metricGroups: [
       {
@@ -72,7 +72,7 @@ export const reportData = {
         id: "surge",
         name: "SURGE Advisors",
         deployments2025: 31,
-        description: "Trained UNDP staff ready for rapid internal deployment within days of a crisis declaration. 2025 deployments covered Myanmar, Jamaica, PAPP, DRC, Lebanon, Madagascar, and more, drawn from a roster of 370 active advisors (53 added in 2025).",
+        description: "Trained UNDP staff ready for rapid internal deployment within days of a crisis declaration. 2025 deployments covered Myanmar, Jamaica, PAPP, DRC, Lebanon, Madagascar, and more, drawn from a roster of 400+ active advisors (53 added in 2025).",
       },
       {
         id: "sbp",
@@ -230,7 +230,7 @@ export const reportData = {
     // for economic activity), used to test whether UNDP early-recovery
     // investment is associated with regained economic activity post-crisis.
     satelliteEvidence: {
-      title: "Satellite Evidence on Early Recovery Impact",
+      title: "Economic Recovery Impact using Satellite Imagery",
       approach: "Independent satellite nighttime-lights data measures how much of the post-crisis decline in activity has been regained, comparing levels before the crisis, at its lowest point, and today.",
       headline: [
         { value: "$20–40", label: "In additional local economic activity for every $1 invested in Myanmar's early-recovery portfolio" },
@@ -393,6 +393,20 @@ export const reportData = {
 
   crisisResponse: {
     title: "Crisis Response",
+    sopFramework: {
+      headline: "CB is the custodian of SOPs for Crisis Response · L1/L2/L3 Framework",
+      includes: [
+        "Crisis Board",
+        "CMST/CRT",
+        "Supplementary protocols (for anticipate and prevent)",
+        "TRAC 3 funds allocation (no-regret/immediate funding · programming funds · After-Action Review)",
+      ],
+      crisisBoardStructure: [
+        "3 mandatory CBs (declaration, surge endorsement, closure)",
+        "Exigency Memo within 24 hrs",
+        "CMST activated for L2/L3",
+      ],
+    },
     crisisTracker: {
       description: "An enhanced Crisis Tracker Dashboard provides real-time updates on crisis situations, support progress, funding allocations, and SURGE deployments. An Excel-based tracker feeds reliable monthly data into the dashboard.",
       features: ["Real-time crisis situation updates", "Funding allocation tracking", "SURGE deployment visibility", "Monthly Excel data feed"],
@@ -634,7 +648,7 @@ export const reportData = {
       },
       {
         name: "SURGE",
-        count: "370",
+        count: "400+",
         subtitle: "Crisis-ready advisors",
         icon: "⚡",
         description: "Trained UNDP staff ready within days of crisis declaration. 53 added in 2025, expanded with new profiles.",
@@ -818,7 +832,7 @@ export const reportData = {
   crisisSignals: {
     title: "Crisis Signals",
     tool: {
-      name: "Crisis Demand Profile Dashboard",
+      name: "Crisis Demand Profile Dashboard (OECD/DAC fragile countries)",
       organization: "Crisis Bureau",
       description: "Scores crisis workforce demand across 4 evidence dimensions — embeddedness, indicator intensity, budget proximity, and EIU context — to guide ExpRes requests, SURGE profiling, and recruitment.",
       link: "https://crisis-demand-profile.vercel.app/dashboard/dashboard_clean.html",

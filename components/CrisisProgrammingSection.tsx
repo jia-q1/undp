@@ -164,6 +164,10 @@ export function CrisisProgrammingSection() {
                 </div>
               )}
 
+              {selected.id === "early-recovery" && (
+                <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">Country-level early recovery results</h4>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 {selected.stats.map((stat, idx) => (
                   <div key={idx} className="bg-ice rounded-lg p-5">

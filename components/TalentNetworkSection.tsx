@@ -455,9 +455,11 @@ export function TalentNetworkSection() {
           </a>
         </motion.div>
 
+        <p className="text-center text-mid text-sm mt-12 mb-4">Available UNDP capacities for crisis programming.</p>
+
         {/* Competencies dashboard */}
         <motion.div
-          className="mt-12 bg-white rounded-xl shadow-lg border border-rule p-4 md:p-6"
+          className="bg-white rounded-xl shadow-lg border border-rule p-4 md:p-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

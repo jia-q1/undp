@@ -31,7 +31,7 @@ export function DirectFundingSupportSection() {
           viewport={{ once: true }}
         >
           <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-semibold mb-4">
-            Crisis Financing
+            Crisis Funding
           </span>
           <h2 className="text-5xl font-bold text-navy mb-4">{data.title}</h2>
         </motion.div>

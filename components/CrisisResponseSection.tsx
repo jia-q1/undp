@@ -13,6 +13,7 @@ export function CrisisResponseSection() {
   const crises = reportData.crisisResponse.crises;
   const selected = crises.find((c) => c.id === selectedCrisis);
   const tracker = reportData.crisisResponse.crisisTracker;
+  const sopFramework = reportData.crisisResponse.sopFramework;
 
   const getLevelColor = (level: string) => {
     if (level === "L3") return "#E05A2B";
@@ -44,6 +45,41 @@ export function CrisisResponseSection() {
           <p className="text-lg text-mid max-w-2xl mx-auto">
             {reportData.crisisResponse.crises.length} major crisis responses in 2025, with targeted expert deployment
           </p>
+        </motion.div>
+
+        {/* SOP Framework */}
+        <motion.div
+          className="bg-white rounded-xl shadow-lg border border-rule p-8 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-bold text-navy mb-4">{sopFramework.headline}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">This Includes</h4>
+              <div className="space-y-2">
+                {sopFramework.includes.map((item) => (
+                  <div key={item} className="flex gap-2 p-2.5 bg-ice rounded-lg text-xs text-slate">
+                    <span className="w-1.5 h-1.5 rounded-full bg-coral mt-1 flex-shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xs font-bold text-mid uppercase tracking-wide mb-3">Crisis Board Structure</h4>
+              <div className="space-y-2">
+                {sopFramework.crisisBoardStructure.map((item) => (
+                  <div key={item} className="flex gap-2 p-2.5 bg-ice rounded-lg text-xs text-slate">
+                    <span className="w-1.5 h-1.5 rounded-full bg-coral mt-1 flex-shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Crisis Tracker dashboard */}
